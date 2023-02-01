@@ -1,0 +1,159 @@
+* {
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   background-color: #73c8a9;
+   font-family: 'Arial Black', cursive, sans-serif;
+   background: linear-gradient(to top, #5B5 10%, #99F 100%);
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   align-content: center;
+   height: 100vh;
+   width: 100vw;
+}
+
+canvas {
+   border: 5px solid #2e2e2e;
+   border-radius: 10px;
+   display: block;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+   background: url('assets/Flappy_Bird_Background.png') no-repeat;
+   background-size: cover;
+}
+
+.backdrop-blur {
+   filter: blur(5px)
+}
+
+#end-menu {
+   display: none;
+   flex-direction: column;
+   margin: 50px auto;
+   width: 200px;
+   padding: 20px;
+   text-align: center;
+   background-color: white;
+   border-radius: 5px;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+   z-index: 10;
+   position: fixed;
+   gap: 1rem;
+   transition: all .4s;
+}
+
+h1 {
+   font-size: 20pt
+}
+
+p {
+   font-size: 13pt;
+   font-family: 'Arial', sans-serif;
+}
+
+#game-container {
+   display: none;
+   justify-content: center;
+   align-items: center;
+}
+
+#start {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   animation: zoom-in 1s ease-in-out forwards alternate;
+   background: white;
+   padding: 50px;
+   border-radius: 20px;
+   border: #2e2e2e solid 4px;
+}
+
+#start img {
+   display: block;
+   margin: 30px;
+   transform: rotate(-30deg);
+   animation: bounce .7s ease-in infinite alternate;
+}
+
+#start button {
+   font-size: 20pt;
+   margin-top: 40px;
+}
+
+#start #creditos {
+   margin-top: 30px
+}
+
+#score-display {
+   margin: 50px auto;
+   color: white;
+   font-size: 3em;
+   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+   z-index: 9;
+   position: absolute;
+   justify-content: center;
+   transform: translateY(-70px);
+   visibility: hidden;
+}
+
+#start-mensage {
+   font-size: 15pt;
+   z-index: 9;
+   position: absolute;
+   transform: translateY(100px);
+   animation: light-text .5s linear 1s infinite alternate;
+}
+
+button {
+   background-color: #2e2e2e;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   cursor: ponter;
+   padding: 15px 20px;
+   transition: all .4s;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5)
+}
+
+button:hover {
+   background-color: white;
+   color: #2e2e2e;
+   border: 2px solid #2e2e2e;
+   transform: translateY(-2px) scale(1.1);
+}
+
+@keyframes zoom-in {
+   from {
+      transform: scale(0);
+   } to {
+      transform: scale(1);
+   }
+}
+
+@keyframes bounce {
+   from {
+      transform: rotate(5deg) scale(1) translateY(30px);
+   } to {
+      transform: rotate(-5deg) scale(1.5);
+   }
+}
+
+@keyframes fly {
+   from {
+      transform: rotate(10deg);
+   } to {
+      transform: rotate(-10deg)
+   }
+}
+
+@keyframes light-text {
+   from {
+      color: black;
+   } to {
+      color: white
+   }
+}
