@@ -1,0 +1,80 @@
+* {
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 100vw;
+   height: 100vh;
+   color: white;
+   font-family: 'Arial Black', cursive, sans-serif;
+   gap: 30px;
+
+   background: linear-gradient(to top, black, #F33)
+}
+
+.apresentacao {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 100vw;
+   padding: 20px 0px;
+
+
+} h1 {
+   font-size: 30pt
+} p {
+   font-size: 13pt;
+   text-align: center;
+}
+
+.vitrine {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   gap: 2rem
+}
+
+.item {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin: 20px;
+   height: 180px;
+   width: 180px;
+   gap: 1em;
+   background-color: blueviolet;
+   padding: 10px;
+   border-radius: 20px;
+   transition: all .5s
+}
+
+.item:hover {
+   transform: scale(1.2)
+}
+
+.vitrine .item img {
+   display: block;
+   object-fit: scale-down;
+   height: 120px;
+   width: 120px;
+   justify-content: center;
+   align-items: center;
+   border-radius: 20px;
+   border: #F33 solid;
+   background-color: white;
+}
+
+.vitrine a {
+   font-style: unset;
+   text-decoration: none;
+   color: white;
+   cursor: pointer;
+}
