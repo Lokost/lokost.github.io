@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Flappy bird (refatorado)</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div id="start">
+      <h1>Flappy Bird</h1>
+      <p>Refatorado</p>
+      <img src="assets/flappy_dunk.png" alt="bird">
+      <button id="start-button">Iniciar</button>
+      <p id='creditos'>Adaptação por Gabriel Gomes</p>
+   </div>
+   <div id="end-menu">
+      <h1>Fim de jogo!</h1>
+      <p>Score: <span id="end-score"></span></p>
+      <p>Highscore: <span id="end-highscore"></span></p>
+      <button id="restart-button">Reiniciar</button>
+   </div>
+   <div id="game-container">
+      <canvas id="game-canvas" width = "400" height="600"></canvas>
+      <div id="score-display">0</div>
+      <div id="start-mensage">Aperte espaço para jogar</div>
+   </div>
+   <script src="game.js"></script>
+</body>
+</html>
