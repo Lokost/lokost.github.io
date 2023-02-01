@@ -1,19 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Fredoka+One&display=swap');
+
 * {
    margin: 0;
    padding: 0;
+   font-family: 'Fredoka One', cursive;
 }
 
 body {
    background-color: #73c8a9;
-   font-family: 'Arial Black', cursive, sans-serif;
-   background: linear-gradient(to top, #5B5 10%, #99F 100%);
+   font-family: 'Fredoka One', cursive;
+   background: linear-gradient(to top, #5B5 10%, #99F 100%) no-repeat;
    display: flex;
-   flex-direction: column;
+   flex-direction: row;
    justify-content: center;
    align-items: center;
    align-content: center;
    height: 100vh;
    width: 100vw;
+   gap: 2em
 }
 
 canvas {
@@ -51,7 +56,7 @@ h1 {
 
 p {
    font-size: 13pt;
-   font-family: 'Arial', sans-serif;
+   font-family: 'Chewy', cursive;
 }
 
 #game-container {
@@ -108,6 +113,13 @@ p {
    animation: light-text .5s linear 1s infinite alternate;
 }
 
+#jump {
+   display: none;
+   font-size: 20pt;
+   margin-top: 40px;
+   z-index: 0;
+}
+
 button {
    background-color: #2e2e2e;
    color: white;
@@ -155,5 +167,12 @@ button:hover {
       color: black;
    } to {
       color: white
+   }
+}
+
+@media screen and (max-width: 700px) {
+   body {
+      flex-direction: column;
+      height: 100vh;
    }
 }

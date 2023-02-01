@@ -10,6 +10,7 @@ const endHigh = document.getElementById('end-highscore')
 const startMenu = document.getElementById('start')
 const startBtt = document.getElementById('start-button')
 const startMsg = document.getElementById('start-mensage')
+const jumpBtt = document.getElementById('jump')
 
 // Image to the bird
 const birdImg = new Image()
@@ -69,13 +70,11 @@ let started = false
 // space action into the game
 document.body.onkeyup = function(e) {
    if (e.code == 'Space') {
-      if (!started) {
-         startGame()
-      } else {
-         bird.velocity = bird.speed
-      }
+      jump()
    }
 }
+
+jumpBtt.addEventListener('click', jump)
 
 resetBtt.addEventListener('click', function() {
    hideEndMenu()
@@ -91,6 +90,16 @@ function showGame() {
    startMenu.style.display = 'none'
    gameContainer.style.display = 'flex'
    gameContainer.style.animation = 'zoom-in 1s ease-in-out forwards'
+   jumpBtt.style.display = 'flex'
+   jumpBtt.style.animation = 'zoom-in 1s ease-in-out forwards'
+}
+
+function jump() {
+   if (!started) {
+      startGame()
+   } else {
+      bird.velocity = bird.speed
+   }
 }
 
 function startGame() {
