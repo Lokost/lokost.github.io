@@ -3,36 +3,119 @@
 * {
    margin: 0;
    padding: 0;
+   font-family: 'Chewy', cursive, sans-serif;
 }
 
 body {
    display: flex;
    flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   width: 100vw;
-   height: 100vh;
-   color: white;
-   font-family: 'Chewy', cursive, sans-serif;
-   gap: 30px;
-
-   background: linear-gradient(to top, black, #F33)
-}
-
-.apresentacao {
-   display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
    width: 100vw;
-   padding: 20px 0px;
+   min-height: 100vh;
+   color: white;
+   background-color: #B11;
+}
 
+.cabecalho {
+   background-color: #C33;
+   width: 95%;
+   padding: 10px;
+   height: 40px;
+   box-shadow: 0px 0px 20px rgba(0,0,0,.5);
+   z-index: 1000;
+   position: absolute;
+   top: 1%;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+}
 
-} h1 {
-   font-size: 30pt
-} p {
-   font-size: 13pt;
+.menu {
+   height: 100%;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   margin-right: 20px;
+   font-size: 15pt;
+   gap: 1rem;
+}
+
+.cabecalho a{
+   text-decoration: none;
+   color: white;
+   cursor: pointer;
+   transition: all .6s
+}
+
+.cabecalho p {
+   color: #BBB;
+}
+
+.cabecalho a:hover {
+   transform: scale(1.2);
+   color: #BBB
+}
+
+.conteudo {
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+   width: auto;
+   justify-self: center;
+   justify-content: center;
+   align-items: center;
+   align-self: center;
+   align-content: center;
    text-align: center;
+   font-size: 15pt;
+}
+
+.apresentacao{
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+   margin: 20px 50px;
+}
+
+.recepcao {
+   font-size: 50pt
+}
+
+button {
+   background: #43F;
+   border: none;
+   border-radius: 30px;
+   padding: 20px;
+   font-size: 20pt;
+   color: white;
+   transition: all .5s;
+   cursor: pointer
+}
+
+button:hover{
+   transform:scale(1.2)
+}
+
+.copy {
+   position: absolute;
+   bottom: 1%;
+   padding: 10px;
+   box-shadow: 0px 0px 20px rgba(0,0,0,.5);
+   z-index: 1000;
+   display: flex;
+   flex-direction: row;
+   height: auto;
+   width: auto;
+   transition: all .5s;
+   background-color: #C33;
+}
+
+.copy:hover {
+   transform: scale(1.5) translateY(-10px);
 }
 
 .vitrine {
