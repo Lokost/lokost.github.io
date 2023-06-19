@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 1 - Preparando o ambiente</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="title">
+            <a href="index.html" class="title" id="main">Intensivão de HTML</a>
+        </div>
+        <div class="menu">
+            <a href="#" class="menuButton selected" id="class1">Aula 1</a>
+            <a href="#" class="menuButton" id="class2">Aula 2</a>
+            <a href="#" class="menuButton" id="class3">Aula 3</a>
+            <a href="#" class="menuButton" id="class4">Aula 4</a>
+            <a href="#" class="menuButton" id="class5">Aula 5</a>
+        </div>
+    </div>
+    <div class="content">
+        <h1 class="mainTitle">Aula 1</h1>
+        <div class="card">
+            <h1>O que é o desenvolvimento WEB?</h1>
+            <p>O desenvolvimento WEB consiste na criação de páginas para a internet, sendo que vamos estar precisando utilizar algumas coisas que podem vir de padrão na maioria dos computadores e navegadores, apenas vamos estar precisando de um elemento que pode acabar não vindo diretamente, que é um editor de códigos.</p>
+            <p>Nesse mês vamos estar vendo as principais linguagens para fazer isso, lembrando que não são todas de programação, vamos estar separando elas em duas, as linguagens de marcação e as linguagens de programação.</p>
+        </div>
+        <div class="card">
+            <h1>Linguagens de marcação</h1>
+            <p>As linguagens de marcação, elas são mais o que elas mesmo já dizem em seu nome, elas vão estar ali para marcar espaços para o computador entender onde ele vai estar inserindo algum elemento. Como de grande exemplo, em uma página nós temos imagens e parágrafos, a ordenação deles vão ser demarcados por tags no nosso HTML e o estilo no nosso CSS. Sendo que elas vão estar conhecendo de maneira mais completa mais para frente.</p>
+            <p>Basicamente é apenas isso, <b>Linguagens de marcação são apenas para sinalizar para o computador onde cada um dos elementos ficará!</b></p>
+        </div>
+        <div class="card">
+            <h1>Linguagem de programação</h1>
+            <p>Agora sim chegamos em um ponto mais interessante, a linguagem de programação, onde vamos estar programando as funções para a nossa página, para isso temos duas linguagens que ainda são líderes no seguimento WEB, que é a JavaScript e o PHP (Hypertext PreProcessor | Personal Home Page), essas duas linguagens vão ser as principais para estarmos conseguindo puxar informações de registros e inserindo funções em botões e elementos da nossa página, deixando assim ela mais funcional e operativa. Além de que assim ela vai se mais útil do que apenas uma página estática.</p>
+        </div>
+        <div class="card">
+            <h1>Análise de desenvolvimento</h1>
+            <p>A Análise de desenvolvimento, é uma parte muito importante para o desenvolvimento de qualquer sistema, seja de computador, mobile ou web, essa etapa faz parte do início de um projeto e programação, onde serão pré planejadas as funções do aplicativo/programa. Igualmente com suas situações de quais objetos serão formados, quais as variáveis/dados serão usados e assim por diante. Não acaba sendo necessário para projetos pequenos grandes diagramas, mas eles podem ser úteis afinal de contas.</p>
+            <p>Em projetos menores, nós podemos estar utilizando simples listas de afazeres, modelos simples do que vamos estar precisando e depois estar em meio ao desenvolvimento juntando cada vez mais itens e necessidades para o nosso projeto.</p>
+            <p>As etapas de uma análise cobrem partes de:</p>
+            <li>Atividades: O que o usuário vai estar fazendo com o aplicativo, programa ou site</li>
+            <li>Classes: Classes ou objetos são partes dos elementos com quais vamos estar trabalhando no nosso software, como um item visual, ou um tipo de registro, como um perfil de uma rede social que é formado de Nome, Imagem de Perfil, E-mail e Senha.</li>
+            <li>Casos: Em que vamos estar juntando em uma questão mais descritiva os “ses” do nosso aplicativo, para gerar mensagens de erro, finalização de processo ou inicialização de outros processos, como de exemplo, se o valor de um texto for igual a um determinado, acontecer X caso contrário acontecer Y.</li>
+            <li>Sequencia: Quais funções vão ser disparadas pelo o que, e o que vai estar vindo a seguir. Tendo sempre seu ponto de início e seu ponto final.</li>
+        </div>
+        <div class="card">
+            <h1>Preparando o ambiente</h1>
+            <p>Como dito anteriormente, o nosso computador geralmente já vai vir com o que vai ser necessário para funcionar uma página WEB, mas para criarmos uma página WEB de uma maneira mais fácil, prática e rápida, vamos estar fazendo o uso do Visual Studio Code!</p>
+            <button type="button" onclick="goto('vsc')">Baixar o VSCode</button>
+            <p>Para conseguir usar mais fácilmente, vamos estar baixar uma extenção no Code criada pela própria Microsoft, Live Preview.</p>
+            <button onclick="goto('livepreview')">Baixar extenção</button>
+            <p class="centerH"><i>Clique no botão acima apenas depois de instalar o code!</i></p>
+        </div>
+        <div class="card">
+            <h1>Iniciando o nosso projeto</h1>
+            <p>Bem, após esclarecer os itens iniciais, nós vamos estar começando agora com os nossos arquivos iniciais, onde vamos estar precisando do arquivo HTML, arquivo CSS e o arquivo JS, o arquivo HTML vamos dar o nome dele de “index”, CSS de “style” e o JS de “script”. Sendo assim teremos 3 arquivos, o “index.html”, o “style.css” e o “script.js”. O porque desses nomes é apenas por serem os nomes mais utilizados e mais comuns para a criação de uma página HTML.</p>
+            <p>Para facilitar, o Visual Studio code, ele consegue estar nos ajudando com as primeiras linhas do nosso HTML, então quando estamos com o arquivo index.html, precisamos apenas digitar “html” que o visual studio code já vai nos apresentar algumas das opções para iniciar o nosso arquivo. O que mais estaremos usando vai ser no momento o “HTML:5”, qual já vai estar preparando o nosso arquivo HTML a versão 5 do mesmo.</p>
+        </div>
+        <div class="card">
+            <h1>Vamos conhecer algumas das tags:</h1>
+            <button onclick="goto('tags')">Tags HTML</button>
+        </div>
+    </div>
+    <div class="footer">
+        <p>@Gabriel Gomes 2023</p>
+        <div class="links">
+            <a href="tags.html">Tags</a>
+            <p class='separator'>|</p>
+            <a href="https://github.com/lokost"
+            target="_blank">GitHub</a>
+            <a href="https://youtube.com/@lokostgamesofc" target="_blank">YouTube</a>
+        </div>
+    </div>
+</body>
+</html>

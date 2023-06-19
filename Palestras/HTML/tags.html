@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tags - HTML</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="title">
+            <a href="index.html" class="title" id="main">Intensivão de HTML</a>
+        </div>
+        <div class="menu">
+            <a href="aula 1.html" class="menuButton" id="class1">Aula 1</a>
+            <a href="#" class="menuButton" id="class2">Aula 2</a>
+            <a href="#" class="menuButton" id="class3">Aula 3</a>
+            <a href="#" class="menuButton" id="class4">Aula 4</a>
+            <a href="#" class="menuButton" id="class5">Aula 5</a>
+        </div>
+    </div>
+    <div class="content">
+        <h1 class="mainTitle">Tags HTML</h1>
+        <div class="card centerH">
+            <h1>Primeiras/principais tags</h1>
+            <p>Nessa parte estaremos conhecendo as primeiras tags que precisamos para criar a nossa página, sendo elas as principais para ajudar o nosso navegador entender a nossa página, e colocar as coisas nos seus devidos lugares.</p>
+            <table>
+                <tr class="tableTitle">
+                    <td>Tag</td>
+                    <td>Descrição</td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;!DOCTYPE&#62;</td>
+                    <td>Essa tag, além de ela reforçar que estamos mexendo com um HTMl, ela também acaba dando uma ênfase na versão que estamos mexendo, se está sendo o HTML 4 ou 5.</td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;HTML&#62;</td>
+                    <td>A tag que vai estar iniciando e finalizando o nosso documento, ela vai estar sendo responsável para fazer o nosso navegador entender mais facilmente que está sendo um HTML e não outra linguagem de marcação como o XML.</td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;meta&#62;</td>
+                    <td>Essa tag vai estar alterando algumas informações que podem ser puxadas ou mudadas do nosso navegador, mas claro, isso não quer dizer que irá alterar as configurações dele, apenas algumas para a interpretação da nossa página.</td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;head&#62;</td>
+                    <td>Essa vai estar controlando o nosso cabeçalho da página, que acaba sendo mais o que fica no navegador, ou sendo mais direto, as informações na guia, como título e ícone, mas também podemos estar utilizando essa área para carregar informações prévias, antes do corpo da página.</td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;title&#62;</td>
+                    <td>Estando dentro do head, a title vai estar alterando o nome da nossa página na guia, logo, conseguindo assim, aparecer um nome mais customizado do que o padrão, que seria o caminho do nosso arquivo.</td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;body&#62;</td>
+                    <td>Aqui começamos a fazer o corpo da nossa página, em que vamos estar colocando os elementos necessários para aparecerem na página, como textos, imagens, botões, dentre outros.</td>
+                </tr>
+            </table>
+            <div class="card attention"><p><span class="material-symbols-outlined">warning</span></p><p>Quando colocamos alguma Tag, temos que fechar ela depois, como de exemplo a Title: &#60;title> Meu site &#60;/title></p></div>
+        </div>
+        <div class="card">
+            <h1>Divisão da página</h1>
+            <p>Quando já temos a nossa página praticamente pronta, nós vamos estar precisando arrumar algumas coisas nela, como de esxemplo, o espaçamento dentre itens e assim em diante, além de que isso vai acabar deixando muito mais fácil de conseguirmos customizar a nossa página mais para frente. Com isso conheceremos algumas das tags quais ajudam a separar a nossa página de maneira mais dinâmica!
+            </p>
+            <table>
+                <tr class="tableTitle">
+                    <td>Tag</td>
+                    <td>Descrição</td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;header&#62;</td>
+                    <td>Essa tag ela normalmente vai ser utilizada para demarcar um pouco melhor onde vai ser o cabeçalho da nossa página, mas no final ela acaba sendo apenas mais um div com outro nome, basicamente.
+                    </td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;footer&#62;</td>
+                    <td>Essa tag ela vai estar fazendo a mesma coisa que a header, mas em questão do nosso rodapé.
+                    </td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;section&#62;</td>
+                    <td>A section vai ser algo parecido com a div, ela vai estar separando as sessões da página, ela pode ser muito útil para questões de sessões que geralmente não ficam o tempo todo na nossa página, como menus que aparecem apenas depois de serem chamados, mas atualmente, o modo mais usado na página, continua sendo separando ela inteira com divs.
+                    </td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;div&#62;</td>
+                    <td>Para fazer uma divisão na nossa página, ela pode ser uma divisão de qualquer seguimento. Sendo isso para uma parte mais importante da página, ou até mesmo partes do conteúdo.
+                    </td>
+                </tr>
+            </table>
+            <div class="card information">
+                <span class="material-symbols-outlined">info</span>
+                <p>A div é atualmente a mais utilizada nesse segmento da divisão, e isso inclusive fará dela a que nós vamos mais utilizar na criação da nossa página web!</p>
+            </div>
+        </div>
+        <div class="card">
+            <h1>Manipulação de texto</h1>
+            <p>Dentre essas nossas tags, nós vamos ter também algumas mais importantes para a manipulação do nosso texto. Sendo que ele poderá estar sendo separado entre um parágrafo, um título ou um hyperlink. Logo vamos ter as seguintes tags para isso:
+            </p>
+            <table>
+                <tr class="tableTitle">
+                    <td>Tag</td>
+                    <td>Descrição</td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;p&#62;</td>
+                    <td>Tag de parágrafo, ela vai ser utilizada principalmente para aplicar uma quebra de linha sem utilizar muito espaço.
+                    </td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;a&#62;</td>
+                    <td>Tag de ação, essa tag vai estar dando alguma ação extra para o que estiver sendo contido dentro dela, como abrir uma página ou parecidos, uma função próxima do hyperlink
+                    </td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;h1&#62;&#60;h6&#62;</td>
+                    <td>Tag de título, essa tag começa no 1 e vai até o 6, sendo que à cada tag, o tamanho do título vai diminuindo, sendo o 1 o maior e o 6 o menor.
+                    </td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;ul&#62;</td>
+                    <td>Ul, sigla para Unordered Lists, é usado para conseguir iniciar listas que utilizam pontos para marcar os itens, assim não precisando da contagem de cada item na lista.
+                    </td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;ol&#62;</td>
+                    <td>Ol, sigla para Ordered Lists, já é usado para conseguir fazer uma lista ordenada, logo, vai ter a passagem de números contando os itens, ou possivelmente, letras também.
+                    </td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;il&#62;</td>
+                    <td>Essa tag vai ser para conseguir inserir os itens em uma lista.
+                    </td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;font&#62;</td>
+                    <td>Essa tag vai estar conseguindo alterar as propriedades do nosso texto, sendo que ela pode estar trocando a fonte, o tamanho, a cor e a aparência do nosso texto.</td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;b&#62;</td>
+                    <td>A tag "b" vai estar sendo a responsável por deixar o nosso texto em negrito. Isso sendo dentro de qualquer outra tag, como a "p" e a "a", <b>basicamente desta maneira.</b>
+                    </td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;i&#62;</td>
+                    <td>Já a "i" vai estar sendo a responsável para deixar em <i>Itálico!</i></td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;s&#62;</td>
+                    <td>O "s" que acaba deixando deixando <s>Traçado!</s></td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;u&#62;</td>
+                    <td>E o "u" que acaba deixando <u>Sublinhado</u></td>
+                </tr>
+            </table>
+            <div class="card information">
+                <span class="material-symbols-outlined">info</span>
+                <p>Algumas das tags que foram colocadas acima, funcionarão para mais tags, sendo assim, poderão estar se repetindo ao decorrer do nosso código HTML</p>
+            </div>
+        </div>
+        <div class="card">
+            <h1>Inserção de mídia</h1>
+            <p>Para conseguirmos inserir algumas coisas mais interessantes na nossa página, nós acabamos precisando de algumas coisas para conseguir chamar mais a atenção, como a própria inserção de mídia, ou seja, colocar imagens, vídeos e música! Mas isso acaba sendo um pouco mais complicado quando falamos de mídias não estáticas (vídeos, músicas e afins).</p>
+            <p>Vamos dar uma olhada em algumas dessas tags:</p>
+            <table>
+                <tr class="tableTitle">
+                    <td>Tag</td>
+                    <td>Descrição</td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;img&#62;</td>
+                    <td>Essa tag vai ser capaz de inserir uma imagem na nossa página, ela pode ser basicamente de qualquer tipo que o nosso navegar consiga entender, logo conseguindo ir aí, .png, .jpeg, .gif, .tiff entre outras.</td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;embed&#62;</td>
+                    <td>Essa tag vai ser a responsável para conseguir inserir critérios de outros HTMLs na nossa página, como um pequeno widget de uma rede social ou até mesmo um player (do YouTube ou Vimeo de exemplo)</td>
+                </tr>
+                <tr class="tableData">
+                    <td>&#60;canvas&#62;</td>
+                    <td>A tag canvas nos dá uma area mais livre para conseguirmos mover objetos, mas esses objetos serão completamente controlados pelo nosso código JS, logo não vai ser possível criar os objetos pelo HTML.</td>
+                </tr>
+            </table>
+            <div class="card information">
+                <span class="material-symbols-outlined">info</span>
+                <p>As mídias podem ser realmente variadas, mas temos um certo limite de o que podemos estar colocando com o HTML base, assim precisando de algumas coisas feitas por terceiros, como dito acima, o player do YouTube.</p>
+            </div>
+        </div>
+        <div class="card information">
+            <span class="material-symbols-outlined">info</span>
+            <p>
+                Em breve mais alguns comandos!
+            </p>
+        </div>
+    </div>
+    <div class="footer">
+        <p>@Gabriel Gomes 2023</p>
+        <div class="links">
+            <a href="#">Tags</a>
+            <p class='separator'>|</p>
+            <a href="https://github.com/lokost"
+            target="_blank">GitHub</a>
+            <a href="https://youtube.com/@lokostgamesofc" target="_blank">YouTube</a>
+        </div>
+    </div>
+</body>
+</html>

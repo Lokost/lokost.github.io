@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: lightblue;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    background: blue;
+    color: white;
+    padding: 5px 20px;
+    border-radius: 0px 0px 20px 20px;
+    align-items: center;
+    position: relative;
+    top: 0;
+    width: 90vw;
+    box-shadow: rgba(0, 0, 0, .2) 0px 10px 8px;
+    /* animation: from-up-to-top .3s forwards; */
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+}
+
+.header .title {
+    font-size: larger;
+}
+
+.header .menu {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.header .menu a {
+    background: violet;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 10px;
+    transition: all .3s;
+    font-size: 10pt;
+}
+
+.header .menu a:hover {
+    background: white;
+    transform: scale(1.2)
+}
+
+.header .menu a.selected {
+    background: white;
+    transform: scale(1.2)
+}
+
+.content {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding: 30px;
+    border-radius: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    min-height: 75vh;
+    box-shadow: rgba(0,0,0,.2) 0px 10px 10px;
+    z-index: 10;
+    gap: 2rem;
+    font-size: 14pt
+    /* transform: scale(0); */
+    /* animation: .3s pop .5s forwards; */
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background: #EFEFEF;
+    padding: 15px;
+    border-radius: 20px;
+    font-weight: 300;
+    gap: 1.2rem;
+    box-shadow: rgba(0,0,0,.2) 0px 10px 10px;
+}
+
+.card h1 {
+    text-align: center;
+}
+
+.card button {
+    align-self: center;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 20px;
+    box-shadow: rgba(0,0,0,.2) 0px 10px 10px;
+    font-size: 20px;
+    text-transform: uppercase;
+    transition: all .3s;
+}
+
+.card button:hover {
+    background:white;
+    color: black;
+    transform: scale(1.2);
+    cursor: pointer
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: purple;
+    color: white;
+    padding: 15px;
+    font-weight: 300; 
+    border-radius: 20px 20px 0 0;
+    width: 90vw;
+}
+
+.footer a {
+    color: black;
+    text-decoration: none;
+    background: lightblue;
+    padding: 8px 15px;
+    font-size: 15px;
+    border-radius: 20px;
+    transition: all .4s
+}
+
+.footer a:hover {
+    background: white;
+    transform: scale(1.2)
+}
+
+.miniature {
+    height: 130px;
+    width: fit-content;
+}
+
+.vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+.horizontal {
+    display: flex;
+    flex-direction: row;
+}
+
+.centerV {
+    justify-content: center;
+}
+
+.centerH {
+    text-align: center;
+    align-items: center;
+}
+
+.mainTitle {
+    text-align: center;
+    font-size: 30pt;
+}
+
+table {
+    border-spacing: 5px 10px;
+}
+
+tr.tableTitle {
+    background: blue;
+    color: white;
+}
+
+tr {
+    margin: 4px;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: rgba(0,0,0,.2) 0px 5px 10px;
+}
+
+tr.tableData {
+    background: lightblue;
+}
+
+.attention , .information {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    align-self: center;
+    text-align: center;
+}
+
+.attention span , .information span{
+    font-size: 50px;
+}
+
+.attention {
+    color: yellow;
+    background: red;
+}
+
+.information {
+    color: white;
+    background: #8888FF;
+    
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.links .separator {
+    margin : 0px 10px;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0.0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes from-down-to-bottom {
+    0% {
+        bottom: -40px;
+    }
+    100% {
+        bottom: 0;
+    }
+}
+
+@keyframes from-up-to-top {
+    0% {
+        top: -50px;
+    }
+    100% {
+        top: 0;
+    }
+}
