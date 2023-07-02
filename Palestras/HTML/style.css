@@ -28,7 +28,7 @@ body {
     top: 0;
     width: 90vw;
     box-shadow: rgba(0, 0, 0, .2) 0px 10px 8px;
-    /* animation: from-up-to-top .3s forwards; */
+    animation: from-up-to-top .3s forwards;
 }
 
 .header a {
@@ -77,9 +77,9 @@ body {
     box-shadow: rgba(0,0,0,.2) 0px 10px 10px;
     z-index: 10;
     gap: 2rem;
-    font-size: 14pt
-    /* transform: scale(0); */
-    /* animation: .3s pop .5s forwards; */
+    font-size: 14pt;
+    transform: scale(0);
+    animation: .3s pop .5s forwards;
 }
 
 .card {
@@ -217,10 +217,13 @@ tr.tableData {
     background: red;
 }
 
+.icon span{
+    font-size: 80pt;
+}
+
 .information {
     color: white;
     background: #8888FF;
-    
 }
 
 .links {
@@ -233,6 +236,14 @@ tr.tableData {
 
 .links .separator {
     margin : 0px 10px;
+}
+
+.showcase {
+    width: 70%;
+    border: none;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, .2) 0px 5px 10px;
+    align-self: center;
 }
 
 @keyframes pop {

@@ -5,3 +5,11 @@ function goto(site) {
         case 'tags': open("./tags.html", "_self");break
     }
 }
+
+available = false;
+
+function error() {
+    if (!available) {
+        open('./error.html', "_self")
+    }
+}
