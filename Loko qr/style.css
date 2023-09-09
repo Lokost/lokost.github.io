@@ -109,6 +109,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
+    animation: appear 1s ease-in-out forwards;
 }
 
 .content .right-content img {
@@ -180,5 +181,15 @@ body {
 
     100% {
         background-image: url('images/splash.png');
+    }
+}
+
+@media (max-width : 700px) {
+    .content {
+        flex-direction: column-reverse;
+    }
+
+    .content .left-content {
+        margin-bottom: 16px;
     }
 }
