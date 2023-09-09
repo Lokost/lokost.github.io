@@ -59,6 +59,11 @@ body {
     cursor: pointer;
 }
 
+.header .menu .selected {
+    background-color: white;
+    color: black;
+}
+
 /* FOOTER STYLE */
 
 .footer {
@@ -81,7 +86,7 @@ body {
 
 /* CONTENT STYLE */
 
-.content {
+.content-horizontal {
     display: flex;
     flex-direction: row;
     gap: 1.5rem;
@@ -89,34 +94,17 @@ body {
     align-items: center;
 }
 
-.content * {
-    margin: 0;
-}
-
-.content h1 {
-    font-size: 60pt;
-    color:rgba(100, 0, 0, 1)
-}
-
-.content .right-content * {
-    padding: 0;
-    margin: 0;
-}
-
-.content .right-content {
-    display: flex;
+.content-vertical {
+    display:flex;
     flex-direction: column;
+    gap: 1.5rem;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    animation: appear 1s ease-in-out forwards;
+    animation: appear 1s;
+    margin: 16px 15%;
 }
 
-.content .right-content img {
-    height: 120px;
-}
-
-.content .right-content button {
+.content-vertical button {
     margin-top: 20px;
     font-size: 25pt;
     border: none;
@@ -127,19 +115,64 @@ body {
     transition: .5s;
 }
 
-.content .right-content button:hover {
+.content-vertical button:hover {
     cursor: pointer;
     background: lightgray;
     color: black;
 }
 
-.content .left-content {
+.content-horizontal *, .content-vertical * {
+    margin: 0;
+}
+
+.content-vertical h1, .content-horizontal h1 {
+    font-size: 60pt;
+    color:rgba(100, 0, 0, 1)
+}
+
+.content-horizontal .right-content * {
+    padding: 0;
+    margin: 0;
+}
+
+.content-horizontal .right-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    animation: appear 1s ease-in-out forwards;
+}
+
+.content-horizontal .right-content img {
+    height: 120px;
+}
+
+.content-horizontal .right-content button {
+    margin-top: 20px;
+    font-size: 25pt;
+    border: none;
+    background: rgba(150, 0, 0, 1);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: .5s;
+}
+
+.content-horizontal .right-content button:hover {
+    cursor: pointer;
+    background: lightgray;
+    color: black;
+}
+
+.content-horizontal .left-content {
     display: flex;
     height: 530px;
     width: 250px;
+    margin-left: 16px;
 }
 
-.content .left-content img.mask {
+.content-horizontal .left-content img.mask {
     position: absolute;
     width: 250px;
     height: 530px;
@@ -161,6 +194,7 @@ body {
         transform: translateY(0);
     }
 }
+
 
 @keyframes screen-changer {
     0% {
@@ -185,11 +219,20 @@ body {
 }
 
 @media (max-width : 700px) {
-    .content {
+    .content-horizontal {
         flex-direction: column-reverse;
     }
 
-    .content .left-content {
+    .content-horizontal .left-content {
         margin-bottom: 16px;
+        margin-right: 16px;
+    }
+
+    .header .menu {
+        gap: .2rem;
+    }
+
+    .header .menu button {
+        font-size: 10pt;
     }
 }

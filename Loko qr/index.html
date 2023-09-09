@@ -13,12 +13,13 @@
     <div class="header">
         <h1>Loko Qr</h1>
         <div class="menu">
-            <button>Início</button>
-            <button>Download</button> 
-            <button>GitHub</button>
+            <button class="selected">Início</button>
+            <button onclick="jump('download')">Download</button> 
+            <button onclick="jump('https://github.com/Lokost/Loko-qr')">GitHub</button>
         </div>
     </div>
-    <div class="content">
+
+    <div class="content-horizontal">
         <div class="left-content">
             <img src="images/smartphonemockup.png" alt="mockup PNG Designed By Kutub from https://pngtree.com/freepng/new-transparent-mobile-mockup-png-image-and-vector_5745370.html?sol=downref&id=bef" class="mask">
         </div>
@@ -26,13 +27,15 @@
             <img src="images/Loko QR.png" alt="Loko QR logo">
             <h1>Loko Qr</h1>
             Conheça agora o novo aplicativo do Lokost para leitura de QR Code!
-            <button>Download</button>
+            <button onclick="jump('download')">Download</button>
         </div>
     </div>
+
     <div class="footer">
         @Gabriel Gomes 2023
         <button>Redes</button>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
