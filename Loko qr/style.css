@@ -180,7 +180,7 @@ body {
     background-position: 10px 15px;
     background-repeat: no-repeat;
     background-size: 230px 500px;
-    animation: appear 1s ease-in-out, screen-changer 15s ease-in-out infinite;
+    animation: appear 1s ease-in-out, screen-changer 20s ease-in-out infinite;
 }
 
 @keyframes appear {
@@ -201,16 +201,32 @@ body {
         background-image: url('images/splash.png');
     }
 
-    45% {
+    23% {
         background-image: url('images/splash.png');
     }
 
-    50% {
+    25% {
         background-image: url('images/home.png');
     }
-    
-    95% {
+
+    48% {
         background-image: url('images/home.png');
+    }
+
+    50% {
+        background-image: url('images/scanner.png');
+    }
+    
+    73% {
+        background-image: url('images/scanner.png');
+    }
+
+    75% {
+        background-image: url('images/result.png');
+    }
+
+    98% {
+        background-image: url('images/result.png');
     }
 
     100% {
