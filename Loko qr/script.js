@@ -4,9 +4,9 @@ function sleep(ms) {
 
 async function exitAnimation() {
     try {
-        document.querySelectorAll(".content-vertical")[0].style.animation = "appear 1s reverse";
+        document.querySelectorAll(".content-vertical")[0].style.animation = "appear 1s reverse forwards";
     } catch {
-        document.querySelectorAll(".content-horizontal")[0].style.animation = "appear 1s reverse";
+        document.querySelectorAll(".content-horizontal")[0].style.animation = "appear 1s reverse forwards";
     }
 
     await sleep(800);
@@ -26,7 +26,7 @@ async function jump(page) {
             break;
 
         default:
-            open(page, "_self");
+            location.href = page;
             break;
     }
 }

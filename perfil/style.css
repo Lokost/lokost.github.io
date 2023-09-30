@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300&family=Outfit&family=Teko:wght@500&display=swap');
+
+* {
+    font-family: 'Exo 2', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    background: rgba(150,0,0,1);
+    background-image: url('images/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-items: center;
+}
+
+.content {
+    background-color: rgba(255,255,255,.3);
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    border: none;
+    backdrop-filter: blur(5px);
+    border-radius: 30px;
+    gap: 1rem;
+}
+
+.content .picture {
+    box-shadow: 0 18px 200px -60px black;
+    border-radius: 50%;
+    backdrop-filter: blur(16px);
+    border: 2px solid #ffffff40;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.content .picture img {
+    display: block;
+    object-fit: cover;
+    height: 150px;
+    width: 150px;
+    margin: auto;
+    border-radius: 50%;
+}
+
+.content .links {
+    display: grid;
+    column-gap: 0.5rem;
+    row-gap: 0.5rem;
+    grid-template-columns: auto auto auto;
+}
+
+.content .links .link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+}
