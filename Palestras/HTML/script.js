@@ -6,7 +6,7 @@ function goto(site) {
     }
 }
 
-available = false;
+available = true;
 
 function error() {
     if (!available) {
