@@ -78,8 +78,8 @@ body {
     z-index: 10;
     gap: 2rem;
     font-size: 14pt;
-    transform: scale(0);
-    animation: .3s pop .5s forwards;
+    transform: scale(1);
+    /* animation: .3s pop .5s forwards; */
 }
 
 .card {

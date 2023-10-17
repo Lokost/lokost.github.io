@@ -72,7 +72,7 @@ let passed = false
 let started = false
 
 // space action into the game
-document.body.onkeyup = function(e) {
+document.body.onkeyup = function (e) {
     if (e.code == 'Space') {
         jump()
     }
@@ -80,13 +80,13 @@ document.body.onkeyup = function(e) {
 
 jumpBtt.addEventListener('click', jump)
 
-resetBtt.addEventListener('click', function() {
+resetBtt.addEventListener('click', function () {
     hideEndMenu()
     resetGame()
     loop()
 })
 
-startBtt.addEventListener('click', function() {
+startBtt.addEventListener('click', function () {
     showGame()
 })
 
@@ -113,17 +113,19 @@ function startGame() {
 }
 
 function increaseScore() {
-    let passedH = birdBox.x > pipe.right
+    let passedH = birdBox.x >= pipe.x
+    let passedSuccess = birdBox.x >= pipe.right
     let passedVDown = birdBox.y > pipe.y + pipe.gap
     let passedVUp = birdBox.bottom < pipe.y + pipe.gap
     let gapMajorThanBird = pipe.gap > bird.height
     let scoreIsZero = score <= 0
 
-    if (passedH && (passedVDown || passedVUp)) {
+    if (passedSuccess && (passedVDown || passedVUp) && !passedH) {
         score++
         scoreDisplay.innerHTML = score
         passed = true
     }
+
     if (gapMajorThanBird) {
         passed = false
     }
@@ -156,8 +158,8 @@ function collisionCheck() {
     reloadCollision()
 
     let collisionPipeUP = (
-        birdBox.right > topPipeBox.x 
-        && birdBox.x < topPipeBox.right 
+        birdBox.right > topPipeBox.x
+        && birdBox.x < topPipeBox.right
         && birdBox.y < topPipeBox.y
     )
 
@@ -168,7 +170,7 @@ function collisionCheck() {
     )
 
     let collisionBorders = (
-        birdBox.bottom >= canvas.height 
+        birdBox.bottom >= canvas.height
         || birdBox.y <= 0
     )
 
@@ -214,7 +216,7 @@ function resetGame() {
 //principal function
 function loop() {
     // reset context after every loop iteration
-    ctx.clearRext(0,0, canvas.width, canvas.height)
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
 
     // Draw Flappy Bird
     ctx.drawImage(birdImg, bird.x, bird.y)
