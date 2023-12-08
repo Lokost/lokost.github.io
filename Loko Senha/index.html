@@ -2,31 +2,31 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loko senha</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="dist/bundle.js" type="module"></script>
-    <script src="src/script.js"></script>
+    <title>Loko Senha</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <div class="titulo">
-        Loko senha</div>
-    <div class="corpo"> 
-        <div class="apresentacao-texto">
-            Seja bem vindo ao Loko senha, um jogo bem parecido com o Mega Senha da Rede TV, funcionando pela internet apenas para você!
-            <input type="button" value="Jogar" class="jogar" onclick="jogar()">
-            <!-- <input type="button" value="Jogar" class="jogar"> -->
-        </div>
-        <div class="apresentacao-img">
-            <img src="images/lokost.png" alt="lokost">
-        </div>
+    <header>
+        <h1 class="title">Loko Senha</h1>
+        <nav class="menu">
+            <button id="play">Jogar</button>
+            <!-- <button id="download">Download</button> -->
+        </nav>
+    </header>
+    <div class="content">
+        <h1 class="title">Loko Senha</h1>
+        <p>Loko senha é o projeto de um jogo baseado no programa de TV Mega Senha da Rede TV.</p>
+        <p>Esse é um projeto <b>open source sem fins lucrativos</b> apenas para diversão.</p>
+        <button id="play">Jogar</button>
     </div>
-    <div class="apps">Baixe o aplicativo para Android para ver a palavra!
-       <input class="download" type="button" value="Download" onclick="download()">
-    </div>
-    <div class="rodape">
-        @ 2023 Lokost Games
-    </div>
+    <footer>
+        @ Gabriel Gomes 2023
+    </footer>
+    <script>
+        const playBtt = document.querySelectorAll("#play")
+        console.log(playBtt)
+        playBtt.forEach(val => val.addEventListener('click', () => location.href = "main_game.html"))
+    </script>
 </body>
 </html>

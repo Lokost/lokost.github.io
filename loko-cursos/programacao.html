@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />
+    <title>Programação - Loko Cursos</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/classes.css" />
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <!-- logo link -->
+      <a href="index.html" class="start">
+        <img src="images/logo.png" alt="" class="logo" />
+        <h1 class="project-name">Loko Cursos</h1>
+      </a>
+
+      <!-- menu button when the width is less than 1000px -->
+      <span class="material-symbols-sharp toggle-menu">menu</span>
+
+      <!-- expanded menu -->
+      <nav class="menu-header">
+        <a href="informatica.html" class="menu-button">
+          <span class="material-symbols-sharp">computer</span>
+          <p>Informática</p>
+        </a>
+        <a href="design-grafico.html" class="menu-button">
+          <span class="material-symbols-sharp">design_services</span>
+          <p>Design Gráfico</p>
+        </a>
+        <a href="" class="menu-button active">
+          <span class="material-symbols-sharp">code</span>
+          <p>Programação</p>
+        </a>
+      </nav>
+    </header>
+
+    <!-- shadow when the side menu is open -->
+    <div class="shadow-block" id="shadow-block"></div>
+
+    <!-- side menu -->
+    <aside id="side-menu">
+      <span class="material-symbols-sharp toggle-menu">close</span>
+      <div class="menu-buttons">
+        <a href="informatica.html" class="menu-button">
+          <span class="material-symbols-sharp">computer</span>
+          <p>Informática</p>
+        </a>
+        <a href="design-grafico.html" class="menu-button">
+          <span class="material-symbols-sharp">design_services</span>
+          <p>Design Gráfico</p>
+        </a>
+        <a href="" class="menu-button active">
+          <span class="material-symbols-sharp">code</span>
+          <p>Programação</p>
+        </a>
+      </div>
+    </aside>
+
+    <!-- main content -->
+    <main>
+      <div class="greatings">
+        <img src="images/logo.png" alt="" class="logo" />
+        <p>curso de <span>Programação</span></p>
+      </div>
+      <div class="content">
+        <h1>Programação</h1>
+        <h2>Aulas</h2>
+        <div class="classes">
+          <a
+            href="video-class.html?course=programacao&video=zcl8DcEoymw"
+            class="class-button"
+          >
+            <img src="images/prog internet 1.png" alt="" />
+            <h3>Programação para internet 1</h3>
+            <p>Introdução completa ao curso.</p>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <!-- footer -->
+    <footer>Copyright &copy; Gabriel Gomes 2023</footer>
+
+    <!-- scripts -->
+    <script src="scripts/script.js"></script>
+    <script>
+      setPrimary("#0000ff");
+    </script>
+  </body>
+</html>

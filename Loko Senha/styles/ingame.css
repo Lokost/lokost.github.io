@@ -1,0 +1,97 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css");
+
+* {
+    color: white;
+    font-family: 'Work Sans', sans-serif;
+}
+
+body {
+    background: purple;
+    justify-content: space-between;
+}
+
+header {
+    background: transparent;
+    font-size: 25pt;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Anton', sans-serif;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 16px;
+}
+
+footer {
+    font-family: 'Work Sans', sans-serif;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 50%;
+    min-height: 0;
+}
+
+.game button {
+    background: white;
+    color: black;
+    margin-top: 10%;
+}
+
+header input {
+    font-size: 20pt;
+    background-color: transparent;
+    border: white solid 3px;
+    border-radius: 30px;
+    text-align: center;
+    width: 50%;
+    padding: 3px 10px;
+}
+
+header i {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.game button:hover {
+    background: black;
+    color: white;
+}
+
+.game h1 {
+    font-size: 50pt;
+}
+
+.game p {
+    font-size: 20pt;
+}
+
+.game #player {
+    font-size: 30pt;
+}
+
+.game .buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.subgame {
+    width: 20%;
+    display: flex;
+    gap: 3rem;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.control {
+    display: none;
+    flex-direction: column;
+}

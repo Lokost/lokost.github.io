@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/ingame.css">
+</head>
+
+<body>
+    <header>
+        <p>Sala: <input type="password" id="room" value="000000" readonly><i class="fa-solid fa-eye-slash"
+                id="show-room"></i><i class="fa-clone fa-solid" id="copy-code"></i></p>
+        <p id="timer">00:00</p>
+        <p>Jogador: <span id="user"></span></p>
+    </header>
+    <div class="content">
+        <div class="game">
+            <div class="buttons">
+                <button id="start">Começar</button>
+            </div>
+            <div class="control">
+                <h1 id="actual">Palavra atual</h1>
+                <button id="acertou">Acertou</button>
+                <button id="next-word">Próxima palavra</button>
+                <button id="next-player">Próximo jogador</button>
+            </div>
+        </div>
+        <div class="subgame">
+            <div class="game">
+                <h2>Próximas palavras:</h2>
+                <p id="n1">1 - </p>
+                <p id="n2">2 - </p>
+                <p id="n3">3 - </p>
+                <p id="n4">4 - </p>
+                <p id="n5">5 - </p>
+            </div>
+            <div class="game">
+                <h2>Jogador atual:</h2>
+                <h3 id="player"></h3>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>@Gabriel Gomes</p>
+        <p><b>Para fechar a sala, feche essa página!</b></p>
+    </footer>
+    <script type="module" src="scripts/host-page.js"></script>
+</body>
+
+</html>
