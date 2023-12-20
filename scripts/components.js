@@ -42,8 +42,13 @@ function header() {
   asideMenu.style.display = "none";
   asideMenu.appendChild(asideToggleMenu);
 
+  // create back shadow for the side menu
+  const backshadow = document.createElement("div");
+  backshadow.classList.add("back-shadow");
+
   // add header to page
   document.body.replaceChild(header, document.querySelector("header"));
+  document.body.appendChild(backshadow);
   document.body.appendChild(asideMenu);
 }
 

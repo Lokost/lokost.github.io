@@ -90,24 +90,12 @@ aside.menu {
   right: 0;
   background-color: #222;
   box-shadow: -10px 0 20px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
 }
 
 aside .toggle-menu {
   text-align: end;
   padding: 1rem;
   cursor: pointer;
-}
-
-.back-shadow {
-  background: rgba(0, 0, 0, 0.3);
-  display: none;
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  z-index: 990;
-  cursor: pointer;
-  backdrop-filter: blur(2px);
 }
 
 .toggle-menu:hover {
@@ -141,16 +129,6 @@ main {
   }
   100% {
     right: 0;
-  }
-}
-
-@keyframes fade {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
   }
 }
 
