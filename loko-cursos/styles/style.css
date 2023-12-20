@@ -145,7 +145,7 @@ aside a:hover {
 
 .menu-header a:hover {
   background-color: white;
-  color: black;
+  color: var(--primary-color);
 }
 
 .content {

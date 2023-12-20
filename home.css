@@ -1,0 +1,38 @@
+main img.logo {
+  height: 20rem;
+}
+
+main h1 {
+  font-size: 30pt;
+  text-align: center;
+}
+
+.presentation {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+}
+
+.presentation-img img {
+  display: block;
+  max-height: 500px;
+  height: 30rem;
+  border-radius: 30px;
+  object-fit: cover;
+  aspect-ratio: 3/4;
+}
+
+.page {
+  position: relative;
+  height: 100vh;
+  border: none;
+  display: flex;
+  overflow-y: visible;
+}
+
+@media (width < 1200px) {
+  .presentation {
+    flex-direction: column;
+  }
+}

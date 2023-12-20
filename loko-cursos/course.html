@@ -4,74 +4,100 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />
-    <title>Design Gráfico - Loko Cursos</title>
+    <title>Informática - Loko Cursos</title>
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/classes.css" />
   </head>
   <body>
+    <!-- main header -->
     <header>
+      <!-- logo index link -->
       <a href="index.html" class="start">
         <img src="images/logo.png" alt="" class="logo" />
         <h1 class="project-name">Loko Cursos</h1>
       </a>
+
+      <!-- header toggle menu button -->
       <span class="material-symbols-sharp toggle-menu">menu</span>
+
+      <!-- expanded main menu -->
       <nav class="menu-header">
-        <a href="informatica.html" class="menu-button">
+        <a
+          href="course.html?course=informatica"
+          class="menu-button"
+          course="informatica"
+        >
           <span class="material-symbols-sharp">computer</span>
           <p>Informática</p>
         </a>
-        <a href="" class="menu-button active">
+        <a href="course.html?course=design" class="menu-button" course="design">
           <span class="material-symbols-sharp">design_services</span>
           <p>Design Gráfico</p>
         </a>
-        <a href="programacao.html" class="menu-button">
+        <a
+          href="course.html?course=programacao"
+          class="menu-button"
+          course="programacao"
+        >
           <span class="material-symbols-sharp">code</span>
           <p>Programação</p>
         </a>
       </nav>
     </header>
+
+    <!-- shadow for destac the side menu -->
     <div class="shadow-block" id="shadow-block"></div>
+
+    <!-- side menu -->
     <aside id="side-menu">
       <span class="material-symbols-sharp toggle-menu">close</span>
       <div class="menu-buttons">
-        <a href="informatica.html" class="menu-button">
+        <a
+          href="course.html?course=informatica"
+          class="menu-button"
+          course="informatica"
+        >
           <span class="material-symbols-sharp">computer</span>
           <p>Informática</p>
         </a>
-        <a href="" class="menu-button active">
+        <a href="course.html?course=design" class="menu-button" course="design">
           <span class="material-symbols-sharp">design_services</span>
           <p>Design Gráfico</p>
         </a>
-        <a href="programacao.html" class="menu-button">
+        <a
+          href="course.html?course=programacao"
+          class="menu-button"
+          course="programacao"
+        >
           <span class="material-symbols-sharp">code</span>
           <p>Programação</p>
         </a>
       </div>
     </aside>
+
+    <!-- main body -->
     <main>
+      <!-- course greetings container -->
       <div class="greatings">
         <img src="images/logo.png" alt="" class="logo" />
-        <p>curso de <span>Design Gráfico</span></p>
+        <p>curso de <span class="course-name">Informática</span></p>
       </div>
+
+      <!-- course content -->
       <div class="content">
-        <h1>Design Gráfico</h1>
+        <h1 class="course-name">Informática</h1>
         <h2>Aulas</h2>
-        <div class="classes">
-          <a
-            href="video-class.html?course=programacao&video=zcl8DcEoymw"
-            class="class-button"
-          >
-            <img src="images/prog internet 1.png" alt="" />
-            <h3>Programação para internet 1</h3>
-            <p>Introdução completa ao curso.</p>
-          </a>
-        </div>
+
+        <!-- course grid with classes added with JS -->
+        <div class="classes"></div>
       </div>
     </main>
+
+    <!-- main footer -->
     <footer>Copyright &copy; Gabriel Gomes 2023</footer>
+
+    <!-- main scripts -->
     <script src="scripts/script.js"></script>
-    <script>
-      setPrimary("#00ba18");
-    </script>
+    <script src="scripts/course.js"></script>
   </body>
 </html>
