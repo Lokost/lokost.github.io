@@ -103,7 +103,11 @@ class Charcard {
     descContainer.appendChild(name);
 
     const simpleDesc = document.createElement("p");
-    simpleDesc.innerHTML = `<b>Idade</b>: ${this.age}<br><b>Altura</b>: ${this.height}<br><b>Sexualidade</b>: ${this.sexuality}`;
+    simpleDesc.innerHTML = `<b>Idade</b>: ${
+      this.age
+    }<br><b>Altura</b>: ${this.height.toFixed(2)}m<br><b>Sexualidade</b>: ${
+      this.sexuality
+    }`;
     descContainer.appendChild(simpleDesc);
 
     const likesContainer = document.createElement("div");

@@ -44,7 +44,7 @@ const characters = [
     "Rebeca",
     1.7,
     20,
-    "Hererossexual",
+    "Heterossexual",
     ["Filmes de romance, comédia", "Músicas animadas, pop e eletrônica"],
     ["..."]
   ),
@@ -73,7 +73,7 @@ const characters = [
     15,
     "eita bixo sexo kkkkkk",
     ["tenho"],
-    ["presentes"]
+    ["muitos"]
   ),
 ];
 
