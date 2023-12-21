@@ -19,7 +19,7 @@ const projects = [
     "Lnovel",
     "Jogo novel baseado no DDLC, procurando ter mais mecânicas que o mesmo",
     "images/Lnovel_logo.png",
-    "https://lokost.itch.io/lnovel"
+    "lnovel/index.html"
   ),
   new projectCard(
     "Canal Lokost",
