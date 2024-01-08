@@ -7,13 +7,22 @@ import {
 } from "../scripts/components.js";
 
 const buttons = [
-  menuButton("PT-BR", "language", () => (location.href = "../pt-br")),
+  menuButton("Eng", "language", () => (location.href = "../eng")),
   menuButton(
     "Download",
     "download",
     () => (location.href = "https://github.com/Lokost")
   ),
 ];
+
+sessionStorage.setItem(
+  "carrousel-images",
+  JSON.stringify([
+    "../images/snapshot4.png",
+    "../images/snapshot5.png",
+    "../images/snapshot6.png",
+  ])
+);
 
 document.body.replaceChild(
   mainHeader(buttons),

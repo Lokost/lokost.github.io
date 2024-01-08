@@ -39,6 +39,12 @@ const projects = [
     "images/html5-logo.png",
     "Palestras/HTML/index.html"
   ),
+  new projectCard(
+    "OSU Skin Creator",
+    "Um simples editor de Skins para OSU!",
+    "osu-skin-creator/images/logo128.png",
+    "osu-skin-creator/eng"
+  ),
 ];
 
 console.log(projectGrid);
