@@ -59,7 +59,7 @@ function floatButton(icon, onClick) {
   button.classList.add("float-button");
   button.onclick = onClick;
 
-  let icon_span = document.createElement("span");
+  let icon_span = document.createElement("i");
   icon_span.classList.add("material-symbols-outlined");
   icon_span.innerHTML = icon;
   button.appendChild(icon_span);
