@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/login.css" />
+    <title>Lokost Games OS</title>
+  </head>
+  <body>
+    <div class="login-interface">
+      <img src="images/lokost-logo-128.png" alt="" class="logo" />
+      <form class="login" name="login">
+        <div class="input">
+          <label for="user">Usuário</label>
+          <input
+            type="text"
+            name="user"
+            id="username"
+            value="Administrador"
+            readonly
+          />
+        </div>
+        <div class="input">
+          <label for="password">Senha</label>
+          <div class="pass">
+            <input type="password" name="password" id="password" readonly />
+            <i class="material-symbols-outlined">visibility</i>
+          </div>
+        </div>
+        <button type="submit" id="login" class="disabled">Entrar</button>
+      </form>
+    </div>
+    <script src="scripts/login.js"></script>
+  </body>
+</html>

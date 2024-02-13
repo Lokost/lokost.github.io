@@ -45,6 +45,12 @@ const projects = [
     "osu-skin-creator/images/logo128.png",
     "osu-skin-creator/eng"
   ),
+  new projectCard(
+    "Lokost Games OS",
+    "Uma página para um ARG",
+    "images/Lokost Games new logo by clay.png",
+    "lokost-games"
+  ),
 ];
 
 console.log(projectGrid);

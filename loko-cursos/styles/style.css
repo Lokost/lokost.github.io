@@ -13,7 +13,7 @@
 }
 
 .project-name {
-  font-family: "concert one";
+  font-family: "Concert One";
 }
 
 .content {
@@ -267,6 +267,7 @@ footer {
   .toggle-menu {
     display: block;
   }
+
   .show-courses {
     grid-template-columns: repeat(1, 1fr);
   }

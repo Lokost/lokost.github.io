@@ -1,0 +1,23 @@
+{
+  "desktop": {
+    "logo.png": {
+      "path": "images/lokost-logo-128.png",
+      "type": ".png"
+    },
+    "background.png": {
+      "path": "images/desktop-background.png",
+      "type": ".png"
+    },
+    "sherek.mp4": {
+      "path": "videos/test.mp4",
+      "type": ".mp4"
+    },
+    "galaxy freedom": {
+      "path": "musics/test.mp3",
+      "type": ".mp3"
+    },
+    "imagens": {
+      "type": "folder"
+    }
+  }
+}

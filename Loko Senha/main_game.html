@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/style.css" />
     <title>Loko Senha</title>
-    <link rel="stylesheet" href="styles/style.css">
-</head>
-<body>
+  </head>
+  <body>
     <div class="content game">
-        <h1 class="title">Loko Senha</h1>
-        <div class="buttons">
-            <button id="newGame">Novo jogo</button>
-            <button id="enterGame">Entrar no jogo</button>
-            <!-- <button id="downloadApp">Baixar aplicativo</button> -->
-        </div>
+      <h1 class="title">Loko Senha</h1>
+      <div class="buttons">
+        <button id="newGame">Novo jogo</button>
+        <button id="enterGame">Entrar no jogo</button>
+      </div>
     </div>
 
     <footer>@Gabriel Gomes</footer>
     <script>
-        const newGame = document.getElementById("newGame")
-        const enterGame = document.getElementById("enterGame")
+      const newGame = document.getElementById("newGame");
+      const enterGame = document.getElementById("enterGame");
 
-        newGame.addEventListener('click', () => location.href = "code.html")
-        enterGame.addEventListener('click', () => location.href="enter_room.html")
+      newGame.onclick = () => (location.href = "code.html");
+      enterGame.onclick = () => (location.href = "enter_room.html");
     </script>
-</body>
+  </body>
 </html>
