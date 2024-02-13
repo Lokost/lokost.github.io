@@ -47,12 +47,14 @@ function mediaViewer(file, type) {
   if (type === "image") {
     const imageViewer = document.createElement("img");
     imageViewer.src = file.path;
+    imageViewer.classList.add("show");
     content.appendChild(imageViewer);
   } else if (type === "video") {
     var currentTime = "00:00";
     var duration = "00:00";
 
     const videoViewer = document.createElement("video");
+    videoViewer.classList.add("show");
     videoViewer.src = file.path;
     content.appendChild(videoViewer);
 
@@ -147,6 +149,7 @@ function mediaViewer(file, type) {
     var currentTime = "00:00";
     var duration = "00:00";
     const audio_icon = document.createElement("img");
+    audio_icon.classList.add("audio");
     audio_icon.src = "images/icons/music_file_big.png";
     const audioViewer = document.createElement("audio");
     audioViewer.src = file.path;
