@@ -5,6 +5,8 @@
   background: rgba(50, 50, 50, 0.95);
   backdrop-filter: blur(4px);
   border-radius: 20px;
+  width: max-content;
+  height: max-content;
   min-height: 30vh;
   min-width: 20vw;
   max-height: 80vh;
@@ -12,6 +14,7 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   animation: show-app 0.3s ease;
   z-index: 100;
+  user-select: none;
 }
 
 .app .app-bar {
@@ -47,9 +50,15 @@
   gap: 1rem;
 }
 
+.active {
+  z-index: 800;
+}
+
+/* media viewer */
 img.show,
 video.show {
-  display: block;
+  display: flex;
+  position: relative;
   object-fit: contain;
   align-self: center;
 }
@@ -60,8 +69,8 @@ img.show {
 }
 
 video.show {
-  max-width: 80%;
-  max-height: 70%;
+  flex: 2;
+  max-width: 70%;
 }
 
 img.audio {
@@ -75,14 +84,23 @@ img.audio {
 .app .content .input {
   align-self: flex-start;
 }
-.app .content .audio-controls {
+
+.app .content .media-controller {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.app .content .media-controller .media-controls {
   display: flex;
   gap: 1rem;
   color: white;
   align-items: center;
+  justify-content: center;
 }
 
-.app .content .audio-controls button {
+.app .content .media-controller .media-controls button {
   background: none;
   border: none;
   color: white;
@@ -91,12 +109,49 @@ img.audio {
   transition: all 0.3s ease;
 }
 
-.app .content .audio-controls button:hover {
+.app .content .media-controller .media-controls button:hover {
   background: rgba(255, 255, 255, 0.3);
 }
 
-.active {
-  z-index: 800;
+.app .content .action {
+  background: rgba(30, 30, 30, 1);
+  border-radius: 30px;
+  border-radius: none;
+  align-self: center;
+  color: white;
+  padding: 0.4rem 1rem;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.app .content .action:hover {
+  background: white;
+  color: rgba(30, 30, 30, 1);
+}
+
+/* explorer */
+.app .content .path-bar {
+  background: rgba(40, 40, 40, 1);
+  border: none;
+  padding: 0.7rem;
+  border-radius: 30px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.app .content .files-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.app .content .folder-lowerBar {
+  background: rgba(40, 40, 40, 1);
+  border: none;
+  padding: 0.3rem 0.5rem;
+  border-radius: 30px;
+  color: white;
+  text-align: end;
 }
 
 @keyframes show-app {

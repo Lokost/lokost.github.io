@@ -1,23 +1,60 @@
 {
   "desktop": {
-    "logo.png": {
-      "path": "images/lokost-logo-128.png",
-      "type": ".png"
-    },
-    "background.png": {
-      "path": "images/desktop-background.png",
-      "type": ".png"
-    },
-    "sherek.mp4": {
-      "path": "videos/test.mp4",
-      "type": ".mp4"
-    },
-    "galaxy freedom": {
-      "path": "musics/test.mp3",
-      "type": ".mp3"
-    },
     "imagens": {
-      "type": "folder"
+      "path": ["desktop", "images"],
+      "type": "folder",
+      "content": {
+        "backgrounds": {
+          "path": ["desktop", "images", "backgrounds"],
+          "type": "folder",
+          "content": {
+            "default_background.png": {
+              "path": "images/desktop-background.png",
+              "type": ".png"
+            },
+            "Lnovel prom.png": {
+              "path": "images/backgrounds/lokost-banner.png",
+              "type": ".png"
+            },
+            "Lokost AI 1.png": {
+              "path": "images/backgrounds/Lokost IA (1).png",
+              "type": ".png"
+            },
+            "Lokost AI 2.png": {
+              "path": "images/backgrounds/Lokost IA (2).png",
+              "type": ".png"
+            },
+            "Lokost AI 3.png": {
+              "path": "images/backgrounds/Lokost IA (3).png",
+              "type": ".png"
+            }
+          }
+        }
+      }
+    },
+    "sons": {
+      "type": "folder",
+      "path": ["desktop", "sons"],
+      "content": {
+        "galaxy freedom.mp3": {
+          "path": "musics/test.mp3",
+          "type": ".mp3"
+        }
+      }
+    },
+    "videos": {
+      "path": ["desktop", "videos"],
+      "type": "folder",
+      "content": {
+        "sherek.mp4": {
+          "path": "videos/test.mp4",
+          "type": ".mp4"
+        },
+        "Fazer assim ó.mp4": {
+          "path": "videos/test2.mp4",
+          "type": ".mp4"
+        }
+      }
     }
   }
 }

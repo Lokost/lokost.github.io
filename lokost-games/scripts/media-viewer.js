@@ -1,10 +1,12 @@
 import { updateApps, setActive } from "./app-controller.js";
+import { App } from "./app.js";
 
 function convertTime(time) {
   var mins = Math.floor(time / 60);
   if (mins < 10) {
     mins = "0" + mins;
   }
+
   var secs = Math.floor(time % 60);
   if (secs < 10) {
     secs = "0" + secs;
@@ -13,241 +15,196 @@ function convertTime(time) {
   return mins + ":" + secs;
 }
 
-function mediaViewer(file, type) {
-  const id = "Media-View" + Math.floor(Math.random() * 1000).toString();
-  const mediaViewer = document.createElement("div");
-  mediaViewer.id = id;
-  mediaViewer.onanimationend = () => {
-    mediaViewer.style.animation = "none";
-  };
-  mediaViewer.classList.add("app");
-  const content = document.createElement("div");
-  content.classList.add("content");
+function mediaController(viewer) {
+  // Timer variables
+  var currentTime = "00:00";
+  var duration = "00:00";
 
-  const appBar = document.createElement("div");
-  appBar.classList.add("app-bar");
-  appBar.id = id + "-bar";
-  appBar.innerText = file.name + " - Media Viewer";
-  appBar.onclick = () => {
-    setActive(id);
+  // Controllers variables
+  var volume = 100;
+
+  // Main div
+  const mediaController = document.createElement("div");
+  mediaController.classList.add("media-controller");
+
+  // Controllers div
+  const controllers = document.createElement("div");
+  controllers.classList.add("media-controls");
+
+  //Time slider
+  const timeSlider = document.createElement("input");
+  timeSlider.type = "range";
+  timeSlider.value = 0;
+  timeSlider.min = 0;
+
+  // TimeCounter
+  const timer = document.createElement("span");
+  timer.innerText = currentTime + "/" + duration;
+
+  // Play button
+  const playBtn = document.createElement("button");
+  playBtn.classList.add("material-symbols-outlined");
+  playBtn.innerText = "play_arrow";
+
+  // Stop button
+  const stopBtn = document.createElement("button");
+  stopBtn.classList.add("material-symbols-outlined");
+  stopBtn.innerText = "stop";
+
+  // Volume icon
+  const volumeIcon = document.createElement("button");
+  volumeIcon.classList.add("material-symbols-outlined");
+  volumeIcon.innerText = "volume_up";
+
+  // Volume slider
+  const volumeSlider = document.createElement("input");
+  volumeSlider.type = "range";
+  volumeSlider.min = 0;
+  volumeSlider.max = 100;
+  volumeSlider.value = 100;
+
+  // Volume percentage
+  const volumePercentage = document.createElement("span");
+  volumePercentage.innerHTML = "100%";
+
+  // Viewer actions
+  viewer.onloadedmetadata = () => {
+    duration = convertTime(viewer.duration);
+    timeSlider.max = viewer.duration;
+    timer.innerText = currentTime + "/" + duration;
   };
 
-  const closeBtn = document.createElement("button");
-  closeBtn.classList.add("material-symbols-outlined");
-  closeBtn.innerText = "close";
-  closeBtn.addEventListener("click", () => {
-    mediaViewer.onanimationend = () => {
-      mediaViewer.remove(mediaViewer);
-      updateApps();
+  viewer.ontimeupdate = () => {
+    currentTime = convertTime(viewer.currentTime);
+    timer.innerText = currentTime + "/" + duration;
+    timeSlider.value = viewer.currentTime;
+  };
+
+  viewer.onplay = () => {
+    playBtn.innerText = "pause";
+    playBtn.onclick = () => {
+      viewer.pause();
     };
-    mediaViewer.style.animation = "show-app 0.3s ease reverse";
-  });
-  appBar.appendChild(closeBtn);
+  };
 
-  if (type === "image") {
+  viewer.onended = () => {
+    playBtn.innerText = "play_arrow";
+    playBtn.onclick = () => {
+      viewer.play();
+    };
+    viewer.currentTime = 0;
+    currentTime = "00:00";
+    timer.innerText = currentTime + "/" + duration;
+  };
+
+  // buttons actions
+  playBtn.onclick = () => {
+    viewer.play();
+  };
+
+  stopBtn.onclick = () => {
+    viewer.currentTime = 0;
+    viewer.pause();
+    playBtn.onclick = () => {
+      viewer.play();
+    };
+    playBtn.innerText = "play_arrow";
+  };
+
+  volumeSlider.oninput = () => {
+    viewer.volume = volumeSlider.value / 100;
+    volume = volumeSlider.value;
+    volumePercentage.innerText = volumeSlider.value + "%";
+
+    if (volumeSlider.value >= 70) volumeIcon.innerText = "volume_up";
+    if (volumeSlider.value < 70) volumeIcon.innerText = "volume_down";
+    if (volumeSlider.value < 40) volumeIcon.innerText = "volume_mute";
+    if (volumeSlider.value == 0) volumeIcon.innerText = "volume_off";
+  };
+
+  volumeIcon.onclick = () => {
+    if (viewer.volume > 0) {
+      viewer.volume = 0;
+      volumeSlider.value = 0;
+      volumePercentage.innerText = "0%";
+      volumeIcon.innerText = "volume_off";
+    } else {
+      viewer.volume = volume / 100;
+
+      if (volume >= 70) volumeIcon.innerText = "volume_up";
+      if (volume < 70) volumeIcon.innerText = "volume_down";
+      if (volume < 40) volumeIcon.innerText = "volume_mute";
+      if (volume == 0) volumeIcon.innerText = "volume_off";
+
+      volumeSlider.value = volume;
+      volumePercentage.innerText = volume + "%";
+    }
+  };
+
+  timeSlider.oninput = () => {
+    viewer.currentTime = timeSlider.value;
+  };
+
+  // Insert all into the container
+  controllers.append(
+    timer,
+    playBtn,
+    stopBtn,
+    volumeIcon,
+    volumeSlider,
+    volumePercentage
+  );
+
+  mediaController.append(timeSlider, controllers);
+
+  return mediaController;
+}
+
+function mediaViewer(file, type) {
+  const content = document.createElement("div");
+
+  // If the file is a image
+  if (type == "image") {
     const imageViewer = document.createElement("img");
     imageViewer.src = file.path;
     imageViewer.classList.add("show");
-    content.appendChild(imageViewer);
-  } else if (type === "video") {
-    var currentTime = "00:00";
-    var duration = "00:00";
 
+    const setBg = document.createElement("button");
+    setBg.classList.add("action");
+    setBg.innerText = "Definir como fundo";
+    setBg.onclick = () => {
+      document.body.style.background = `url("${file.path}") no-repeat fixed`;
+      document.body.style.backgroundSize = "cover";
+      localStorage.setItem("background", file.path);
+    };
+
+    content.append(imageViewer, setBg);
+  }
+
+  // If the file is a video
+  else if (type == "video") {
     const videoViewer = document.createElement("video");
     videoViewer.classList.add("show");
     videoViewer.src = file.path;
-    content.appendChild(videoViewer);
+    content.append(videoViewer, mediaController(videoViewer));
+  }
 
-    const videoSlider = document.createElement("input");
-    videoSlider.type = "range";
-    videoSlider.min = 0;
-    videoSlider.max = videoViewer.duration;
-    videoSlider.value = 0;
-    videoSlider.oninput = (e) => {
-      videoViewer.currentTime = e.target.value;
-    };
-
-    videoViewer.onloadedmetadata = () => {
-      duration = convertTime(videoViewer.duration);
-      videoSlider.max = videoViewer.duration;
-    };
-
-    content.appendChild(videoSlider);
-
-    const videoControls = document.createElement("div");
-    videoControls.classList.add("audio-controls");
-
-    const timer = document.createElement("span");
-    timer.innerText = currentTime + " / " + duration;
-    videoControls.appendChild(timer);
-
-    const playBtn = document.createElement("button");
-    playBtn.classList.add("material-symbols-outlined");
-    playBtn.innerText = "play_arrow";
-    playBtn.onclick = () => {
-      videoViewer.play();
-    };
-
-    videoViewer.ontimeupdate = () => {
-      currentTime = convertTime(videoViewer.currentTime);
-      console.log(currentTime);
-      timer.innerText = currentTime + " / " + duration;
-      videoSlider.value = videoViewer.currentTime;
-    };
-
-    videoViewer.onplay = () => {
-      playBtn.innerText = "pause";
-      playBtn.onclick = () => {
-        videoViewer.pause();
-      };
-    };
-    videoViewer.onpause = () => {
-      playBtn.innerText = "play_arrow";
-      playBtn.onclick = () => {
-        videoViewer.play();
-      };
-    };
-    videoViewer.onended = () => {
-      playBtn.innerText = "play_arrow";
-      playBtn.onclick = () => {
-        videoViewer.play();
-      };
-      videoViewer.currentTime = 0;
-      currentTime = "00:00";
-      timer.innerText = currentTime + " / " + duration;
-    };
-
-    videoControls.appendChild(playBtn);
-
-    const stopBtn = document.createElement("button");
-    stopBtn.classList.add("material-symbols-outlined");
-    stopBtn.innerText = "stop";
-    stopBtn.onclick = () => {
-      videoViewer.pause();
-      videoViewer.currentTime = 0;
-      currentTime = "00:00";
-      timer.innerText = currentTime + " / " + duration;
-    };
-    videoControls.appendChild(stopBtn);
-
-    const volumeIcon = document.createElement("span");
-    volumeIcon.classList.add("material-symbols-outlined");
-    volumeIcon.innerText = "volume_up";
-    videoControls.appendChild(volumeIcon);
-    const volumeSlider = document.createElement("input");
-    volumeSlider.type = "range";
-    volumeSlider.min = 0;
-    volumeSlider.max = 100;
-    volumeSlider.value = 100;
-    volumeSlider.oninput = () => {
-      videoViewer.volume = volumeSlider.value / 100;
-    };
-
-    videoControls.appendChild(volumeSlider);
-    content.appendChild(videoControls);
-  } else if (type === "audio") {
-    var currentTime = "00:00";
-    var duration = "00:00";
+  // If the file is a audio
+  else if (type == "audio") {
+    // audio icon
     const audio_icon = document.createElement("img");
-    audio_icon.classList.add("audio");
     audio_icon.src = "images/icons/music_file_big.png";
+    audio_icon.classList.add("audio");
+
+    // audio player
     const audioViewer = document.createElement("audio");
     audioViewer.src = file.path;
 
-    const audioSlider = document.createElement("input");
-    audioSlider.type = "range";
-    audioSlider.min = 0;
-    audioSlider.max = audioViewer.duration;
-    audioSlider.value = 0;
-    audioSlider.oninput = (e) => {
-      audioViewer.currentTime = e.target.value;
-    };
-
-    audioViewer.onloadedmetadata = () => {
-      duration = convertTime(audioViewer.duration);
-      audioSlider.max = audioViewer.duration;
-    };
-
-    const audioControls = document.createElement("div");
-    audioControls.classList.add("audio-controls");
-
-    const timer = document.createElement("span");
-    timer.innerText = currentTime + " / " + duration;
-    audioControls.appendChild(timer);
-
-    const playBtn = document.createElement("button");
-    playBtn.classList.add("material-symbols-outlined");
-    playBtn.innerText = "play_arrow";
-    playBtn.onclick = () => {
-      audioViewer.play();
-    };
-
-    audioViewer.ontimeupdate = () => {
-      currentTime = convertTime(audioViewer.currentTime);
-      timer.innerText = currentTime + " / " + duration;
-      audioSlider.value = audioViewer.currentTime;
-    };
-
-    audioViewer.onplay = () => {
-      playBtn.innerText = "pause";
-      playBtn.onclick = () => {
-        audioViewer.pause();
-      };
-    };
-    audioViewer.onpause = () => {
-      playBtn.innerText = "play_arrow";
-      playBtn.onclick = () => {
-        audioViewer.play();
-      };
-    };
-    audioViewer.onended = () => {
-      playBtn.innerText = "play_arrow";
-      playBtn.onclick = () => {
-        audioViewer.play();
-      };
-      audioViewer.currentTime = 0;
-      currentTime = "00:00";
-      timer.innerText = currentTime + " / " + duration;
-    };
-
-    audioControls.appendChild(playBtn);
-
-    const stopBtn = document.createElement("button");
-    stopBtn.classList.add("material-symbols-outlined");
-    stopBtn.innerText = "stop";
-    stopBtn.onclick = () => {
-      audioViewer.pause();
-      audioViewer.currentTime = 0;
-      currentTime = "00:00";
-      timer.innerText = currentTime + " / " + duration;
-    };
-    audioControls.appendChild(stopBtn);
-
-    const volumeIcon = document.createElement("span");
-    volumeIcon.classList.add("material-symbols-outlined");
-    volumeIcon.innerText = "volume_up";
-    audioControls.appendChild(volumeIcon);
-    const volumeSlider = document.createElement("input");
-    volumeSlider.type = "range";
-    volumeSlider.min = 0;
-    volumeSlider.max = 100;
-    volumeSlider.value = 100;
-    volumeSlider.oninput = () => {
-      audioViewer.volume = volumeSlider.value / 100;
-    };
-
-    audioControls.appendChild(volumeSlider);
-
-    content.appendChild(audioViewer);
-    content.appendChild(audio_icon);
-    content.appendChild(audioSlider);
-    content.appendChild(audioControls);
+    // add to the content
+    content.append(audio_icon, audioViewer, mediaController(audioViewer));
   }
 
-  mediaViewer.appendChild(appBar);
-  mediaViewer.appendChild(content);
-
-  return mediaViewer;
+  return App(content, file.name + " - Media Viewer");
 }
 
 export { mediaViewer };

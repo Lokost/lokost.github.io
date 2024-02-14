@@ -6,7 +6,9 @@ function dragElement(element) {
     pos3 = 0,
     pos4 = 0;
 
+  console.log(element.id);
   if (document.getElementById(element.id + "-bar")) {
+    console.log("test");
     document.getElementById(element.id + "-bar").onmousedown = dragMouseDown;
   }
 

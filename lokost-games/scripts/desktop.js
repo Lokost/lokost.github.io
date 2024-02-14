@@ -1,48 +1,17 @@
-// Clock controllers
-const clock = document.getElementById("clock");
-
-function updateClock() {
-  let time = new Date();
-  let day = time.getDate().toLocaleString("pt-br", {
-    minimumIntegerDigits: 2,
-    useGrouping: false,
-  });
-  let month = time.getMonth().toLocaleString("pt-br", {
-    minimumIntegerDigits: 2,
-    useGrouping: false,
-  });
-  let year = time.getFullYear().toLocaleString("pt-br", {
-    minimumIntegerDigits: 2,
-    useGrouping: false,
-  });
-  let hour = time.getHours().toLocaleString("pt-br", {
-    minimumIntegerDigits: 2,
-    useGrouping: false,
-  });
-  let minute = time.getMinutes().toLocaleString("pt-br", {
-    minimumIntegerDigits: 2,
-    useGrouping: false,
-  });
-  let seconds = time.getSeconds();
-  clock.innerText = `${hour}${
-    seconds % 2 == 0 ? ":" : " "
-  }${minute}\n${day}/${month}/${year} `;
-}
-
-updateClock();
-
-setInterval(() => {
-  updateClock();
-}, 1000);
-
 // module imports
-import { file, file_view } from "./app-controller.js";
+import { file, file_view } from "./file-model.js";
+import { updateApps } from "./app-controller.js";
 
 // JSON files import
 import json_files from "../contents.json" assert { type: "json" };
 
+changeBack();
+
 const desktop_files = [];
 const desktop = document.getElementById("desktop-icons");
+const home_button = document.getElementById("home");
+const back_button = document.getElementById("back");
+const main = document.querySelector("main");
 
 for (let i in Object.keys(json_files.desktop)) {
   let file_name = Object.keys(json_files.desktop)[i];
@@ -53,3 +22,30 @@ for (let i in Object.keys(json_files.desktop)) {
 desktop_files.forEach((file) => {
   desktop.appendChild(file_view(file));
 });
+
+home_button.onclick = () => {
+  main.querySelectorAll(".app").forEach((app) => {
+    app.onanimationend = () => {
+      app.remove(app);
+      updateApps();
+    };
+    app.style.animation = "show-app 0.3s ease reverse";
+  });
+};
+
+back_button.onclick = () => {
+  const app = main.querySelector(".active");
+  app.onanimationend = () => {
+    app.remove(app);
+    updateApps();
+  };
+  app.style.animation = "show-app 0.3s ease reverse";
+};
+
+function changeBack() {
+  const background = localStorage.getItem("background");
+  if (background) {
+    document.body.style.background = `url("${background}") no-repeat fixed`;
+    document.body.style.backgroundSize = "cover";
+  }
+}
