@@ -43,8 +43,9 @@
 
 .app .content {
   flex: 2;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
+  position: relative;
   justify-content: center;
   padding: 1rem;
   gap: 1rem;
@@ -61,6 +62,7 @@ video.show {
   position: relative;
   object-fit: contain;
   align-self: center;
+  justify-self: center;
 }
 
 img.show {
@@ -140,7 +142,14 @@ img.audio {
   font-weight: bold;
 }
 
-.app .content .files-grid {
+.app .content .files {
+  display: flex;
+  overflow-y: auto;
+  flex: 1;
+  max-height: 40vh;
+}
+
+.app .content .files .files-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }

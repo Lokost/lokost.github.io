@@ -2,16 +2,6 @@
 import { open_file } from "./app-controller.js";
 import { documents, image, audio, video } from "./file_types.js";
 
-function file(name, file, inFolder = false) {
-  return {
-    name: name,
-    path: file.path ?? null,
-    type: file.type ?? "file",
-    content: file.content ?? null,
-    inFolder: inFolder,
-  };
-}
-
 function file_view(file) {
   const file_icon = document.createElement("div");
   file_icon.classList.add("file-icon");
@@ -35,4 +25,4 @@ function file_view(file) {
   return file_icon;
 }
 
-export { file, file_view };
+export { file_view };

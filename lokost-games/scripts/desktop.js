@@ -1,45 +1,63 @@
 // module imports
-import { file, file_view } from "./file-model.js";
+import { file_view } from "./file-model.js";
 import { updateApps } from "./app-controller.js";
+import { Notify } from "./notify.js";
+
+const timer = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // JSON files import
 import json_files from "../contents.json" assert { type: "json" };
 
 changeBack();
+startingNotifications();
 
-const desktop_files = [];
+async function startingNotifications() {
+  Notify("Use em tela cheia para melhor experiência");
+  await timer(6500);
+  Notify("Use os botões da barra de tarefas em caso de travamento");
+  await timer(6500);
+  Notify("Aproveite seu novo sistema!");
+}
+
 const desktop = document.getElementById("desktop-icons");
 const home_button = document.getElementById("home");
 const back_button = document.getElementById("back");
 const main = document.querySelector("main");
 
-for (let i in Object.keys(json_files.desktop)) {
-  let file_name = Object.keys(json_files.desktop)[i];
-  let file_content = json_files.desktop[file_name];
-  desktop_files.push(file(file_name, file_content));
-}
-
-desktop_files.forEach((file) => {
-  desktop.appendChild(file_view(file));
+json_files.files.forEach((item) => {
+  if (item.path.join(",") == "desktop") {
+    desktop.appendChild(file_view(item));
+  }
 });
 
-home_button.onclick = () => {
-  main.querySelectorAll(".app").forEach((app) => {
+home_button.onclick = async () => {
+  const opened_apps = main.querySelectorAll(".app");
+  if (opened_apps.length > 0) {
+    Notify(`${opened_apps.length} app(s) fechado(s)`, 2);
+    opened_apps.forEach((app) => {
+      app.style.animation = "show-app 0.3s ease reverse";
+      app.onanimationend = () => {
+        app.remove(app);
+        updateApps();
+      };
+    });
+  } else {
+    Notify("Não há apps a serem fechados!", 2);
+  }
+};
+
+back_button.onclick = () => {
+  const app = main.querySelector(".active");
+  if (app) {
     app.onanimationend = () => {
       app.remove(app);
       updateApps();
     };
     app.style.animation = "show-app 0.3s ease reverse";
-  });
-};
-
-back_button.onclick = () => {
-  const app = main.querySelector(".active");
-  app.onanimationend = () => {
-    app.remove(app);
-    updateApps();
-  };
-  app.style.animation = "show-app 0.3s ease reverse";
+    Notify("App mais recente fechado!", 2);
+  } else {
+    Notify("Selecione um app antes!", 2);
+  }
 };
 
 function changeBack() {

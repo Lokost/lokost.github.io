@@ -1,0 +1,9 @@
+{
+  "shortcuts": [
+    {
+      "icon": "images/icon/folder.png",
+      "name": "Desktop",
+      "path": "Desktop"
+    }
+  ]
+}

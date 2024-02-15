@@ -1,60 +1,93 @@
 {
-  "desktop": {
-    "imagens": {
-      "path": ["desktop", "images"],
-      "type": "folder",
-      "content": {
-        "backgrounds": {
-          "path": ["desktop", "images", "backgrounds"],
-          "type": "folder",
-          "content": {
-            "default_background.png": {
-              "path": "images/desktop-background.png",
-              "type": ".png"
-            },
-            "Lnovel prom.png": {
-              "path": "images/backgrounds/lokost-banner.png",
-              "type": ".png"
-            },
-            "Lokost AI 1.png": {
-              "path": "images/backgrounds/Lokost IA (1).png",
-              "type": ".png"
-            },
-            "Lokost AI 2.png": {
-              "path": "images/backgrounds/Lokost IA (2).png",
-              "type": ".png"
-            },
-            "Lokost AI 3.png": {
-              "path": "images/backgrounds/Lokost IA (3).png",
-              "type": ".png"
-            }
-          }
-        }
-      }
+  "files": [
+    {
+      "name": "imagens",
+      "path": ["desktop"],
+      "type": "folder"
     },
-    "sons": {
-      "type": "folder",
+
+    {
+      "name": "backgrounds",
+      "path": ["desktop", "imagens"],
+      "type": "folder"
+    },
+    {
+      "name": "default background.png",
+      "path": ["desktop", "imagens", "backgrounds"],
+      "type": ".png",
+      "location": "images/desktop-background.png"
+    },
+    {
+      "name": "Lnovel prom.png",
+      "path": ["desktop", "imagens", "backgrounds"],
+      "type": ".png",
+      "location": "images/backgrounds/lokost-banner.png"
+    },
+    {
+      "name": "Lokost AI 1.png",
+      "path": ["desktop", "imagens", "backgrounds"],
+      "type": ".png",
+      "location": "images/backgrounds/Lokost IA (1).png"
+    },
+    {
+      "name": "Lokost AI 2.png",
+      "path": ["desktop", "imagens", "backgrounds"],
+      "type": ".png",
+      "location": "images/backgrounds/Lokost IA (2).png"
+    },
+    {
+      "name": "Lokost AI 3.png",
+      "path": ["desktop", "imagens", "backgrounds"],
+      "type": ".png",
+      "location": "images/backgrounds/Lokost IA (3).png"
+    },
+    {
+      "name": "sons",
+      "path": ["desktop"],
+      "type": "folder"
+    },
+    {
+      "name": "galaxy freedom.mp3",
       "path": ["desktop", "sons"],
-      "content": {
-        "galaxy freedom.mp3": {
-          "path": "musics/test.mp3",
-          "type": ".mp3"
-        }
-      }
+      "type": ".mp3",
+      "location": "musics/test.mp3"
     },
-    "videos": {
+    {
+      "name": "videos",
+      "path": ["desktop"],
+      "type": "folder"
+    },
+    {
+      "name": "sherek.mp4",
       "path": ["desktop", "videos"],
-      "type": "folder",
-      "content": {
-        "sherek.mp4": {
-          "path": "videos/test.mp4",
-          "type": ".mp4"
-        },
-        "Fazer assim ó.mp4": {
-          "path": "videos/test2.mp4",
-          "type": ".mp4"
-        }
-      }
+      "type": ".mp4",
+      "location": "videos/test.mp4"
+    },
+    {
+      "name": "Fazer assim ó.mp4",
+      "path": ["desktop", "videos"],
+      "type": ".mp4",
+      "location": "videos/test2.mp4"
     }
-  }
+  ],
+  "startMenu": [
+    {
+      "name": "desktop",
+      "path": [],
+      "type": "folder",
+      "kind": "shortcut"
+    },
+    {
+      "name": "imagens",
+      "path": ["desktop"],
+      "type": "folder",
+      "kind": "shortcut"
+    },
+    {
+      "name": "Configurações",
+      "kind": "option",
+      "type": "button",
+      "icon": "settings"
+    }
+  ]
 }

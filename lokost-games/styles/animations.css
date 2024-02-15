@@ -1,0 +1,29 @@
+@keyframes slide-in {
+  0% {
+    bottom: -700px;
+  }
+
+  100% {
+    bottom: 60px;
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    bottom: 60px;
+  }
+
+  100% {
+    bottom: -700px;
+  }
+}
+
+@keyframes spread {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}

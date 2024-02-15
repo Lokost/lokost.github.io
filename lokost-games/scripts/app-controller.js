@@ -8,7 +8,6 @@ var opened_windows = document.querySelectorAll(".app");
 
 function updateApps() {
   opened_windows = document.querySelectorAll(".app");
-  console.log(opened_windows);
   return opened_windows;
 }
 

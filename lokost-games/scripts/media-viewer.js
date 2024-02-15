@@ -1,5 +1,5 @@
-import { updateApps, setActive } from "./app-controller.js";
 import { App } from "./app.js";
+import { Notify } from "./notify.js";
 
 function convertTime(time) {
   var mins = Math.floor(time / 60);
@@ -166,16 +166,23 @@ function mediaViewer(file, type) {
   // If the file is a image
   if (type == "image") {
     const imageViewer = document.createElement("img");
-    imageViewer.src = file.path;
+    imageViewer.src = file.location;
     imageViewer.classList.add("show");
 
     const setBg = document.createElement("button");
     setBg.classList.add("action");
     setBg.innerText = "Definir como fundo";
     setBg.onclick = () => {
-      document.body.style.background = `url("${file.path}") no-repeat fixed`;
+      if (localStorage.getItem("background")) {
+        if (localStorage.getItem("background") == file.location) {
+          Notify("Papel de parede não alterado!", 2);
+          return;
+        }
+      }
+      Notify("Papel de parede alterado!", 2);
+      document.body.style.background = `url("${file.location}") no-repeat fixed`;
       document.body.style.backgroundSize = "cover";
-      localStorage.setItem("background", file.path);
+      localStorage.setItem("background", file.location);
     };
 
     content.append(imageViewer, setBg);
@@ -185,7 +192,7 @@ function mediaViewer(file, type) {
   else if (type == "video") {
     const videoViewer = document.createElement("video");
     videoViewer.classList.add("show");
-    videoViewer.src = file.path;
+    videoViewer.src = file.location;
     content.append(videoViewer, mediaController(videoViewer));
   }
 
@@ -198,7 +205,7 @@ function mediaViewer(file, type) {
 
     // audio player
     const audioViewer = document.createElement("audio");
-    audioViewer.src = file.path;
+    audioViewer.src = file.location;
 
     // add to the content
     content.append(audio_icon, audioViewer, mediaController(audioViewer));
