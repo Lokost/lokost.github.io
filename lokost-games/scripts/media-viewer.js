@@ -98,6 +98,13 @@ function mediaController(viewer) {
     };
   };
 
+  viewer.onpause = () => {
+    playBtn.innerText = "play_arrow";
+    playBtn.onclick = () => {
+      viewer.play();
+    };
+  };
+
   viewer.onended = () => {
     playBtn.innerText = "play_arrow";
     playBtn.onclick = () => {
