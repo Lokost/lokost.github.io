@@ -54,4 +54,13 @@ const documents = [
   ".pages",
 ];
 
-export { image, documents, video, audio };
+const fileType = (file) => {
+  if (image.includes(file.type)) return "image";
+  else if (video.includes(file.type)) return "video";
+  else if (audio.includes(file.type)) return "audio";
+  else if (documents.includes(file.type)) return "document";
+  else if (file.type == "folder") return "folder";
+  else return "unknown";
+};
+
+export { fileType };

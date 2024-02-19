@@ -2,6 +2,7 @@
 import { file_view } from "./file-model.js";
 import { updateApps } from "./app-controller.js";
 import { Notify } from "./notify.js";
+import { startMenu } from "./start-menu.js";
 
 const timer = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -20,9 +21,11 @@ async function startingNotifications() {
 }
 
 const desktop = document.getElementById("desktop-icons");
+const start_button = document.getElementById("start-menu");
 const home_button = document.getElementById("home");
 const back_button = document.getElementById("back");
 const main = document.querySelector("main");
+var startOpened = false;
 
 json_files.files.forEach((item) => {
   if (item.path.join(",") == "desktop") {
@@ -60,6 +63,24 @@ back_button.onclick = () => {
   }
 };
 
+start_button.onclick = () => {
+  const app = main.querySelector(".start-menu");
+  if (!app) {
+    const start = startMenu();
+    startOpened = true;
+    start.onanimationend = () => {
+      start.style.animation = "None";
+    };
+    main.appendChild(start);
+  } else {
+    startOpened = false;
+    app.style.animation = "slide-out 1s ease";
+    app.onanimationend = () => {
+      app.style.animation = app.remove(app);
+    };
+  }
+};
+
 function changeBack() {
   const background = localStorage.getItem("background");
   if (background) {
@@ -67,3 +88,15 @@ function changeBack() {
     document.body.style.backgroundSize = "cover";
   }
 }
+
+main.onclick = (e) => {
+  if (startOpened) {
+    const app = document.querySelector(".start-menu");
+    if (app) {
+      app.style.animation = "slide-out 1s ease";
+      app.onanimationend = () => {
+        app.style.animation = app.remove(app);
+      };
+    }
+  }
+};

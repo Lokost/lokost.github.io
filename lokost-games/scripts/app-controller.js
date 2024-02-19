@@ -1,7 +1,9 @@
 import { mediaViewer } from "./media-viewer.js";
 import { dragElement } from "./draggable.js";
-import { documents, image, audio, video } from "./file_types.js";
+import { fileType } from "./file_types.js";
+import { settings } from "./settings.js";
 import { fileExplorer } from "./file-explorer.js";
+
 const mainContainer = document.querySelector("main");
 
 var opened_windows = document.querySelectorAll(".app");
@@ -19,22 +21,38 @@ function setActive(elementId) {
 }
 
 function open_file(file) {
-  if (file.type === "folder") {
-    const app = fileExplorer(file);
-    mainContainer.appendChild(app);
-    app.onclick = () => {
-      setActive(app.id);
-    };
-    dragElement(app);
-    setActive(app.id);
-    updateApps();
-  } else {
-    var type = "";
-    if (image.includes(file.type)) type = "image";
-    else if (video.includes(file.type)) type = "video";
-    else if (audio.includes(file.type)) type = "audio";
+  if (file.type == "folder") openFolder(file);
+  else if (["image", "video", "audio"].includes(fileType(file)))
+    openMedia(file);
+  else if (file.kind == "option") openSettings(file);
+}
 
-    const app = mediaViewer(file, type);
+const openFolder = (file) => {
+  const app = fileExplorer(file);
+  mainContainer.appendChild(app);
+  app.onclick = () => {
+    setActive(app.id);
+  };
+  dragElement(app);
+  setActive(app.id);
+  updateApps();
+};
+
+const openMedia = (file) => {
+  var type = fileType(file);
+  const app = mediaViewer(file, type);
+  mainContainer.appendChild(app);
+  app.onclick = () => {
+    setActive(app.id);
+  };
+  dragElement(app);
+  setActive(app.id);
+  updateApps();
+};
+
+const openSettings = (file) => {
+  if (file.name == "Configurações") {
+    const app = settings();
     mainContainer.appendChild(app);
     app.onclick = () => {
       setActive(app.id);
@@ -43,6 +61,6 @@ function open_file(file) {
     setActive(app.id);
     updateApps();
   }
-}
+};
 
 export { updateApps, setActive, open_file };

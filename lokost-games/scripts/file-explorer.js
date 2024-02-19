@@ -9,9 +9,10 @@ function fileExplorer(folder) {
   const pathBar = document.createElement("input");
   pathBar.classList.add("path-bar");
   pathBar.readOnly = true;
-  const folderPath = Array(folder.path);
+  const folderPath = folder.path.length >= 1 ? [...folder.path] : folder.path;
   folderPath.push(folder.name);
-  pathBar.value = folderPath.join(" > ");
+  pathBar.value =
+    folderPath.length >= 1 ? folderPath.join(" > ") : folderPath[0];
 
   const files = document.createElement("div");
   files.classList.add("files");
@@ -19,8 +20,12 @@ function fileExplorer(folder) {
   const filesGrid = document.createElement("div");
   filesGrid.classList.add("files-grid");
 
-  const content = data.files.filter(
-    (val) => val.path.join(",") == folderPath.join(",")
+  console.log(folderPath);
+
+  const content = data.files.filter((val) =>
+    folderPath.length <= 1 && val.path.length <= 1
+      ? val.path[0] == folderPath
+      : val.path.join(",") == folderPath.join(",")
   );
 
   items = content.length;

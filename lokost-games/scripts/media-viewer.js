@@ -1,6 +1,8 @@
 import { App } from "./app.js";
 import { Notify } from "./notify.js";
 
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
 function convertTime(time) {
   var mins = Math.floor(time / 60);
   if (mins < 10) {
@@ -19,6 +21,7 @@ function mediaController(viewer) {
   // Timer variables
   var currentTime = "00:00";
   var duration = "00:00";
+  var changingVolume = false;
 
   // Controllers variables
   var volume = 100;
@@ -56,6 +59,11 @@ function mediaController(viewer) {
   volumeIcon.classList.add("material-symbols-outlined");
   volumeIcon.innerText = "volume_up";
 
+  // Volume div
+  const volumeDiv = document.createElement("div");
+  volumeDiv.classList.add("volume-div");
+  volumeDiv.showing = false;
+
   // Volume slider
   const volumeSlider = document.createElement("input");
   volumeSlider.type = "range";
@@ -63,9 +71,12 @@ function mediaController(viewer) {
   volumeSlider.max = 100;
   volumeSlider.value = 100;
 
+  volumeDiv.append(volumeSlider);
+
   // Volume percentage
   const volumePercentage = document.createElement("span");
   volumePercentage.innerHTML = "100%";
+  volumeDiv.append(volumePercentage);
 
   // Viewer actions
   viewer.onloadedmetadata = () => {
@@ -112,6 +123,8 @@ function mediaController(viewer) {
   };
 
   volumeSlider.oninput = () => {
+    changingVolume = true;
+    console.log(changingVolume);
     viewer.volume = volumeSlider.value / 100;
     volume = volumeSlider.value;
     volumePercentage.innerText = volumeSlider.value + "%";
@@ -122,22 +135,13 @@ function mediaController(viewer) {
     if (volumeSlider.value == 0) volumeIcon.innerText = "volume_off";
   };
 
-  volumeIcon.onclick = () => {
-    if (viewer.volume > 0) {
-      viewer.volume = 0;
-      volumeSlider.value = 0;
-      volumePercentage.innerText = "0%";
-      volumeIcon.innerText = "volume_off";
+  volumeIcon.onclick = async () => {
+    if (!volumeDiv.showing) {
+      volumeDiv.style.display = "flex";
+      volumeDiv.showing = true;
     } else {
-      viewer.volume = volume / 100;
-
-      if (volume >= 70) volumeIcon.innerText = "volume_up";
-      if (volume < 70) volumeIcon.innerText = "volume_down";
-      if (volume < 40) volumeIcon.innerText = "volume_mute";
-      if (volume == 0) volumeIcon.innerText = "volume_off";
-
-      volumeSlider.value = volume;
-      volumePercentage.innerText = volume + "%";
+      volumeDiv.style.display = "none";
+      volumeDiv.showing = false;
     }
   };
 
@@ -146,16 +150,9 @@ function mediaController(viewer) {
   };
 
   // Insert all into the container
-  controllers.append(
-    timer,
-    playBtn,
-    stopBtn,
-    volumeIcon,
-    volumeSlider,
-    volumePercentage
-  );
+  controllers.append(timer, playBtn, stopBtn, volumeIcon);
 
-  mediaController.append(timeSlider, controllers);
+  mediaController.append(timeSlider, volumeDiv, controllers);
 
   return mediaController;
 }
@@ -190,10 +187,16 @@ function mediaViewer(file, type) {
 
   // If the file is a video
   else if (type == "video") {
+    const videoContainer = document.createElement("div");
+    videoContainer.classList.add("video-container");
     const videoViewer = document.createElement("video");
     videoViewer.classList.add("show");
     videoViewer.src = file.location;
-    content.append(videoViewer, mediaController(videoViewer));
+    const controls = mediaController(videoViewer);
+    controls.classList.add("video");
+
+    videoContainer.append(videoViewer, controls);
+    content.append(videoContainer);
   }
 
   // If the file is a audio

@@ -1,15 +1,18 @@
+:root {
+  --blur: blur(4px);
+  --transparency: rgba(50, 50, 50, 0.95);
+}
+
 .app {
   display: flex;
   flex-direction: column;
   position: absolute;
-  background: rgba(50, 50, 50, 0.95);
-  backdrop-filter: blur(4px);
+  background: var(--transparency);
+  backdrop-filter: var(--blur);
   border-radius: 20px;
   width: max-content;
   height: max-content;
-  min-height: 30vh;
   min-width: 20vw;
-  max-height: 80vh;
   max-width: 70vw;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   animation: show-app 0.3s ease;
@@ -22,7 +25,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 1rem;
+  align-items: center;
+  padding: 0.5rem 1rem;
   cursor: default;
   color: white;
 }
@@ -43,10 +47,9 @@
 
 .app .content {
   flex: 2;
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   position: relative;
-  justify-content: center;
   padding: 1rem;
   gap: 1rem;
 }
@@ -70,9 +73,21 @@ img.show {
   max-width: 80%;
 }
 
+.video-container {
+  display: flex;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: black;
+  border-radius: 10px;
+}
+
 video.show {
-  flex: 2;
-  max-width: 70%;
+  border-radius: 10px;
+  display: block;
+  top: 0;
+  left: 0;
+  max-width: 100%;
 }
 
 img.audio {
@@ -92,6 +107,18 @@ img.audio {
   flex: 1;
   display: flex;
   flex-direction: column;
+  bottom: 0;
+}
+
+.app .content .media-controller.video {
+  position: absolute;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  align-self: center;
+  left: 2.5%;
+  bottom: 0;
 }
 
 .app .content .media-controller .media-controls {
@@ -100,6 +127,18 @@ img.audio {
   color: white;
   align-items: center;
   justify-content: center;
+}
+
+.volume-div {
+  display: none;
+  align-self: center;
+  gap: 1rem;
+  background: rgba(50, 50, 50, 0.95);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  position: absolute;
+  bottom: 60px;
 }
 
 .app .content .media-controller .media-controls button {
