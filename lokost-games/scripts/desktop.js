@@ -7,7 +7,7 @@ import { startMenu } from "./start-menu.js";
 const timer = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // JSON files import
-import json_files from "../contents.json" assert { type: "json" };
+import json_files from "../contents.json" with { type: "json" };
 
 changeBack();
 startingNotifications();
