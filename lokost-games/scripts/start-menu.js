@@ -2,10 +2,10 @@ var data;
 import { fileType } from "./file_types.js";
 import { open_file } from "./app-controller.js";
 
-const start_items = data.startMenu;
 
 const req = new Request("contents.json", {headers: {"Content-Header": "application/JSON"}});
 await fetch(req).then(e => e.json()).then(info => data = info);
+const start_items = data.startMenu;
 
 function startShortcut(file) {
   const shortcut = document.createElement("div");
