@@ -2,7 +2,7 @@ import { App } from "./app.js";
 var data;
 import { file_view } from "./file-model.js";
 
-const req = new Request("../contents.json", {headers: {"Content-Header":"application/JSON"}});
+const req = new Request("contents.json", {headers: {"Content-Header":"application/JSON"}});
 await fetch(req).then(e => e.json()).then(info => data = info);
 
 function fileExplorer(folder) {
