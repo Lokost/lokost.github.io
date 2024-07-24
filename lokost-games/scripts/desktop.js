@@ -7,7 +7,7 @@ import { startMenu } from "./start-menu.js";
 const timer = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // JSON files import
-const req = new Require("../contents.json", {headers: {"Content-Header": "application/JSON"}});
+const req = new Require("contents.json", {headers: {"Content-Header": "application/JSON"}});
 var json_files;
 await fetch(req).then((e) => e.json()).then((data) => json_files = data)
 
