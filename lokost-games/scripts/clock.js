@@ -31,7 +31,7 @@ function updateClock() {
 
   clock.innerText = `${hour}${
     seconds % 2 == 0 ? ":" : " "
-  }${minute}\n${day}/${month}/${year}`;
+  }${minute}\n${day}/${month + 1}/${year}`;
 }
 
 updateClock();
