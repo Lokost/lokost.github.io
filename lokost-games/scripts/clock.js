@@ -7,7 +7,7 @@ function updateClock() {
     useGrouping: false,
   });
 
-  let month = time.getMonth().toLocaleString("pt-br", {
+  let month = (time.getMonth() + 1).toLocaleString("pt-br", {
     minimumIntegerDigits: 2,
     useGrouping: false,
   });
@@ -31,7 +31,7 @@ function updateClock() {
 
   clock.innerText = `${hour}${
     seconds % 2 == 0 ? ":" : " "
-  }${minute}\n${day}/${month + 1}/${year}`;
+  }${minute}\n${day}/${month}/${year}`;
 }
 
 updateClock();
