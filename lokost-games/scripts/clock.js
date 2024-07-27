@@ -7,7 +7,7 @@ function updateClock() {
     useGrouping: false,
   });
 
-  let month = time.getMonth().toLocaleString("pt-br", {
+  let month = (time.getMonth() + 1).toLocaleString("pt-br", {
     minimumIntegerDigits: 2,
     useGrouping: false,
   });
