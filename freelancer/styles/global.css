@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Russo+One&display=swap");
+
+:root {
+  --background: rgba(255, 255, 255, 1);
+  --text: rgba(0, 0, 0, 1);
+  --primary: rgba(30, 30, 30, 1);
+  --primary-text: rgba(255, 255, 255, 1);
+  --secondary: black;
+  --secondary-text: white;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: poppins, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "russo one", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+main {
+  background: var(--background);
+  color: var(--text);
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 5vw;
+}
+
+header {
+  background: var(--primary);
+  color: var(--primary-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.3rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+header .logo img {
+  height: 64px;
+  aspect-ratio: 1;
+}
+
+header .menu {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+header .menu button {
+  background: rgba(200, 0, 0, 1);
+  color: white;
+  padding: 0.3rem;
+  border: transparent 1px solid;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+header .menu button:hover {
+  background: rgba(255, 255, 255, 1);
+  border: rgba(200, 0, 0, 1) 1px solid;
+  color: rgba(200, 0, 0, 1);
+}
+
+aside button {
+  background: rgba(200, 0, 0, 1);
+  color: white;
+  padding: 0.3rem;
+  border: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+aside button:hover {
+  background: rgba(255, 255, 255, 1);
+  color: rgba(200, 0, 0, 1);
+}
+
+aside {
+  position: fixed;
+  display: none;
+  top: 0;
+  right: 0;
+  background: var(--primary);
+  height: 100vh;
+  z-index: 1000;
+}
+
+aside .logo {
+  display: flex;
+  flex-direction: column;
+  color: var(--primary-text);
+  padding: 0.3rem;
+}
+
+aside .logo img {
+  height: 64px;
+}
+
+footer {
+  background: var(--secondary);
+  color: var(--secondary-text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem;
+  gap: 1rem;
+}
+
+footer .logo {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+footer .logo img {
+  height: 18px;
+}
+
+a {
+  background: rgba(30, 30, 30, 1);
+  border: none;
+  padding: 0.3rem;
+  color: white;
+  text-decoration: none;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  background: white;
+  color: rgba(30, 30, 30, 1);
+}
+
+footer .contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+}
