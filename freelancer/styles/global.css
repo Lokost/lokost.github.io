@@ -3,199 +3,260 @@
 @import url("./cards.css");
 
 :root {
-  --background: rgba(255, 255, 255, 1);
-  --text: rgba(0, 0, 0, 1);
-  --primary: rgba(30, 30, 30, 1);
-  --primary-text: rgba(255, 255, 255, 1);
-  --secondary: black;
-  --secondary-text: white;
+  --background: rgba(25, 25, 40, 1);
+  --text: white;
+  --primary: rgba(154, 25, 0, 1);
+  --on-primary: white;
+  --primary-hover: rgba(204, 75, 50, 1);
+  --secondary: purple;
+  --on-secondary: white;
+  --secondary-hover: rgba(178, 0, 178, 1);
+  --surface: rgba(20, 20, 35, 1);
+  --on-surface: white;
+  --surface-hover: rgba(70, 70, 85, 1);
+  --general-border: transparent 1px solid;
+  --general-border-hover: white 1px solid;
+  --secondary-button: rgba(78, 0, 78);
+  --secondary-button-text: white;
+  --secondary-button-hover: rgba(108, 0, 108);
+  --general-transition: all 0.3s ease;
+  --general-border-radius: 10px;
 }
 
 * {
   padding: 0;
   margin: 0;
-  font-family: poppins, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  outline: none;
+  user-select: none;
+  text-rendering: optimizeLegibility;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "russo one", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-    sans-serif;
+/* Elements */
+
+button,
+a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem 0.5rem;
+  width: max-content;
+  background: var(--surface);
+  color: var(--on-surface);
+  border: var(--general-border);
+  border-radius: var(--general-border-radius);
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: var(--general-transition);
 }
+
+button:hover,
+a:hover {
+  background: var(--surface-hover);
+  border: var(--general-border-hover);
+}
+
+/* All layouts */
 
 body {
-  min-height: 100vh;
-  width: 100vw;
+  background: var(--background);
+  color: var(--text);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-height: 100vh;
+  width: vw;
+  font-family: kanit, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-main {
-  background: var(--primary);
-  color: var(--primary-text);
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem 5vw;
-}
-
+/* header and sub elements */
 header {
-  background: var(--primary);
-  color: var(--primary-text);
+  background: var(--surface);
+  color: var(--on-surface);
+
   display: flex;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
   align-items: center;
-  justify-content: space-around;
-  padding: 0.3rem;
+  box-shadow: 0 3px 10px 10px var(--surface);
 }
 
-.logo {
+header .logo {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.3rem;
 }
 
 header .logo img {
-  height: 64px;
-  aspect-ratio: 1;
+  width: 64px;
 }
 
 header .menu {
   display: flex;
-  align-items: center;
-  gap: 0.4rem;
+  gap: 0.3rem;
 }
 
 header .menu button {
-  background: rgba(200, 0, 0, 1);
-  color: white;
-  padding: 0.3rem;
-  border: transparent 1px solid;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  background: var(--primary);
+  color: var(--on-primary);
 }
 
 header .menu button:hover {
-  background: rgba(255, 255, 255, 1);
-  border: rgba(200, 0, 0, 1) 1px solid;
-  color: rgba(200, 0, 0, 1);
+  background: var(--primary-hover);
 }
 
-aside button {
-  background: rgba(200, 0, 0, 1);
-  color: white;
-  padding: 0.3rem;
-  border: none;
-  width: 100%;
+header .menu-toggle {
+  display: none;
+}
+
+/* Side menu */
+.backdrop {
+  display: none;
+  backdrop-filter: blur(3px);
+  background: rgba(0, 0, 0, 0.3);
+  height: 100vh;
+  width: 100vw;
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+aside.side-menu {
+  display: none;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 150px;
+  z-index: 1000;
+  align-items: center;
+  flex-direction: column;
+  background: var(--surface);
+  box-shadow: -4px 0 10px 10px var(--surface);
+  padding: 0.5rem 0;
+}
+
+aside.side-menu img {
+  height: 32px;
+  width: 32px;
+}
+
+aside.side-menu .logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-aside button:hover {
-  background: rgba(255, 255, 255, 1);
-  color: rgba(200, 0, 0, 1);
-}
-
-aside {
-  position: fixed;
-  display: none;
-  top: 0;
-  right: 0;
-  background: var(--primary);
-  height: 100vh;
-  z-index: 1000;
-}
-
-aside .logo {
-  display: flex;
+  text-align: center;
+  gap: 0.5rem;
   flex-direction: column;
-  color: var(--primary-text);
-  padding: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 
-aside .logo img {
-  height: 64px;
+aside.side-menu button {
+  background: var(--primary);
+  width: 100%;
+  border-radius: 0;
+  margin-bottom: 0.3rem;
 }
 
-footer {
-  background: var(--secondary);
-  color: var(--secondary-text);
+aside.side-menu button:hover {
+  background: var(--primary-hover);
+}
+
+/* main content */
+main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 0.4rem;
-  gap: 1rem;
+  padding: 2rem;
+}
+
+/* footer and sub elements */
+footer {
+  background: var(--surface);
+  color: var(--on-surface);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.3rem;
+  box-shadow: 0 -5px 10px 10px var(--surface);
 }
 
 footer .logo {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.3rem;
   align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 footer .logo img {
   height: 18px;
 }
 
-a {
-  background: rgba(30, 30, 30, 1);
-  border: none;
-  padding: 0.3rem;
-  color: white;
-  text-decoration: none;
-  text-transform: capitalize;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-a:hover {
-  background: white;
-  color: rgba(30, 30, 30, 1);
-}
-
 footer .contact {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: stretch;
   gap: 0.3rem;
 }
 
-.menu-toggle {
-  display: none;
-}
-
-.menu-toggle span {
-  cursor: pointer;
-}
+/* Responsivity */
 
 @media (width < 900px) {
   header .menu {
     display: none;
   }
 
-  .menu-toggle {
-    display: flex;
+  header .menu-toggle {
+    display: block;
   }
 }
 
 @media (width < 700px) {
   header .logo h1 {
-    display: none;
+    width: 0px;
+    overflow: hidden;
+    text-wrap: nowrap;
+  }
+}
+
+/* animations */
+aside.side-menu.enter {
+  animation: 0.5s slide-in ease forwards;
+}
+
+aside.side-menu.close {
+  animation: 0.5s slide-in ease backwards reverse;
+}
+
+.backdrop.enter {
+  animation: 0.5s fade ease forwards;
+}
+
+.backdrop.close {
+  animation: 0.5s fade ease backwards reverse;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(160px);
+  }
+
+  100% {
+    transform: translateX(0);
   }
 }
