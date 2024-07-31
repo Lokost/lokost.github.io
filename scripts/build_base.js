@@ -22,7 +22,8 @@ const toggleMenu = document.querySelectorAll(".toggle-menu");
 // Menu buttons
 const menuButtons = [
   new MenuButton("home", "Home", "index.html"),
-  new MenuButton("work", "Projetos", "projects.html"),
+  new MenuButton("tactic", "Projetos", "projects.html"),
+  new MenuButton("work", "Freelancer", "/freelancer"),
 ];
 
 // Add the buttons on the menus
