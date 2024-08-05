@@ -76,8 +76,8 @@ header {
 
   display: flex;
   justify-content: space-between;
-  padding: 0.6rem 1rem;
-  align-items: center;
+  padding: 0rem 1rem;
+  align-items: auto;
   box-shadow: 0 3px 10px 10px var(--surface);
 }
 
@@ -93,74 +93,94 @@ header .logo img {
 
 header .menu {
   display: flex;
-  gap: 0.3rem;
+  height: 96px;
 }
 
 header .menu button {
-  background: var(--primary);
-  color: var(--on-primary);
+  color: white;
+  text-decoration: none;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  padding: 0.4em 0.4em;
+  border-radius: 0;
+  border: none;
 }
 
-header .menu button:hover {
-  background: var(--primary-hover);
+header .menu button.active {
+  background: white;
+  color: var(--surface);
+}
+
+.menu-button:hover {
+  background: white;
+  color: var(--surface-hover);
 }
 
 header .menu-toggle {
   display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: 96px;
 }
 
 /* Side menu */
-.backdrop {
-  display: none;
-  backdrop-filter: blur(3px);
-  background: rgba(0, 0, 0, 0.3);
-  height: 100vh;
-  width: 100vw;
-  z-index: 999;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
 aside.side-menu {
   display: none;
+  flex-direction: column;
+  width: 300px;
   height: 100vh;
   position: fixed;
-  top: 0;
   right: 0;
-  width: 150px;
+  background-color: var(--surface);
+  box-shadow: -10px 0 20px rgba(0, 0, 0, 0.2);
   z-index: 1000;
-  align-items: center;
-  flex-direction: column;
-  background: var(--surface);
-  box-shadow: -4px 0 10px 10px var(--surface);
-  padding: 0.5rem 0;
-}
-
-aside.side-menu img {
-  height: 32px;
-  width: 32px;
-}
-
-aside.side-menu .logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 0.5rem;
-  flex-direction: column;
-  margin-bottom: 0.5rem;
 }
 
 aside.side-menu button {
-  background: var(--primary);
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  border: none;
   border-radius: 0;
-  margin-bottom: 0.3rem;
 }
 
 aside.side-menu button:hover {
-  background: var(--primary-hover);
+  color: var(--surface);
+  background: white;
+}
+
+aside.side-menu button.active {
+  background: white;
+  color: --surface;
+}
+
+aside.side-menu span {
+  color: var(--surface);
+  background: white;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 40px;
+}
+
+.backdrop {
+  background: rgba(0, 0, 0, 0.3);
+  display: none;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: 998;
+  cursor: pointer;
+  backdrop-filter: blur(2px);
 }
 
 /* main content */

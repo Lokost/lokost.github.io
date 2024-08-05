@@ -1,4 +1,3 @@
-const toggleMenuButton = document.querySelector(".menu-toggle span");
 const menu = document.querySelector(".side-menu");
 const menuBackdrop = document.querySelector(".backdrop");
 let showMenu = false;
@@ -8,7 +7,7 @@ function toggle_menu() {
   console.log(showMenu);
 
   if (showMenu) {
-    menu.style.display = "block";
+    menu.style.display = "flex";
     menu.classList.add("enter");
     menu.onanimationend = () => menu.classList.remove("enter");
 
@@ -30,16 +29,11 @@ function toggle_menu() {
   }
 }
 
-toggleMenuButton.addEventListener("click", toggle_menu);
-document.onclick = (e) => {
-  if (
-    !menu.contains(e.target) &&
-    !toggleMenuButton.contains(e.target) &&
-    showMenu
-  ) {
-    toggle_menu();
-  }
-};
+document
+  .querySelectorAll(".menu-toggle")
+  .forEach((btn) => (btn.onclick = () => toggle_menu()));
+
+document.querySelector(".backdrop").onclick = () => toggle_menu();
 
 let options = {
   root: null,
