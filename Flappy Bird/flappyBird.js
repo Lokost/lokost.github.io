@@ -1,4 +1,4 @@
-class Bird {
+export default class Bird {
   constructor(x, y) {
     this.x = x;
     this.y = y;
@@ -10,11 +10,31 @@ class Bird {
     this.sprite = new Image();
     this.sprite.src = "./assets/bird.png";
 
-    this.box.x = this.x;
-    this.box.y = this.y;
-    this.box.bottom = this.y + this.height;
-    this.box.right = this.x + this.width;
+    this.box = {
+      x: this.x,
+      y: this.y,
+      bottom: this.y + this.height,
+      right: this.x + this.width,
+    };
   }
 
-  birdBox() {}
+  updatePosition(x, y) {
+    this.x = x;
+    this.y = y;
+    this.box = {
+      x: this.x,
+      y: this.y,
+      bottom: this.y + this.height,
+      right: this.x + this.width,
+    };
+  }
+
+  draw(ctx) {
+    ctx.drawImage(this.sprite, this.x, this.y);
+  }
+
+  move() {
+    this.speed += this.acceleration;
+    this.y += this.speed;
+  }
 }
