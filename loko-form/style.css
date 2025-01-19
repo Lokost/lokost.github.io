@@ -20,6 +20,7 @@ div {
   --background: rgba(255, 230, 255);
   --text: black;
   --primary: rgba(255, 220, 255);
+  --font-size: 12pt;
 }
 
 .dark {
@@ -37,6 +38,7 @@ body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  gap: 0.5rem;
 }
 
 span {
@@ -84,11 +86,17 @@ nav.menu {
 
 main {
   display: flex;
-  width: 80%;
+  width: 95%;
   flex: 2;
   flex-wrap: nowrap;
   overflow: hidden;
   align-items: center;
+  justify-content: center;
+}
+
+main .card {
+  align-self: center;
+  justify-self: center;
 }
 
 .card {
@@ -130,6 +138,10 @@ main {
   min-width: 20%;
   width: fit-content;
   height: fit-content;
+  max-width: 80%;
+  max-height: 80%;
+  min-height: 20%;
+  margin: 1rem;
 }
 
 .dialog {
@@ -138,6 +150,7 @@ main {
 }
 
 textarea,
+select,
 input[type="text"],
 input[type="e-mail"],
 input[type="tel"],
@@ -147,15 +160,35 @@ input[type="password"] {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 0.5rem 1rem;
-  resize: none;
   min-width: 90%;
   background: var(--background);
-  font-size: 15pt;
+  font-size: var(--font-size);
   font-weight: bold;
 }
 
 textarea {
+  min-height: 300px;
+}
+
+textarea:focus,
+select:focus,
+input[type="text"]:focus,
+input[type="e-mail"]:focus,
+input[type="tel"]:focus,
+input[type="password"]:focus {
+  background: var(--text);
+  color: var(--background);
+}
+
+option {
+  background: var(--background);
+  color: var(--text);
+  font-weight: bold;
+}
+
+.settings textarea {
   height: 60vh;
+  resize: none;
 }
 
 button {
@@ -255,15 +288,20 @@ button:hover {
   padding: 0.5rem 0;
 }
 
+.recents-container {
+  flex-wrap: nowrap;
+}
+
 .form-container {
   width: 100%;
   flex-wrap: nowrap;
-  justify-content: start;
-  align-items: auto;
-  gap: 2rem;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
 }
 
 .form-container .actions {
+  margin-top: 0.5rem;
   height: 50px;
 }
 
@@ -278,17 +316,18 @@ button:hover {
 
 .main-area {
   flex: 1;
-  height: 100%;
-  max-height: calc(100vh - 150px - 46px);
   width: 100%;
   display: flex;
   gap: 2rem;
   flex-wrap: nowrap;
+  justify-content: start;
+  align-items: start;
 }
 
 .recents-container {
   min-height: 55px;
   width: 250px;
+  height: 100%;
   border-right: 1px solid var(--text);
   overflow: auto;
 }
@@ -301,6 +340,11 @@ button:hover {
   width: 90%;
 }
 
+.recents-container .recent.selected {
+  background: var(--text);
+  color: var(--primary);
+}
+
 .form {
   max-height: calc(100vh - 150px - 46px);
   min-width: 500px;
@@ -309,6 +353,7 @@ button:hover {
   flex-wrap: nowrap;
   align-items: center;
   justify-content: start;
+  padding: 1rem 0rem;
 }
 
 .form label {
@@ -359,9 +404,15 @@ footer {
     width: 100%;
     gap: 1rem;
     height: 75px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
   }
 
   .recents-container .recent {
-    width: 200px;
+    min-width: 200px;
+    max-width: 500px;
+    height: 40px;
   }
 }

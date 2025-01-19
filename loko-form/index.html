@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css" />
     <script type="module" src="./scripts/main.js" defer></script>
   </head>
-  <body>
+  <body class="dark">
     <header>
       <h1>Loko Form</h1>
       <nav class="menu">
@@ -39,6 +39,19 @@
     <div class="settings" id="settings">
       <div class="card">
         <h3>Configurações</h3>
+        <label>
+          Tamanho da fonte:
+          <select id="font-size">
+            <option value="10pt">10pt</option>
+            <option value="12pt" selected>12pt</option>
+            <option value="14pt">14pt</option>
+            <option value="16pt">16pt</option>
+            <option value="18pt">18pt</option>
+            <option value="20pt">20pt</option>
+            <option value="22pt">22pt</option>
+            <option value="24pt">24pt</option>
+          </select>
+        </label>
         <span
           >Coloque as áreas do seu formulário
           <span class="clickable material-symbols-outlined">help</span>

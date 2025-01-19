@@ -8,6 +8,7 @@ const settings = document.getElementById("settings");
 const settingsBtn = document.getElementById("settings-btn");
 const formConstructor = new FormConstructor(openDialog);
 const theme = document.getElementById("theme");
+const fontSize = document.getElementById("font-size");
 
 function openDialog(title, content) {
   const dialog = document.getElementById("dialog");
@@ -70,3 +71,35 @@ openDialog(
   "Bem vindo",
   "Bem vindo ao Loko Form, aqui você pode criar formulários personalizados, basta preencher os campos e clicar em 'Criar formulário'."
 );
+
+fontSize.onchange = (e) => {
+  const root = document.querySelector(":root");
+  root.style.setProperty("--font-size", `${e.target.value}`);
+};
+
+window.onkeydown = (e) => {
+  if (e.ctrlKey) {
+    switch (e.key) {
+      case "c":
+        if (formConstructor.settings.length > 0) formConstructor.copyFormated();
+        else openDialog("Erro", "O formulário não pode estar vazio");
+        break;
+    }
+  } else if (e.altKey) {
+    switch (e.key) {
+      case "n":
+        if (formConstructor.settings.length > 0) formConstructor.createNew();
+        else openDialog("Erro", "O formulário não pode estar vazio");
+        break;
+    }
+  } else {
+    switch (e.key) {
+      case "Escape":
+        if (dialog.style.display == "flex") dialog.style.display = "none";
+        else if (settings.style.display == "flex")
+          settings.style.display = "none";
+        else openSettings();
+        break;
+    }
+  }
+};
