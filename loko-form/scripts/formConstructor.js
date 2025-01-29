@@ -5,8 +5,12 @@ export default class FormConstructor {
     this.container.classList.add("form-container");
     this.container.innerHTML = `
       <div class="main-area">
-        <div class="recents-container" id="recents"></div>
-        <form class="card form" id="mainForm"></form>
+        <div class="hover">
+          <div class="recents-container" id="recents"></div>
+        </div>
+        <div class="hover card form">
+          <form id="mainForm"></form>
+        </div>
       </div>
       <div class="actions">
         <button id="copyContent">

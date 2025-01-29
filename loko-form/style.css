@@ -1,20 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-* {
-  margin: 0;
-  padding: 0;
-  font-family: poppins, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  transition: all 0.3s ease;
-  outline: none;
-  color: var(--text);
-}
-
-div {
-  flex-flow: wrap;
-}
-
+/* Themes */
 :root {
   --button-background: rgba(0, 0, 0, 0.1);
   --background: rgba(255, 230, 255);
@@ -30,231 +17,88 @@ div {
   --primary: rgba(100, 0, 100);
 }
 
-body {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  background: var(--background);
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  gap: 0.5rem;
+/* General */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: poppins, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  transition: all 0.3s ease;
+  outline: none;
+  color: var(--text);
+  font-size: var(--font-size);
 }
 
-span {
+/* Document */
+body {
+  max-height: 100vh;
+  max-width: 100vw;
+  height: 100vh;
+  width: 100vw;
+  background: var(--background);
+  align-items: center;
   display: flex;
-  gap: 0.2rem;
-  color: white;
-  mix-blend-mode: exclusion;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  overflow-x: hidden;
+}
+
+/* main elements */
+h1 {
+  font-size: calc(var(--font-size) * 1.6);
 }
 
 header {
   display: flex;
-  align-items: center;
+  flex: 0;
+  background: var(--primary);
+  width: 90%;
+  margin-top: 30px;
   justify-content: space-between;
-  width: 70%;
-  margin: 0.5rem;
-  padding: 0.5rem;
+  padding: 8px 15px;
+  align-items: center;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  background: var(--primary);
-  height: 30px;
 }
 
 nav.menu {
   display: flex;
-  gap: 0.2rem;
+  gap: 0.3rem;
 }
 
-.float-area {
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 0.5rem;
-  position: fixed;
-  right: 10px;
-  bottom: 10px;
-}
-
-.float-area button {
+button {
   background: var(--primary);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.float-area * span {
-  font-size: 25pt;
-}
-
-main {
-  display: flex;
-  width: 95%;
-  flex: 2;
-  flex-wrap: nowrap;
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
-}
-
-main .card {
-  align-self: center;
-  justify-self: center;
-}
-
-.card {
-  display: flex;
-  background: var(--primary);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  gap: 0.4rem;
-  align-self: center;
-}
-
-.dialog,
-.settings {
-  position: fixed;
-  left: 0;
-  top: 0;
-  display: none;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-  border-radius: none;
-  width: 100vw;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  transition: none;
-  text-align: center;
-}
-
-.dialog .card,
-.settings .card {
-  width: 60%;
-  padding: 1rem;
-}
-
-.dialog .card {
-  min-width: 20%;
-  width: fit-content;
-  height: fit-content;
-  max-width: 80%;
-  max-height: 80%;
-  min-height: 20%;
-  margin: 1rem;
-}
-
-.dialog {
-  display: none;
-  z-index: 999;
-}
-
-textarea,
-select,
-input[type="text"],
-input[type="e-mail"],
-input[type="tel"],
-input[type="password"] {
-  display: flex;
   border: none;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  padding: 0.5rem 1rem;
-  min-width: 90%;
-  background: var(--background);
-  font-size: var(--font-size);
-  font-weight: bold;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
 }
 
-textarea {
-  min-height: 300px;
-}
-
-textarea:focus,
-select:focus,
-input[type="text"]:focus,
-input[type="e-mail"]:focus,
-input[type="tel"]:focus,
-input[type="password"]:focus {
-  background: var(--text);
-  color: var(--background);
+span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
 }
 
 option {
   background: var(--background);
   color: var(--text);
-  font-weight: bold;
 }
 
-.settings textarea {
-  height: 60vh;
-  resize: none;
-}
-
-button {
-  background: transparent;
-  border: none;
-  border-radius: 30px;
-  padding: 0.3rem;
+.card {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
-}
-
-button::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  border-radius: 30px;
-  background: var(--text);
-  background-blend-mode: difference;
-  opacity: 0.3;
-  transform: scale(0);
-  filter: invert(1);
-  transition: all 0.3s ease;
-}
-
-button:hover::after {
-  transform: scale(1);
-}
-
-button:active {
-  transform: translateY(4px);
-  box-shadow: 0 0 0 0;
-}
-
-button * {
-  mix-blend-mode: exclusion;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-button:hover {
-  background-color: var(--button-background);
-  background-blend-mode: exclusion;
-}
-
-.clickable {
-  background: transparent;
-  color: white;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-background-composite: exclusion;
-  background-blend-mode: exclusion;
-}
-
-.clickable:hover {
-  background: rgba(100, 100, 100);
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-background-composite: exclusion;
-  background-blend-mode: exclusion;
+  background: var(--primary);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  gap: 0.2rem;
 }
 
 .actions {
@@ -264,155 +108,178 @@ button:hover {
   gap: 0.5rem;
 }
 
-.card button {
+input,
+select,
+textarea {
   background: var(--background);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  padding: 0.5rem 1rem;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-}
-
-.test {
-  display: flex;
-  height: max-content;
-}
-
-.form-container,
-.form,
-.recents-container {
-  position: relative;
-  display: flex;
-  gap: 1rem;
-  flex-direction: column;
-  padding: 0.5rem 0;
-}
-
-.recents-container {
-  flex-wrap: nowrap;
-}
-
-.form-container {
-  width: 100%;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0;
-}
-
-.form-container .actions {
-  margin-top: 0.5rem;
-  height: 50px;
-}
-
-.form-container .actions button {
-  background: var(--primary);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.form label {
-  width: 100%;
-}
-
-.main-area {
-  flex: 1;
-  width: 100%;
-  display: flex;
-  gap: 2rem;
-  flex-wrap: nowrap;
-  justify-content: start;
-  align-items: start;
-}
-
-.recents-container {
-  min-height: 55px;
-  width: 250px;
-  height: 100%;
-  border-right: 1px solid var(--text);
-  overflow: auto;
-}
-
-.recents-container .recent {
-  min-height: 40px;
-  text-overflow: clip;
-  overflow: hidden;
-  padding: 0.4rem;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
   width: 90%;
-}
-
-.recents-container .recent.selected {
-  background: var(--text);
-  color: var(--primary);
-}
-
-.form {
-  max-height: calc(100vh - 150px - 46px);
-  min-width: 500px;
-  flex: 2;
-  overflow-y: auto;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: start;
-  padding: 1rem 0rem;
-}
-
-.form label {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-footer {
-  background: var(--background);
-  width: 100%;
-  text-align: center;
-  padding: 0.2rem;
+  padding: 0.3rem 0.6rem;
   font-weight: bold;
 }
 
-::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
-  background: transparent;
-  padding: 3px;
-  transition: all 0.3s ease;
+input:focus,
+select:focus,
+textarea:focus {
+  background: var(--text);
+  color: var(--primary);
+  transform: scale(1.02);
+}
+
+.card button {
   background: var(--background);
-  border-radius: 10px;
+}
+
+.settings,
+.dialog {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(3px);
+}
+
+.dialog .card {
+  max-width: 70%;
+  max-height: 80%;
+}
+
+.settings .card {
+  width: 70%;
+  height: 80%;
+}
+
+.settings textarea {
+  flex: 2;
+  resize: none;
+  overflow: auto;
+}
+
+main {
+  position: relative;
+  flex: 2;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+}
+
+footer {
+  position: relative;
+  display: flex;
+  flex: 0;
+  padding: 0.3rem;
+  align-items: center;
+  justify-content: center;
+}
+
+::-webkit-scrollbar {
+  display: flex;
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  padding: 3px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--primary);
   border-radius: 10px;
+  height: 5px;
+  width: 5px;
   transition: all 0.3s ease;
-  margin: 0 3px;
-  padding: 3px;
 }
 
-@media (width < 800px) {
-  .main-area {
-    flex-direction: column;
-  }
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text);
+}
 
-  .form {
-    max-height: calc(100vh - 150px - 46px);
-  }
+/* form */
+.form-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 2;
+  width: 90%;
+  justify-self: center;
+  height: 100%;
+}
 
-  .recents-container {
-    border: none;
-    border-bottom: 1px solid var(--text);
-    width: 100%;
-    gap: 1rem;
-    height: 75px;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    overflow-y: hidden;
-    overflow-x: auto;
-  }
+.main-area {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 0.3rem;
+  width: 100%;
+  height: 100%;
+  gap: 1.2rem;
+  overflow: hidden;
+}
 
-  .recents-container .recent {
-    min-width: 200px;
-    max-width: 500px;
-    height: 40px;
-  }
+.recents-container {
+  display: flex;
+  flex-direction: row;
+  padding-right: 0.5rem;
+  width: 100%;
+  position: relative;
+  overflow: visible;
+  gap: 0.5rem;
+}
+
+.recent {
+  min-width: 200px;
+}
+
+.form {
+  display: flex;
+  flex: 2;
+  gap: 1rem;
+  height: 70%;
+}
+
+.form form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.6rem;
+  overflow: visible;
+}
+
+.form form textarea {
+  min-height: 350px;
+  width: 100%;
+}
+
+.input-container {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: center;
+  text-align: center;
+}
+
+label input {
+  width: 100%;
+}
+
+.hover {
+  display: block;
+  position: relative;
+  overflow: auto;
+  padding: 0.5rem;
+}
+
+.recent.selected {
+  background: var(--text);
+  color: var(--primary);
 }
