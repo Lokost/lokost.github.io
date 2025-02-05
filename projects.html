@@ -4,17 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/style.css" />
-    <link rel="stylesheet" href="styles/projects.css" />
     <title>Projetos - Lokost</title>
   </head>
   <body>
-    <script type="module" src="scripts/build_base.js"></script>
-    <header></header>
+    <header>
+      <div class="logo">
+        <img src="images/logo.png" alt="" />
+        <h1>Lokost</h1>
+      </div>
+      <label class="menu">
+        <input type="checkbox" id="toggleMenu" />
+        <span class="menu close material-symbols-outlined">menu</span>
+        <span class="menu open material-symbols-outlined">close</span>
+        <div class="menu-content">
+          <div class="menu-item" onclick="location.href = '/'">Início</div>
+          <div class="menu-item selected">Projetos</div>
+          <div class="menu-item">Beecrowd</div>
+          <div class="menu-item" onclick="location.href = '/freelancer'">Freelancer</div>
+        </div>
+      </label>
+    </header>
     <main>
       <h1>Projetos</h1>
-      <div id="projects"></div>
+      <div class="grid" id="projects"></div>
     </main>
-    <footer></footer>
-    <script type="module" src="scripts/projects.js"></script>
+    <footer>@ Gabriel Gomes <span id="anoAtual"></span></footer>
   </body>
+  <script src="scripts/projects.js" type="module"></script>
+  <script>
+    const atualAno = document.getElementById("anoAtual");
+    const today = new Date();
+
+    atualAno.innerText = today.getFullYear();
+  </script>
 </html>

@@ -1,166 +1,209 @@
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0");
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap");
 
-/* geral settings */
 * {
-  padding: 0;
   margin: 0;
-  outline: none;
-  font-family: "kanit", "Arial", sans-serif;
+  padding: 0;
+  font-family: Kanit;
+  user-select: none;
 }
 
-/* body settings */
+:root {
+  --background: rgba(250, 250, 250);
+  --text: black;
+  --primary: rgba(50, 20, 20);
+  --onprimary: white;
+  --secondary: rgba(240, 240, 240);
+}
+
 body {
-  min-height: 100vh;
   display: flex;
+  background: var(--background);
+  width: 100vw;
   flex-direction: column;
-  justify-content: space-between;
-  background: #111;
-  color: white;
+  min-height: 100vh;
 }
 
-/* header  and components of yours */
 header {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  padding: 1rem;
   align-items: center;
+  background: var(--primary);
+  color: var(--onprimary);
+  gap: 1rem;
 }
 
 header .logo {
-  margin: 1rem;
   display: flex;
-  align-items: center;
   gap: 1rem;
-  color: white;
-  text-decoration: none;
+  align-items: center;
 }
 
 header .logo img {
-  height: 64px;
+  height: 50px;
+  aspect-ratio: 1;
+  display: block;
+  object-fit: contain;
 }
 
 header .menu {
+  position: relative;
   display: flex;
-  height: 96px;
-}
-
-header .toggle-menu {
-  display: none;
-  justify-content: center;
   align-items: center;
-  padding: 0 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  height: 96px;
+  justify-content: center;
 }
 
-/* menu button */
-.menu-button {
-  color: white;
-  text-decoration: none;
+header .menu.open {
+  display: none;
+}
+
+header .menu.close {
   display: flex;
-  gap: 0.5rem;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s ease;
-  padding: 0.4em 0.4em;
 }
 
-.menu-button.active {
-  background: white;
-  color: black;
+header .menu input[type="checkbox"] {
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.menu-button:hover {
-  background: white;
-  color: #222;
-}
-
-header .menu .menu-button {
-  padding-right: 1rem;
-}
-
-/* aside menu and components of yours */
-aside.menu {
-  display: none;
-  flex-direction: column;
-  width: 300px;
-  height: 100vh;
+header .menu .menu-content {
   position: fixed;
-  right: 0;
-  background-color: #222;
-  box-shadow: -10px 0 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  top: 53px;
+  left: 0;
+  width: 100vw;
+  background: var(--primary);
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  transform: scaleY(0);
   z-index: 1000;
 }
 
-aside .toggle-menu {
-  text-align: end;
-  padding: 1rem;
-  cursor: pointer;
+header .menu input[type="checkbox"]:checked ~ .open {
+  display: flex;
 }
 
-.back-shadow {
-  background: rgba(0, 0, 0, 0.3);
+header .menu input[type="checkbox"]:checked ~ .close {
   display: none;
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  z-index: 990;
-  cursor: pointer;
-  backdrop-filter: blur(2px);
 }
 
-.toggle-menu:hover {
-  background: white;
-  color: black;
+header .menu input[type="checkbox"]:checked ~ .menu-content {
+  transform: scaleY(1);
+  top: 80px;
 }
 
-/* general footer */
-footer {
-  margin-top: 2rem;
-  background: #000;
-  padding: 0.5rem;
-  color: white;
+header .menu .menu-content .menu-item {
+  width: 100px;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+}
+
+header .menu .menu-content .menu-item:hover,
+.menu-item.selected {
+  background: var(--onprimary);
+  color: var(--primary);
+}
+
+main {
+  display: flex;
+  flex: 2;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  padding: 0 5% 2rem 5%;
+}
+
+.banner {
+  position: relative;
+  display: flex;
+  width: 100vw;
+  height: 400px;
+}
+
+.banner .image {
+  height: 100%;
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top;
+  position: absolute;
+}
+
+.banner .text {
+  position: absolute;
+  color: rgba(255, 255, 255);
+  mix-blend-mode: exclusion;
+  height: 100%;
+  width: 40vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.banner .text.right {
+  right: 5vw;
+}
+
+.banner .text.left {
+  left: 5vw;
+}
+
+footer {
+  background: var(--primary);
+  color: var(--onprimary);
+  padding: 0.3rem;
   text-align: center;
 }
 
-/* general content body */
-main {
-  margin: 0rem 20%;
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
   display: flex;
   flex-direction: column;
+  background: var(--secondary);
+  padding: 1rem;
+  aspect-ratio: 1;
+  overflow: hidden;
+  width: 250px;
   align-items: center;
-  gap: 1.2rem;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  transition: all 0.3s ease;
 }
 
-/* animations */
-@keyframes show-menu {
-  0% {
-    right: -300px;
-  }
-  100% {
-    right: 0;
-  }
+.card:hover {
+  transform: scale(1.15);
+  z-index: 100;
 }
 
-@keyframes fade {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
+.card img {
+  width: 50%;
+  aspect-ratio: 1;
+  display: block;
+  object-fit: contain;
 }
 
-/* responsivity */
-@media (width < 700px) {
-  header .toggle-menu {
-    display: flex;
-  }
-
-  header .menu {
-    display: none;
-  }
+a {
+  color: var(--text);
+  text-transform: none;
+  text-decoration: none;
 }

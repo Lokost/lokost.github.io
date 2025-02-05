@@ -1,3 +1,141 @@
+function idGenerator() {
+  return Math.random().toString(10).substring(2, 15);
+}
+
+class FormElement {
+  constructor(
+    options = {
+      type: "text",
+      values: [],
+      content: "",
+      onupdate: () => {},
+    }
+  ) {
+    this.element = document.createElement("label");
+    this.element.classList.add("input-container");
+    this.id = idGenerator();
+
+    this.values = options.values || [];
+    this.content = options.content || "";
+    this.onupdate = options.onupdate || (() => {});
+    this.type = options.type || "text";
+
+    console.log(this.content, this.type, this.values);
+  }
+
+  set type(type) {
+    this._type = type;
+    if (type == "conditional") {
+      this.element.classList.add("conditional");
+    } else {
+      this.element.classList.remove("conditional");
+    }
+
+    const types = {
+      text: () => this.text(),
+      select: () => this.textWithOptions(),
+      textarea: () => this.textArea(),
+      conditional: () => this.conditional(),
+      default: () => this.text(),
+    };
+    console.log(type);
+    types[type]();
+  }
+
+  get type() {
+    return this._type;
+  }
+
+  set visible(value) {
+    if (value) {
+      this.element.style.display = "block";
+    } else {
+      this.element.style.display = "none";
+    }
+  }
+
+  get visible() {
+    return this.element.style.display == "block";
+  }
+
+  set value(value) {
+    if (this.type == "conditional") {
+      this.input.checked = value;
+    } else {
+      this.input.value = value;
+    }
+  }
+
+  get value() {
+    if (this.type == "conditional") {
+      return this.input.checked ? true : false;
+    } else {
+      return this.input.value;
+    }
+  }
+
+  toggleValues(value) {
+    this.values.forEach((e) => {
+      e.visible = value;
+    });
+  }
+
+  text() {
+    this.element.innerHTML = `
+      ${this.content}
+      <input type="text" id="${this.id}" placeholder="Preencha com ${this.content}" />
+    `;
+
+    this.input = this.element.querySelector("input");
+    this.input.oninput = (e) => {
+      this.value = e.target.value;
+      this.onupdate(e.target);
+    };
+  }
+
+  textWithOptions() {
+    this.element.innerHTML = `
+      ${this.content}
+      <input type="text" id="${this.id}" placeholder="Preencha com ${
+      this.content
+    }" list="${this.id}-datalist" />
+      <datalist id="${this.id}-datalist">
+        ${this.values.map((v) => `<option value="${v}">${v}</option>`)}
+      </datalist>
+    `;
+
+    this.input = this.element.querySelector("input");
+    this.input.oninput = (e) => {
+      this.onupdate(e.target);
+    };
+  }
+
+  textArea() {
+    this.element.innerHTML = `
+      ${this.content}
+      <textarea id="${this.id}" placeholder="Preencha com ${this.content}"></textarea>
+    `;
+
+    this.input = this.element.querySelector("textarea");
+    this.input.oninput = (e) => {
+      this.onupdate(e.target);
+    };
+  }
+
+  conditional() {
+    this.element.innerHTML = `
+      <input type="checkbox" id="${this.id}" placeholder="Preencha com ${this.content}" />
+      ${this.content}
+    `;
+
+    this.input = this.element.querySelector("input");
+    this.input.onchange = (e) => {
+      this.toggleValues(e.target.checked);
+      this.onupdate(e.target);
+    };
+  }
+}
+
 export default class FormConstructor {
   constructor(dialogFunction) {
     this.dialogFunction = dialogFunction;
@@ -35,6 +173,7 @@ export default class FormConstructor {
     this.content = {};
     this.getContent(this.container);
     this.settings = "";
+    this.actual;
     console.log(this.content);
   }
 
@@ -56,18 +195,19 @@ export default class FormConstructor {
     this.content.recents.innerHTML = "";
     this.recents = [];
     this.elements = [];
-    this.convertor();
+    this.converter();
   }
 
   get settings() {
     return this._settings;
   }
 
-  convertor() {
+  converter() {
     const settings = this.settings.split("\n").map((s) => s.trim());
     let holder = "";
     let optionsHolder = [];
     let getOptions = false;
+    let conditional = false;
     this.content.mainForm.innerHTML = "";
     for (let i = 0; i < settings.length; i++) {
       let line = settings[i];
@@ -88,169 +228,82 @@ export default class FormConstructor {
       }
 
       if (optionsHolder.length > 0 && !getOptions) {
-        this.getElement("select", holder, optionsHolder);
+        if (conditional) {
+          optionsHolder = optionsHolder.map((o) => {
+            if (o.startsWith("+"))
+              return new FormElement({
+                type: "textarea",
+                content: o.replace("+", "").trim(),
+              });
+            else if (o.endsWith(":"))
+              return new FormElement({
+                type: "text",
+                content: o.replace(":", "").trim(),
+              });
+            else return new FormElement({ type: "text", content: o.trim() });
+          });
 
+          this.elements.push(
+            new FormElement({
+              type: "conditional",
+              content: holder.replace("?", ""),
+              values: optionsHolder,
+            })
+          );
+        } else {
+          this.elements.push(
+            new FormElement({
+              type: "select",
+              content: holder,
+              values: optionsHolder,
+            })
+          );
+        }
         optionsHolder = [];
-        continue;
       } else {
-        if (line.endsWith(":")) {
-          holder = line.replace(":", "");
+        conditional = line.endsWith("?");
+        if (line.endsWith(":") || line.endsWith("?")) {
+          holder = line.replace(":", "").replace("?", "").trim();
           getOptions = true;
           continue;
         } else {
           if (line.startsWith("+"))
-            this.getElement("textarea", line.replace("+", "").trim());
-          else this.getElement("text", line);
+            this.elements.push(
+              new FormElement({
+                type: "textarea",
+                content: line.replace("+", "").trim(),
+              })
+            );
+          else
+            this.elements.push(
+              new FormElement({ type: "text", content: line.trim() })
+            );
         }
       }
     }
   }
 
-  idGenerator() {
-    return Math.random().toString(10).substring(2, 15);
-  }
-
-  getElement(type, content, options = []) {
-    let element = null;
-    switch (type) {
-      case "text":
-        element = this.textInput(content);
-        break;
-      case "textarea":
-        element = this.textArea(content);
-        break;
-      case "select":
-        element = this.textWithOptions(content, options);
-        break;
-      default:
-        element = null;
-    }
-
-    if (element != null) {
-      this.elements.push(element);
-      console.log(this.elements);
-      this.content.mainForm.append(element.element);
-    }
-  }
-
-  textInput(content) {
-    const container = document.createElement("label");
-    container.classList.add("input-container");
-    const id = this.idGenerator();
-    container.innerHTML = `
-      ${content}
-      <input type="text" id="${id}" placeholder="Preencha com ${content}">
-    `;
-
-    console.log(container);
-
-    const input = container.querySelector("input");
-    input.onfocus = () => {
-      input.scrollIntoView({ behavior: "smooth", block: "center" });
-    };
-
-    input.oninput = (e) => {
-      this.recents.find((i) => i.id == this.actual)[id].content =
-        e.target.value;
-      this.updateActual();
-    };
-
-    return {
-      id: id,
-      element: container,
-      input: input,
-      type: "text",
-      label: content,
-    };
-  }
-
-  textWithOptions(content, options) {
-    const container = document.createElement("label");
-    container.classList.add("input-container");
-    const id = this.idGenerator();
-    const dataId = this.idGenerator();
-    container.innerHTML = `
-      ${content}
-      <input type="text" id="${id}" placeholder="Preencha com ${content}" list="${dataId}" />
-      <datalist id="${dataId}">
-        ${options.map((o) => `<option value="${o}">${o}</option>`)}
-      </datalist>
-    `;
-
-    const input = container.querySelector("input");
-    input.onfocus = () => {
-      input.scrollIntoView({ behavior: "smooth", block: "center" });
-    };
-
-    input.oninput = (e) => {
-      this.recents.find((i) => i.id == this.actual)[id].content =
-        e.target.value;
-      this.updateActual();
-    };
-
-    return {
-      id: id,
-      element: container,
-      input: input,
-      type: "select",
-      label: content,
-    };
-  }
-
-  textArea(content) {
-    const container = document.createElement("label");
-    container.classList.add("input-container");
-    const id = this.idGenerator();
-    container.innerHTML = `
-      ${content}
-      <textarea id="${id}" placeholder="Preencha com ${content}"></textarea>
-    `;
-    console.log(container);
-
-    const input = container.querySelector("textarea");
-    input.onfocus = () => {
-      input.scrollIntoView({ behavior: "smooth", block: "center" });
-    };
-
-    input.oninput = (e) => {
-      this.recents.find((i) => i.id == this.actual)[id].content =
-        e.target.value;
-      this.updateActual();
-    };
-
-    return {
-      id: id,
-      input: input,
-      element: container,
-      type: "textarea",
-      label: content,
-    };
-  }
-
   createNew() {
-    this.actual = this.idGenerator();
+    this.actual = idGenerator();
     this.elements.forEach((e) => {
       e.input.value = "";
+      e.value = "";
     });
 
     this.recents.push({
       id: this.actual,
-      ...this.elements.reduce((acc, element) => {
-        acc[element.id] = {
-          content: "",
-          type: element.type,
-          label: element.label,
-        };
-
+      ...this.elements.reduce((acc, e) => {
+        acc[e.id] = { label: e.label, content: e.input.value };
         return acc;
       }, {}),
     });
+
     this.showRecents();
     this.toTop();
   }
 
   toTop() {
-    this.content.mainForm.scrollTo({ top: 0, behavior: "smooth" });
+    this.content.mainForm.scrollTop = 0;
     this.elements[0].input.focus();
   }
 
@@ -260,17 +313,17 @@ export default class FormConstructor {
     document.getElementById(id).classList.add("selected");
 
     this.elements.forEach((e) => {
-      e.input.value = this.recents.find((i) => i.id == id)[e.id].content;
+      e.value = this.recents.find((i) => i.id == id)[e.id].content;
     });
     this.toTop();
   }
 
   copyFormated() {
-    let formated = "";
-    this.elements.forEach((e) => {
-      if (e.input.value.length > 0)
-        formated += `${e.label}: ${e.input.value}\n`;
-    });
+    const formated = this.elements.reduce((acc, e) => {
+      if (e.value.length > 0) acc += `${e.label}: ${e.value}\n`;
+      return acc;
+    }, "");
+
     navigator.clipboard.writeText(formated).then(() => {
       this.dialogFunction(
         "Copiado",
@@ -300,22 +353,50 @@ export default class FormConstructor {
     }
   }
 
-  updateActual() {
-    document.getElementById(this.actual).innerText = (
-      this.elements[0].label +
-      ": " +
-      this.elements[0].input.value
-    ).slice(0, 50);
+  updateActual(value) {
+    this.recents = this.recents.map((r) => {
+      if (r.id == this.actual) {
+        r[this.elements[0].id].content = value;
+      }
+      return r;
+    });
+    this.showRecents();
   }
 
   build() {
+    this.elements.forEach((element) => {
+      if (element.type == "conditional") {
+        this.content.mainForm.append(element.element);
+        return;
+      } else {
+        element.onupdate = (e) => {
+          e.onfocus = () => {
+            e.scrollIntoView({ behavior: "smooth", block: "center" });
+          };
+        };
+
+        this.content.mainForm.append(element.element);
+      }
+    });
+
+    this.elements[0].input.focus();
+    if (this.elements[0].type != "conditional")
+      this.elements[0].onupdate = (e) => {
+        e.onfocus = () => {
+          e.scrollIntoView({ behavior: "smooth", block: "center" });
+        };
+        updateActual(e.target.value);
+      };
+
     this.createNew();
     this.content.copyContent.onclick = () => {
       this.copyFormated();
     };
+
     this.content.newForm.onclick = () => {
       this.createNew();
     };
+
     return this.container;
   }
 }

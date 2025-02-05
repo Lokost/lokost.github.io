@@ -1,4 +1,4 @@
-import FormConstructor from "./formConstructor.js";
+import FormConstructor from "./formConstructor old.js";
 
 const formSetting = document.getElementById("form-setting");
 const copySetting = document.getElementById("copy-setting");

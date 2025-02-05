@@ -51,6 +51,12 @@ const projects = [
     "images/Lokost Games new logo by clay.png",
     "lokost-games"
   ),
+  new projectCard(
+    "Loko Form",
+    "Formulário customizado sem salvamento local ou núvem",
+    "images/Lokost Games new logo by clay.png",
+    "loko-form"
+  ),
 ];
 
 console.log(projectGrid);
