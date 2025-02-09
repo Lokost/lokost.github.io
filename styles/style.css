@@ -207,3 +207,64 @@ a {
   text-transform: none;
   text-decoration: none;
 }
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 15pt;
+  padding: 0.3rem 0.5rem;
+  width: 80%;
+  font-weight: bold;
+}
+
+.exercise h1 {
+  font-size: 30pt;
+}
+
+.exercise .languages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.exercise .languages .language {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  padding: 5px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.exercise .languages .language a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  aspect-ratio: 1;
+  object-fit: contain;
+  mix-blend-mode: exclusion;
+}
+
+.exercise .languages .language:hover {
+  background: var(--onprimary);
+}
+
+.code {
+  background: var(--primary);
+  color: var(--onprimary);
+  text-align: left;
+  align-items: start;
+  padding: 1rem;
+  justify-content: start;
+  user-select: text;
+  width: 80%;
+  min-height: 400px;
+}

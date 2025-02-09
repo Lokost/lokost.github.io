@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beecrowd</title>
+    <link rel="stylesheet" href="../../styles/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="../images/logo.png" alt="" />
+        <h1>Lokost</h1>
+      </div>
+      <label class="menu">
+        <input type="checkbox" id="toggleMenu" />
+        <span class="menu close material-symbols-outlined">menu</span>
+        <span class="menu open material-symbols-outlined">close</span>
+        <div class="menu-content">
+          <div class="menu-item" onclick="location.href = '../index.html'">
+            Início
+          </div>
+          <div class="menu-item" onclick="location.href = '../projects.html'">
+            Projetos
+          </div>
+          <div class="menu-item selected">Beecrowd</div>
+          <div class="menu-item" onclick="location.href = '/freelancer'">
+            Freelancer
+          </div>
+        </div>
+      </label>
+    </header>
+    <main>
+      <div class="banner">
+        <img src="../images/beecrowd banner.png" alt="" class="image" />
+        <div class="text left">
+          <h1 id="code"></h1>
+          <p id="title"></p>
+        </div>
+      </div>
+      <p id="description"></p>
+      <h2>Entrada</h2>
+      <p id="input"></p>
+      <h2>Saída</h2>
+      <p id="output"></p>
+      <h2>Código</h2>
+      <textarea class="code" id="codeShow" readonly></textarea>
+    </main>
+    <script type="module" src="exercise.js"></script>
+  </body>
+</html>

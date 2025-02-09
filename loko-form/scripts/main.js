@@ -9,6 +9,7 @@ const settingsBtn = document.getElementById("settings-btn");
 const formConstructor = new FormConstructor(openDialog);
 const theme = document.getElementById("theme");
 const fontSize = document.getElementById("font-size");
+const copyMode = document.getElementById("copy-mode");
 
 function openDialog(title, content) {
   const dialog = document.getElementById("dialog");
@@ -81,8 +82,10 @@ window.onkeydown = (e) => {
   if (e.ctrlKey) {
     switch (e.key) {
       case "c":
-        if (formConstructor.settings.length > 0) formConstructor.copyFormated();
-        else openDialog("Erro", "O formulário não pode estar vazio");
+        if (formConstructor.settings.length > 0) {
+          console.log(copyMode.value);
+          formConstructor.copyFormated(copyMode.value);
+        } else openDialog("Erro", "O formulário não pode estar vazio");
         break;
     }
   } else if (e.altKey) {

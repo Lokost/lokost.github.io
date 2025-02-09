@@ -265,18 +265,36 @@ export default class FormConstructor {
     this.toTop();
   }
 
-  copyFormated() {
-    let formated = "";
-    this.elements.forEach((e) => {
-      if (e.input.value.length > 0)
-        formated += `${e.label}: ${e.input.value}\n`;
-    });
-    navigator.clipboard.writeText(formated).then(() => {
-      this.dialogFunction(
-        "Copiado",
-        "O formulário foi copiado para a área de transferência"
-      );
-    });
+  copyFormated(mode = "") {
+    console.log(mode);
+    if (mode == "text" || mode.length < 1) {
+      let formated = "";
+      this.elements.forEach((e) => {
+        if (e.input.value.length > 0)
+          formated += `${e.label}: ${e.input.value}\n`;
+      });
+      navigator.clipboard.writeText(formated).then(() => {
+        this.dialogFunction(
+          "Copiado",
+          "O formulário foi copiado para a área de transferência"
+        );
+      });
+    } else if (mode == "json") {
+      let formated = "{\n";
+      this.elements.forEach((e, i) => {
+        if (e.input.value.length > 0)
+          formated += `  "${e.label}": "${e.input.value}"${
+            i == this.elements.length - 1 ? "" : ","
+          }\n`;
+      });
+      formated += "}";
+      navigator.clipboard.writeText(formated).then(() => {
+        this.dialogFunction(
+          "Copiado",
+          "O formulário foi copiado para a área de transferência"
+        );
+      });
+    }
   }
 
   showRecents() {

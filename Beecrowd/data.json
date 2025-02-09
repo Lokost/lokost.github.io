@@ -1,0 +1,1245 @@
+{
+  "1000": {
+    "title": "Hello World!",
+    "description": "Bem-vindo ao beecrowd! \n\nO seu primeiro programa em qualquer linguagem de programação normalmente é o \"Hello World!\". Neste primeiro problema tudo o que você precisa fazer é imprimir esta mensagem na tela.",
+    "input": "Este problema não possui nenhuma entrada.",
+    "output": "Você deve imprimir a mensagem \"Hello World!\" e em seguida o final de linha, conforme o exemplo abaixo.",
+    "languages": {
+      "cpp": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/cpp/1000.cpp",
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1000.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1000.java",
+      "javascript": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/js/1000.js",
+      "kotlin": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/kotlin/e1000.kt",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1000.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1000.py"
+    }
+  },
+  "1001": {
+    "title": "Extremamente Básico",
+    "description": "Leia 2 valores inteiros e armazene-os nas variáveis A e B. Efetue a soma de A e B atribuindo o seu resultado na variável X. Imprima X conforme exemplo apresentado abaixo. Não apresente mensagem alguma além daquilo que está sendo especificado e não esqueça de imprimir o fim de linha após o resultado, caso contrário, você receberá \"Presentation Error\".",
+    "input": "A entrada contém 2 valores inteiros.",
+    "output": "Imprima a mensagem \"X = \" (letra X maiúscula) seguido pelo valor da variável X e pelo final de linha. Cuide para que tenha um espaço antes e depois do sinal de igualdade, conforme o exemplo abaixo.",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1001.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1001.java",
+      "javascript": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/js/1001.js",
+      "kotlin": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/kotlin/e1001.kt",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1001.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1001.py"
+    }
+  },
+  "1002": {
+    "title": "Área do Círculo",
+    "description": "A fórmula para calcular a área de uma circunferência é: area = π . raio2. Considerando para este problema que π = 3.14159:\n\n - Efetue o cálculo da área, elevando o valor de raio ao quadrado e multiplicando por π.",
+    "input": "A entrada contém um valor de ponto flutuante (dupla precisão), no caso, a variável raio.",
+    "output": "Apresentar a mensagem \"A=\" seguido pelo valor da variável area, conforme exemplo abaixo, com 4 casas após o ponto decimal. Utilize variáveis de dupla precisão (double). Como todos os problemas, não esqueça de imprimir o fim de linha após o resultado, caso contrário, você receberá \"Presentation Error\".",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1002.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1002.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1002.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1002.py"
+    }
+  },
+  "1003": {
+    "title": "Soma Simples",
+    "description": "Leia dois valores inteiros, no caso para variáveis A e B. A seguir, calcule a soma entre elas e atribua à variável SOMA. A seguir escrever o valor desta variável.",
+    "input": "O arquivo de entrada contém 2 valores inteiros.",
+    "output": "Imprima a mensagem \"SOMA\" com todas as letras maiúsculas, com um espaço em branco antes e depois da igualdade seguido pelo valor correspondente à soma de A e B. Como todos os problemas, não esqueça de imprimir o fim de linha após o resultado, caso contrário, você receberá \"Presentation Error\".",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1003.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1003.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1003.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1003.py"
+    }
+  },
+  "1004": {
+    "title": "Produto Simples",
+    "description": "Leia dois valores inteiros. A seguir, calcule o produto entre estes dois valores e atribua esta operação à variável PROD. A seguir mostre a variável PROD com mensagem correspondente.",
+    "input": "O arquivo de entrada contém 2 valores inteiros.",
+    "output": "Imprima a mensagem \"PROD\" e a variável PROD conforme exemplo abaixo, com um espaço em branco antes e depois da igualdade. Não esqueça de imprimir o fim de linha após o produto, caso contrário seu programa apresentará a mensagem: “Presentation Error”.",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1004.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1004.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1004.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1004.py"
+    }
+  },
+  "1005": {
+    "title": "Média 1",
+    "description": "Leia 2 valores de ponto flutuante de dupla precisão A e B, que correspondem a 2 notas de um aluno. A seguir, calcule a média do aluno, sabendo que a nota A tem peso 3.5 e a nota B tem peso 7.5 (A soma dos pesos portanto é 11). Assuma que cada nota pode ir de 0 até 10.0, sempre com uma casa decimal.",
+    "input": "O arquivo de entrada contém 2 valores com uma casa decimal cada um.",
+    "output": "Imprima a mensagem \"MEDIA\" e a média do aluno conforme exemplo abaixo, com 5 dígitos após o ponto decimal e com um espaço em branco antes e depois da igualdade. Utilize variáveis de dupla precisão (double) e como todos os problemas, não esqueça de imprimir o fim de linha após o resultado, caso contrário, você receberá \"Presentation Error\".",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1005.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1005.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1005.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1005.py"
+    }
+  },
+  "1006": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1006.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1006.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1006.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1006.py"
+    }
+  },
+  "1007": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1007.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1007.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1007.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1007.py"
+    }
+  },
+  "1008": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1008.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1008.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1008.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1008.py"
+    }
+  },
+  "1009": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1009.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1009.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1009.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1009.py"
+    }
+  },
+  "1010": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1010.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1010.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1010.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1010.py"
+    }
+  },
+  "1011": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1011.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1011.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1011.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1011.py"
+    }
+  },
+  "1012": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1012.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1012.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1012.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1012.py"
+    }
+  },
+  "1013": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1013.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1013.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1013.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1013.py"
+    }
+  },
+  "1014": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1014.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1014.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1014.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1014.py"
+    }
+  },
+  "1015": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1015.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1015.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1015.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1015.py"
+    }
+  },
+  "1016": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1016.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1016.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1016.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1016.py"
+    }
+  },
+  "1017": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1017.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1017.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1017.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1017.py"
+    }
+  },
+  "1018": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1018.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1018.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1018.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1018.py"
+    }
+  },
+  "1019": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1019.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1019.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1019.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1019.py"
+    }
+  },
+  "1020": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1020.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1020.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1020.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1020.py"
+    }
+  },
+  "1021": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1021.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1021.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1021.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1021.py"
+    }
+  },
+  "1035": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1035.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1035.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1035.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1035.py"
+    }
+  },
+  "1036": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1036.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1036.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1036.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1036.py"
+    }
+  },
+  "1037": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1037.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1037.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1037.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1037.py"
+    }
+  },
+  "1038": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1038.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1038.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1038.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1038.py"
+    }
+  },
+  "1040": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1040.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1040.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1040.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1040.py"
+    }
+  },
+  "1041": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1041.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1041.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1041.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1041.py"
+    }
+  },
+  "1042": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1042.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1042.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1042.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1042.py"
+    }
+  },
+  "1043": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1043.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1043.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1043.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1043.py"
+    }
+  },
+  "1044": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1044.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1044.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1044.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1044.py"
+    }
+  },
+  "1045": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1045.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1045.java",
+      "lua": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Lua/Iniciante/1045.lua",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1045.py"
+    }
+  },
+  "1046": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1046.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1046.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1046.py"
+    }
+  },
+  "1047": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1047.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1047.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1047.py"
+    }
+  },
+  "1048": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1048.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1048.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1048.py"
+    }
+  },
+  "1049": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1049.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1049.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1049.py"
+    }
+  },
+  "1050": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1050.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1050.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1050.py"
+    }
+  },
+  "1051": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1051.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1051.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1051.py"
+    }
+  },
+  "1052": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1052.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1052.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1052.py"
+    }
+  },
+  "1059": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1059.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1059.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1059.py"
+    }
+  },
+  "1060": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1060.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1060.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1060.py"
+    }
+  },
+  "1061": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1061.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1061.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1061.py"
+    }
+  },
+  "1064": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1064.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1064.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1064.py"
+    }
+  },
+  "1065": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1065.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1065.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1065.py"
+    }
+  },
+  "1066": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1066.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1066.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1066.py"
+    }
+  },
+  "1067": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1067.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1067.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1067.py"
+    }
+  },
+  "1070": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1070.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1070.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1070.py"
+    }
+  },
+  "1071": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1071.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1071.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1071.py"
+    }
+  },
+  "1072": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1072.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1072.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1072.py"
+    }
+  },
+  "1073": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1073.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1073.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1073.py"
+    }
+  },
+  "1074": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1074.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1074.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1074.py"
+    }
+  },
+  "1075": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1075.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1075.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1075.py"
+    }
+  },
+  "1078": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1078.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1078.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1078.py"
+    }
+  },
+  "1079": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1079.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1079.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1079.py"
+    }
+  },
+  "1080": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1080.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1080.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1080.py"
+    }
+  },
+  "1094": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1094.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1094.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1094.py"
+    }
+  },
+  "1095": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1095.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1095.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1095.py"
+    }
+  },
+  "1096": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1096.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1096.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1096.py"
+    }
+  },
+  "1097": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1097.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1097.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1097.py"
+    }
+  },
+  "1098": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1098.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1098.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1098.py"
+    }
+  },
+  "1099": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1099.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1099.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1099.py"
+    }
+  },
+  "1101": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1101.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1101.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1101.py"
+    }
+  },
+  "1103": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1103.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1103.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1103.py"
+    }
+  },
+  "1113": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1113.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1113.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1113.py"
+    }
+  },
+  "1114": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1114.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1114.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1114.py"
+    }
+  },
+  "1115": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1115.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1115.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1115.py"
+    }
+  },
+  "1116": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1116.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1116.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1116.py"
+    }
+  },
+  "1117": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1117.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1117.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1117.py"
+    }
+  },
+  "1118": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1118.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1118.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1118.py"
+    }
+  },
+  "1131": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1131.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1131.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1131.py"
+    }
+  },
+  "1132": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1132.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1132.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1132.py"
+    }
+  },
+  "1133": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1133.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1133.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1133.py"
+    }
+  },
+  "1134": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1134.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1134.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1134.py"
+    }
+  },
+  "1142": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1142.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1142.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1142.py"
+    }
+  },
+  "1143": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1143.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1143.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1143.py"
+    }
+  },
+  "1144": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1144.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1144.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1144.py"
+    }
+  },
+  "1145": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1145.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1145.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1145.py"
+    }
+  },
+  "1146": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1146.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1146.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1146.py"
+    }
+  },
+  "1149": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1149.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1149.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1149.py"
+    }
+  },
+  "1150": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1150.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1150.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1150.py"
+    }
+  },
+  "1151": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1151.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1151.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1151.py"
+    }
+  },
+  "1153": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1153.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1153.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1153.py"
+    }
+  },
+  "1154": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1154.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1154.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1154.py"
+    }
+  },
+  "1155": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1155.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1155.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1155.py"
+    }
+  },
+  "1156": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1156.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1156.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1156.py"
+    }
+  },
+  "1157": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1157.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1157.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1157.py"
+    }
+  },
+  "1158": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1158.go",
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1158.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1158.py"
+    }
+  },
+  "1159": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1159.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1159.py"
+    }
+  },
+  "1160": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1160.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1160.py"
+    }
+  },
+  "1164": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1164.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1164.py"
+    }
+  },
+  "1165": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1165.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1165.py"
+    }
+  },
+  "1172": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1172.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1172.py"
+    }
+  },
+  "1173": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1173.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1173.py"
+    }
+  },
+  "1174": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1174.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1174.py"
+    }
+  },
+  "1175": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1175.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1175.py"
+    }
+  },
+  "1176": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1176.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1176.py"
+    }
+  },
+  "1177": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1177.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1177.py"
+    }
+  },
+  "1178": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1178.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1178.py"
+    }
+  },
+  "1179": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1179.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1179.py"
+    }
+  },
+  "1180": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1180.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1180.py"
+    }
+  },
+  "1181": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1181.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1181.py"
+    }
+  },
+  "1182": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1182.java",
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1182.py"
+    }
+  },
+  "1183": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1183.py"
+    }
+  },
+  "1184": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1184.py"
+    }
+  },
+  "1185": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1185.py"
+    }
+  },
+  "1186": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1186.py"
+    }
+  },
+  "1187": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1187.py"
+    }
+  },
+  "1564": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1564.py"
+    }
+  },
+  "1589": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1589.py"
+    }
+  },
+  "1759": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1759.py"
+    }
+  },
+  "1789": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/1%20-%20Iniciante/1789.py"
+    }
+  },
+  "1068": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/4%20-%20estruturas%20e%20bibliotecas/1068.py"
+    }
+  },
+  "1069": {
+    "title": "",
+    "description": "",
+    "input": "",
+    "output": "",
+    "languages": {
+      "python": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Python/4%20-%20estruturas%20e%20bibliotecas/1069.py"
+    }
+  }
+}
