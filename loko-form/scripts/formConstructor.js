@@ -1,402 +1,357 @@
-function idGenerator() {
+function idGen() {
   return Math.random().toString(10).substring(2, 15);
 }
 
-class FormElement {
+class inputField {
   constructor(
-    options = {
-      type: "text",
-      values: [],
-      content: "",
-      onupdate: () => {},
-    }
+    label,
+    type,
+    placeholder,
+    extraValues = [],
+    id = null,
+    dataListId = null,
+    visible = true
   ) {
-    this.element = document.createElement("label");
-    this.element.classList.add("input-container");
-    this.id = idGenerator();
+    this.label = typeof label === "string" ? label.trim() : null;
+    this.type = type;
+    this.placeholder = placeholder.trim();
+    this.extraValues = extraValues;
+    this.dataListId = dataListId;
+    this.id = id;
+    this.container =
+      this.type == "separator"
+        ? document.createElement("span")
+        : document.createElement("label");
 
-    this.values = options.values || [];
-    this.content = options.content || "";
-    this.onupdate = options.onupdate || (() => {});
-    this.type = options.type || "text";
-
-    console.log(this.content, this.type, this.values);
+    this.visible = visible;
   }
 
-  set type(type) {
-    this._type = type;
-    if (type == "conditional") {
-      this.element.classList.add("conditional");
-    } else {
-      this.element.classList.remove("conditional");
-    }
-
+  getType() {
     const types = {
-      text: () => this.text(),
-      select: () => this.textWithOptions(),
-      textarea: () => this.textArea(),
-      conditional: () => this.conditional(),
-      default: () => this.text(),
+      text: document.createElement("input"),
+      textArea: document.createElement("textarea"),
+      select: document.createElement("select"),
+      conditional: document.createElement("input"),
+      data: document.createElement("datalist"),
+      separator: null,
     };
-    console.log(type);
-    types[type]();
-  }
 
-  get type() {
-    return this._type;
-  }
-
-  set visible(value) {
-    if (value) {
-      this.element.style.display = "block";
-    } else {
-      this.element.style.display = "none";
-    }
-  }
-
-  get visible() {
-    return this.element.style.display == "block";
-  }
-
-  set value(value) {
-    if (this.type == "conditional") {
-      this.input.checked = value;
-    } else {
-      this.input.value = value;
-    }
+    return types[this.type];
   }
 
   get value() {
-    if (this.type == "conditional") {
-      return this.input.checked ? true : false;
+    if (this.type === "conditional") {
+      return this.input.checked ? "Sim" : "Não";
+    } else if (this.type === "data") {
+      return "";
+    } else if (this.type === "select") {
+      return this.input.options[this.input.selectedIndex].text || "Nenhum";
     } else {
       return this.input.value;
     }
   }
 
-  toggleValues(value) {
-    this.values.forEach((e) => {
-      e.visible = value;
-    });
+  set value(value) {
+    if (this.type === "conditional") {
+      this.input.checked = value || false;
+    } else if (this.type === "data") {
+      return;
+    } else if (this.type === "select") {
+      if (value == "") this.input.selectedIndex = 0;
+      this.input.options[this.input.selectedIndex].text = value;
+    } else {
+      this.input.value = value;
+    }
   }
 
-  text() {
-    this.element.innerHTML = `
-      ${this.content}
-      <input type="text" id="${this.id}" placeholder="Preencha com ${this.content}" />
-    `;
-
-    this.input = this.element.querySelector("input");
-    this.input.oninput = (e) => {
-      this.value = e.target.value;
-      this.onupdate(e.target);
-    };
+  set visible(value) {
+    if (value) {
+      this.container.style.display = "flex";
+    } else {
+      this.container.style.display = "none";
+    }
   }
 
-  textWithOptions() {
-    this.element.innerHTML = `
-      ${this.content}
-      <input type="text" id="${this.id}" placeholder="Preencha com ${
-      this.content
-    }" list="${this.id}-datalist" />
-      <datalist id="${this.id}-datalist">
-        ${this.values.map((v) => `<option value="${v}">${v}</option>`)}
-      </datalist>
-    `;
-
-    this.input = this.element.querySelector("input");
-    this.input.oninput = (e) => {
-      this.onupdate(e.target);
-    };
+  get visible() {
+    return this.container.style.display === "flex";
   }
 
-  textArea() {
-    this.element.innerHTML = `
-      ${this.content}
-      <textarea id="${this.id}" placeholder="Preencha com ${this.content}"></textarea>
-    `;
+  render() {
+    if (this.type === "separator") {
+      this.container.classList.add("separator");
+      return this.container;
+    }
+    this.container.classList.add(
+      this.type != "conditional" ? "input-field" : "conditional-field"
+    );
+    this.container.innerHTML = this.label;
 
-    this.input = this.element.querySelector("textarea");
-    this.input.oninput = (e) => {
-      this.onupdate(e.target);
-    };
-  }
+    const input = this.getType();
+    input.setAttribute("placeholder", this.placeholder);
+    input.id = this.id;
 
-  conditional() {
-    this.element.innerHTML = `
-      <input type="checkbox" id="${this.id}" placeholder="Preencha com ${this.content}" />
-      ${this.content}
-    `;
+    if (this.type === "select") {
+      this.extraValues.unshift("Nenhum");
+      this.extraValues.forEach((value) => {
+        const option = document.createElement("option");
+        option.textContent = value;
+        option.setAttribute("value", value);
+        input.appendChild(option);
+      });
+    } else if (this.type === "conditional") {
+      input.type = "checkbox";
+      input.onchange = (e) => {
+        console.log(e.target.checked);
+        for (let element of this.extraValues) {
+          const htmlElement = document.getElementById(element);
+          htmlElement.value = "";
+          htmlElement.parentElement.style.display = e.target.checked
+            ? "flex"
+            : "none";
+        }
+      };
+    } else if (this.type === "data") {
+      input.id = this.id;
+      this.extraValues.forEach((value) => {
+        const option = document.createElement("option");
+        option.setAttribute("value", value);
+        input.appendChild(option);
+      });
+    } else {
+      if (this.type == "text") input.type = "text";
+      if (this.dataListId) input.setAttribute("list", this.dataListId);
+      if (this.extraValues.length > 0 && this.dataListId) {
+        input.setAttribute("list", this.dataListId);
+      }
+    }
 
-    this.input = this.element.querySelector("input");
-    this.input.onchange = (e) => {
-      this.toggleValues(e.target.checked);
-      this.onupdate(e.target);
-    };
+    if (this.type != "data")
+      input.onFocus = () => {
+        input.scrollIntoView({ behavior: "smooth", block: "center" });
+      };
+
+    this.input = input;
+    this.container.appendChild(input);
+    console.log(this.type, input);
+    return this.type != "data" ? this.container : input;
   }
 }
 
-export default class FormConstructor {
-  constructor(dialogFunction) {
-    this.dialogFunction = dialogFunction;
-    this.container = document.createElement("div");
-    this.container.classList.add("form-container");
-    this.container.innerHTML = `
-      <div class="main-area">
-        <div class="hover">
-          <div class="recents-container" id="recents"></div>
-        </div>
-        <div class="hover card form">
-          <form id="mainForm"></form>
-        </div>
-      </div>
-      <div class="actions">
-        <button id="copyContent">
-          <span>
-            <span class="material-symbols-outlined">
-              content_copy
-            </span>
-            Copiar
-          </span>
-        </button>
-        <button id="newForm">
-          <span>
-            <span class="material-symbols-outlined">
-              add
-            </span>
-            Novo
-          </span>
-        </button>
-      </div>
-    `;
-
-    this.content = {};
-    this.getContent(this.container);
-    this.settings = "";
-    this.actual;
-    console.log(this.content);
+export default class FormContructor {
+  constructor(notify) {
+    this.notify = notify;
+    this.container = document.createElement("form");
+    this.container.classList.add("form", "card");
+    this.elements = [];
+    this.recents = [];
+    this.actual = 0;
   }
 
-  getContent(element) {
-    const hover = element;
-    for (let child of hover.children) {
-      if (child.children.length > 0) {
-        this.getContent(child);
-      }
-
-      if (child.id) {
-        this.content[child.id] = child;
-      }
-    }
+  addField(
+    label,
+    type,
+    extraValues = [],
+    id = null,
+    dataListId = null,
+    visible = true
+  ) {
+    const field = new inputField(
+      label,
+      type,
+      `Preencha com ${label}`,
+      extraValues,
+      id,
+      dataListId,
+      visible
+    );
+    this.container.append(field.render());
+    if (field.type != "separator") this.elements.push(field);
   }
 
   set settings(value) {
-    this._settings = value.trim();
-    this.content.recents.innerHTML = "";
+    if (value.trim() == "") return;
+
+    this.container.innerHTML = "";
     this.recents = [];
-    this.elements = [];
-    this.converter();
-  }
-
-  get settings() {
-    return this._settings;
-  }
-
-  converter() {
-    const settings = this.settings.split("\n").map((s) => s.trim());
-    let holder = "";
-    let optionsHolder = [];
-    let getOptions = false;
-    let conditional = false;
-    this.content.mainForm.innerHTML = "";
-    for (let i = 0; i < settings.length; i++) {
-      let line = settings[i];
-      if (line == "") continue;
-      if (getOptions) {
-        getOptions = line.includes("]") ? false : true;
-        if (line.includes("]")) {
-          line = line.replace("]", "");
-        }
-
-        if (line.includes("[")) {
-          line = line.replace("[", "");
-        }
-        const content = line.split(",").map((s) => s.trim());
-
-        optionsHolder = optionsHolder.concat(content);
-        console.log(optionsHolder);
+    this.__settings = value;
+    value = value.split("\n").map((s) => s.trim());
+    let i = 0;
+    while (i < value.length) {
+      if (value[i].trim() == "") {
+        i++;
+        continue;
       }
-
-      if (optionsHolder.length > 0 && !getOptions) {
-        if (conditional) {
-          optionsHolder = optionsHolder.map((o) => {
-            if (o.startsWith("+"))
-              return new FormElement({
-                type: "textarea",
-                content: o.replace("+", "").trim(),
-              });
-            else if (o.endsWith(":"))
-              return new FormElement({
-                type: "text",
-                content: o.replace(":", "").trim(),
-              });
-            else return new FormElement({ type: "text", content: o.trim() });
+      let holder;
+      let options;
+      let type;
+      let setting = value[i];
+      if (setting == "") {
+        continue;
+      } else if (setting.endsWith(":")) {
+        type = "text";
+        let dataId;
+        if (value[i + 1].includes("[") && value[i + 1].includes("]")) {
+          dataId = idGen();
+          console.log(value[i + 1]);
+          options = value[i + 1]
+            .replace("[", "")
+            .replace("]", "")
+            .split(",")
+            .map((s) => s.trim());
+          this.addField(holder, "data", options, dataId);
+          holder = value[i].replace(":", "");
+          i++;
+        }
+        this.addField(holder, type, [], idGen(), dataId);
+      } else if (setting.endsWith("?")) {
+        holder = setting.replace("?", "");
+        type = "conditional";
+        if (value[i + 1].includes("[") && value[i + 1].includes("]")) {
+          options = value[i + 1]
+            .replace("[", "")
+            .replace("]", "")
+            .split(",")
+            .map((s) => s.trim());
+          let ids = options.map(() => idGen());
+          this.addField(holder, type, ids, idGen());
+          options.forEach((option, index) => {
+            if (option.startsWith("+")) {
+              let hold = option.replace("+", "");
+              this.addField(hold, "textArea", [], ids[index], null, false);
+            } else {
+              this.addField(option, "text", [], ids[index], null, false);
+            }
           });
-
-          this.elements.push(
-            new FormElement({
-              type: "conditional",
-              content: holder.replace("?", ""),
-              values: optionsHolder,
-            })
-          );
+          i++;
         } else {
-          this.elements.push(
-            new FormElement({
-              type: "select",
-              content: holder,
-              values: optionsHolder,
-            })
-          );
+          this.addField(holder, type, [], idGen());
         }
-        optionsHolder = [];
+      } else if (setting.endsWith(">")) {
+        type = "select";
+        holder = setting.replace(">", "");
+        options = value[i + 1]
+          .replace("[", "")
+          .replace("]", "")
+          .split(",")
+          .map((s) => s.trim());
+        this.addField(holder, type, options, idGen());
+        i++;
+      } else if (setting.startsWith("+")) {
+        holder = setting.replace("+", "");
+        type = "textArea";
+        this.addField(holder, type, [], idGen());
       } else {
-        conditional = line.endsWith("?");
-        if (line.endsWith(":") || line.endsWith("?")) {
-          holder = line.replace(":", "").replace("?", "").trim();
-          getOptions = true;
-          continue;
-        } else {
-          if (line.startsWith("+"))
-            this.elements.push(
-              new FormElement({
-                type: "textarea",
-                content: line.replace("+", "").trim(),
-              })
-            );
-          else
-            this.elements.push(
-              new FormElement({ type: "text", content: line.trim() })
-            );
-        }
+        holder = setting;
+        type = "text";
+        this.addField(holder, type, [], idGen());
       }
+      i++;
+      this.addField("", "separator");
     }
   }
 
-  createNew() {
-    this.actual = idGenerator();
-    this.elements.forEach((e) => {
-      e.input.value = "";
-      e.value = "";
-    });
-
-    this.recents.push({
-      id: this.actual,
-      ...this.elements.reduce((acc, e) => {
-        acc[e.id] = { label: e.label, content: e.input.value };
-        return acc;
-      }, {}),
-    });
-
-    this.showRecents();
-    this.toTop();
+  get settings() {
+    return this.__settings;
   }
 
-  toTop() {
-    this.content.mainForm.scrollTop = 0;
-    this.elements[0].input.focus();
-  }
-
-  loadForm(id) {
-    this.actual = id;
-    document.querySelector(".recent.selected")?.classList.remove("selected");
-    document.getElementById(id).classList.add("selected");
-
-    this.elements.forEach((e) => {
-      e.value = this.recents.find((i) => i.id == id)[e.id].content;
-    });
-    this.toTop();
-  }
-
-  copyFormated() {
-    const formated = this.elements.reduce((acc, e) => {
-      if (e.value.length > 0) acc += `${e.label}: ${e.value}\n`;
-      return acc;
-    }, "");
-
-    navigator.clipboard.writeText(formated).then(() => {
-      this.dialogFunction(
-        "Copiado",
-        "O formulário foi copiado para a área de transferência"
-      );
-    });
-  }
-
-  showRecents() {
-    if (this.recents.length > 0) {
-      this.content.recents.innerHTML = "";
-      this.recents.forEach((r) => {
-        const recentElement = document.createElement("div");
-        recentElement.classList.add("recent", "card");
-        if (r.id == this.actual) recentElement.classList.add("selected");
-        recentElement.id = r.id;
-        recentElement.innerText = (
-          r[this.elements[0].id].label +
-          ": " +
-          r[this.elements[0].id].content
-        ).slice(0, 50);
-        recentElement.onclick = () => {
-          this.loadForm(r.id);
-        };
-        this.content.recents.append(recentElement);
+  copy(mode) {
+    if (mode == "json") {
+      let data = {};
+      this.elements.forEach((element) => {
+        const value =
+          typeof element.value == "string"
+            ? element.value.trim()
+            : element.value;
+        if (value != "") data[element.label] = value;
+      });
+      navigator.clipboard.writeText(JSON.stringify(data)).then(() => {
+        this.notify(
+          "Copiado",
+          "O formulário foi copiado para a área de transferência"
+        );
+      });
+    } else if (mode == "text") {
+      let data = "";
+      this.elements.forEach((element) => {
+        const value =
+          typeof element.value == "string"
+            ? element.value.trim()
+            : element.value;
+        if (value != "") data += `${element.label}: ${value}\n`;
+      });
+      navigator.clipboard.writeText(data).then(() => {
+        this.notify(
+          "Copiado",
+          "O formulário foi copiado para a área de transferência"
+        );
       });
     }
   }
 
-  updateActual(value) {
-    this.recents = this.recents.map((r) => {
-      if (r.id == this.actual) {
-        r[this.elements[0].id].content = value;
+  createNew() {
+    if (!this.actual) this.actual = idGen();
+    this.saveRegister();
+    this.clearForm();
+
+    this.actual = idGen();
+  }
+
+  clearForm() {
+    this.elements.forEach((e) => (e.value = ""));
+    this.toTop();
+  }
+
+  saveRegister(newForm = false) {
+    if (!newForm) {
+      console.log("Saving register");
+      let registerIndex = this.recents.findIndex((i) => i.id == this.actual);
+      console.log(registerIndex);
+      if (registerIndex != -1) {
+        const register = {
+          id: this.actual,
+          ...this.elements.reduce((acc, element) => {
+            acc[element.id] = element.value;
+            return acc;
+          }, {}),
+        };
+        this.recents[registerIndex] = register;
+      } else {
+        this.saveNew();
       }
-      return r;
+    } else {
+      this.saveNew();
+    }
+  }
+
+  saveNew() {
+    this.recents.push({
+      id: this.actual,
+      ...this.elements.reduce((acc, element) => {
+        acc[element.id] = element.value;
+        return acc;
+      }, {}),
     });
-    this.showRecents();
+  }
+
+  loadRecent(id) {
+    this.actual = id;
+    document.querySelector(".recent.selected")?.classList.remove("selected");
+    document.getElementById(id).classList.add("selected");
+
+    this.elements.forEach((element) => {
+      element.value = this.recents.find((recent) => recent.id == id)[
+        element.id
+      ];
+    });
+    this.toTop();
+  }
+
+  toTop() {
+    this.elements[0].input.focus();
   }
 
   build() {
-    this.elements.forEach((element) => {
-      if (element.type == "conditional") {
-        this.content.mainForm.append(element.element);
-        return;
-      } else {
-        element.onupdate = (e) => {
-          e.onfocus = () => {
-            e.scrollIntoView({ behavior: "smooth", block: "center" });
-          };
-        };
-
-        this.content.mainForm.append(element.element);
-      }
-    });
-
-    this.elements[0].input.focus();
-    if (this.elements[0].type != "conditional")
-      this.elements[0].onupdate = (e) => {
-        e.onfocus = () => {
-          e.scrollIntoView({ behavior: "smooth", block: "center" });
-        };
-        updateActual(e.target.value);
-      };
-
     this.createNew();
-    this.content.copyContent.onclick = () => {
-      this.copyFormated();
-    };
-
-    this.content.newForm.onclick = () => {
-      this.createNew();
-    };
-
     return this.container;
   }
 }

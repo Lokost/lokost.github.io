@@ -1,0 +1,63 @@
+.floating-buttons {
+  display: flex;
+  align-items: end;
+  flex-direction: column-reverse;
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  gap: 1rem;
+}
+
+.floating-button {
+  background: var(--primary);
+  color: var(--background);
+  border: none;
+  border-radius: 50px;
+  display: flex;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: 0.3s;
+  flex-direction: row-reverse;
+}
+
+.floating-button.disabled {
+  opacity: 0.5;
+  user-select: none;
+  pointer-events: none;
+}
+
+.floating-button span {
+  font-size: max(2.5vh, 15pt);
+}
+
+.floating-button .icon {
+  height: 3.5vh;
+  width: 3.5vh;
+  min-height: 30px;
+  min-width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+}
+
+.floating-button .subtitle {
+  width: 0px;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: clip;
+  text-wrap: nowrap;
+}
+
+.floating-button:hover {
+  background: var(--text);
+}
+
+.floating-button:hover * {
+  color: var(--primary);
+}
+
+.floating-button:hover > .subtitle {
+  width: fit-content;
+  padding: 0 20pt;
+}

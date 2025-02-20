@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Loko Form</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
     <script type="module" src="./scripts/main.js" defer></script>
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
   </head>
   <body class="dark">
     <header>
@@ -20,19 +21,81 @@
       </nav>
     </header>
     <main>
-      <div class="card">
-        <span class="material-symbols-outlined" style="font-size: 50pt"
-          >warning</span
-        >
-        <span
-          >Para colocar as áreas, use o botão de
-          <span class="material-symbols-outlined">settings</span></span
-        >
+      <div class="from card">
+        <h1>Novas funções!</h1>
+        <p>O Loko Forms veio com novidades para melhorar a sua experiência!</p>
+        <br />
+        <br />
+        <h2>Novos atalhos!</h2>
+        <p>Pressione Alt + / para ver os novos atalhos!</p>
+        <br /><br />
+        <h2>Nova interface.</h2>
+        <p>
+          Os botões e histórico do formulário foram movidos! Agora podem ser
+          facilmente acessados no canto da tela.
+        </p>
+        <video src="assets/floating-buttons.mp4" loop autoplay></video>
+        <br />
+        <p>
+          Agora também as notificações de menor aviso aparecem no topo da tela
+          ao invés do meio! Ficando por 5 segundos.
+        </p>
+        <br>
+        <img src="assets/notification.png"></img>
+        <br><br><br>
+        <h2>Novos elementos.</h3>
+        <p>
+          Agora há dois novos elementos que podem ser utilizados no formulário,
+          sendo eles:
+        </p>
+        <br />
+        <br />
+        <h4><strong>Checkbox</strong> - Elemento de condição.</h4>
+        <p>
+          Com esse elemento, agora é possível adicionar respostas de sim ou não
+          ou fazer campos aparecerem pela condição!
+        </p>
+        <br />
+        <img src="assets/check.png" alt="" />
+        <br />
+        <video src="assets/checkexample.mp4" loop autoplay></video>
+        <br />
+        <br />
+        <h4><strong>Seleção</strong> - Elemento de seleções fixas.</h4>
+        <p>
+          Com esse elemento, agora é possível adicionar respostas fixas para
+          escolher!
+        </p>
+        <br />
+        <img src="assets/select.png" alt="" />
+        <br />
+        <video src="assets/selectexample.mp4" loop autoplay></video>
       </div>
     </main>
+    <div class="floating-buttons">
+      <button class="floating-button disabled" id="new-form">
+        <span class="material-symbols-outlined icon">add</span>
+        <span class="subtitle">Novo</span>
+      </button>
+      <button class="floating-button disabled" id="copy-form">
+        <span class="material-symbols-outlined icon">content_copy</span>
+        <span class="subtitle">Copiar</span>
+      </button>
+      <button class="floating-button disabled" id="history">
+        <span class="material-symbols-outlined icon">history</span>
+        <span class="subtitle">Recentes</span>
+      </button>
+      <button class="floating-button disabled" id="clear-form">
+        <span class="material-symbols-outlined icon">delete</span>
+        <span class="subtitle">Limpar formulário</span>
+      </button>
+    </div>
     <div class="dialog" id="dialog">
       <div class="card">
-        <div class="title"><h2 id="dialog-title"></h2></div>
+        <div class="title">
+          <h2 id="dialog-title"></h2>
+          <span class="material-symbols-outlined" id="close">close</span>
+        </div>
         <div class="content" id="dialog-content"></div>
       </div>
     </div>
@@ -59,33 +122,34 @@
             <option value="json">JSON</option>
           </select>
         </label>
-        <span
-          >Coloque as áreas do seu formulário
+        <span>
+          Coloque as áreas do seu formulário
           <span class="clickable material-symbols-outlined">help</span>
         </span>
         <textarea id="form-setting"></textarea>
         <div class="actions">
           <button id="paste-setting">
-            <span
-              ><span class="material-symbols-outlined">content_paste</span
-              >Colar</span
-            >
+            <span>
+              <span class="material-symbols-outlined">content_paste</span>
+              Colar
+            </span>
           </button>
           <button id="copy-setting">
-            <span
-              ><span class="material-symbols-outlined">content_copy</span
-              >Copiar</span
-            >
+            <span>
+              <span class="material-symbols-outlined">content_copy</span>
+              Copiar
+            </span>
           </button>
           <button id="apply-setting">
-            <span
-              ><span class="material-symbols-outlined">check</span>
-              Aplicar</span
-            >
+            <span>
+              <span class="material-symbols-outlined">check</span>
+              Aplicar
+            </span>
           </button>
         </div>
       </div>
     </div>
-    <footer>@ Gabriel Gomes 2025</footer>
+    <div class="notification-area"></div>
+    <footer>&copy; Gabriel Gomes 2025</footer>
   </body>
 </html>

@@ -36,6 +36,7 @@ export default class FormConstructor {
     this.getContent(this.container);
     this.settings = "";
     console.log(this.content);
+    this.saveSession();
   }
 
   getContent(element) {
@@ -52,11 +53,15 @@ export default class FormConstructor {
   }
 
   set settings(value) {
+    if (!this._settings || this._settings != value.trim()) {
+      this.content.recents.innerHTML = "";
+      this.recents = [];
+      this.elements = [];
+      this.convertor();
+    }
+
     this._settings = value.trim();
-    this.content.recents.innerHTML = "";
-    this.recents = [];
-    this.elements = [];
-    this.convertor();
+    this.saveSession();
   }
 
   get settings() {
@@ -233,20 +238,44 @@ export default class FormConstructor {
       e.input.value = "";
     });
 
+    this.saveRegister(true);
+    this.showRecents();
+    this.toTop();
+    this.saveSession();
+  }
+
+  saveRegister(newForm = false) {
+    if (!newForm) {
+      let register = this.recents.find((i) => i.id == this.actual);
+      if (register) {
+        register = this.elements.reduce((acc, element) => {
+          acc[element.id] = {
+            content: element.input.value,
+            type: element.type,
+            label: element.label,
+          };
+          return acc;
+        }, register);
+      } else {
+        this.saveNew();
+      }
+    } else {
+      this.saveNew();
+    }
+  }
+
+  saveNew() {
     this.recents.push({
       id: this.actual,
       ...this.elements.reduce((acc, element) => {
         acc[element.id] = {
-          content: "",
+          content: element.input.value,
           type: element.type,
           label: element.label,
         };
-
         return acc;
       }, {}),
     });
-    this.showRecents();
-    this.toTop();
   }
 
   toTop() {
@@ -303,7 +332,10 @@ export default class FormConstructor {
       this.recents.forEach((r) => {
         const recentElement = document.createElement("div");
         recentElement.classList.add("recent", "card");
-        if (r.id == this.actual) recentElement.classList.add("selected");
+        if (r.id == this.actual) {
+          recentElement.classList.add("selected");
+          recentElement.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
         recentElement.id = r.id;
         recentElement.innerText = (
           r[this.elements[0].id].label +
@@ -312,6 +344,7 @@ export default class FormConstructor {
         ).slice(0, 50);
         recentElement.onclick = () => {
           this.loadForm(r.id);
+          recentElement.scrollIntoView({ behavior: "smooth", block: "center" });
         };
         this.content.recents.append(recentElement);
       });
@@ -324,6 +357,7 @@ export default class FormConstructor {
       ": " +
       this.elements[0].input.value
     ).slice(0, 50);
+    this.saveSession();
   }
 
   build() {
@@ -335,5 +369,22 @@ export default class FormConstructor {
       this.createNew();
     };
     return this.container;
+  }
+
+  saveSession() {
+    window.sessionStorage.setItem("recents", JSON.stringify(this.recents));
+    window.sessionStorage.setItem("settings", this.settings);
+  }
+
+  loadSession() {
+    if (
+      window.sessionStorage.getItem("recents") != null &&
+      window.sessionStorage.getItem("settings") != null
+    ) {
+      this.recents = JSON.parse(window.sessionStorage.getItem("recents"));
+      this.settings = window.sessionStorage.getItem("settings");
+      if (this.recents) this.showRecents();
+      this.loadForm(this.recents[this.recents.length - 1].id);
+    }
   }
 }

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loko Form</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="./scripts/main.js" defer></script>
+  </head>
+  <body class="dark">
+    <header>
+      <h1>Loko Form</h1>
+      <nav class="menu">
+        <button id="settings-btn">
+          <span class="material-symbols-outlined">settings</span>
+        </button>
+        <button id="theme">
+          <span class="material-symbols-outlined">light_mode</span>
+        </button>
+      </nav>
+    </header>
+    <main>
+      <div class="card">
+        <span class="material-symbols-outlined" style="font-size: 50pt"
+          >warning</span
+        >
+        <span
+          >Para colocar as áreas, use o botão de
+          <span class="material-symbols-outlined">settings</span></span
+        >
+      </div>
+    </main>
+    <div class="dialog" id="dialog">
+      <div class="card">
+        <div class="title"><h2 id="dialog-title"></h2></div>
+        <div class="content" id="dialog-content"></div>
+      </div>
+    </div>
+    <div class="settings" id="settings">
+      <div class="card">
+        <h3>Configurações</h3>
+        <label>
+          Tamanho da fonte:
+          <select id="font-size">
+            <option value="10pt">10pt</option>
+            <option value="12pt" selected>12pt</option>
+            <option value="14pt">14pt</option>
+            <option value="16pt">16pt</option>
+            <option value="18pt">18pt</option>
+            <option value="20pt">20pt</option>
+            <option value="22pt">22pt</option>
+            <option value="24pt">24pt</option>
+          </select>
+        </label>
+        <label>
+          Forma de cópia:
+          <select id="copy-mode">
+            <option value="text">Texto</option>
+            <option value="json">JSON</option>
+          </select>
+        </label>
+        <span
+          >Coloque as áreas do seu formulário
+          <span class="clickable material-symbols-outlined">help</span>
+        </span>
+        <textarea id="form-setting"></textarea>
+        <div class="actions">
+          <button id="paste-setting">
+            <span
+              ><span class="material-symbols-outlined">content_paste</span
+              >Colar</span
+            >
+          </button>
+          <button id="copy-setting">
+            <span
+              ><span class="material-symbols-outlined">content_copy</span
+              >Copiar</span
+            >
+          </button>
+          <button id="apply-setting">
+            <span
+              ><span class="material-symbols-outlined">check</span>
+              Aplicar</span
+            >
+          </button>
+        </div>
+      </div>
+    </div>
+    <footer>@ Gabriel Gomes 2025</footer>
+  </body>
+</html>
