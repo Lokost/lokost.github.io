@@ -173,6 +173,7 @@ export default class FormContructor {
 
     this.container.innerHTML = "";
     this.recents = [];
+    this.elements = [];
     this.__settings = value;
     value = value.split("\n").map((s) => s.trim());
     let i = 0;
