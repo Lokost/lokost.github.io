@@ -1,5 +1,22 @@
-function idGen() {
-  return Math.random().toString(10).substring(2, 15);
+function idGen(showing = true) {
+  const id = Math.random().toString(10).substring(2, 15);
+  return showing ? id : id + "!";
+}
+
+function stringToJson(str, list = false) {
+  if (!list)
+    str = "[" + str.map((line) => JSON.stringify(line.trim())).join(",") + "]";
+  else {
+    str = str;
+    str = str
+      .replace(/^\[|\]$/g, "")
+      .split(",") // Separa por vírgula
+      .map((item) => `"${item.trim()}"`);
+    str = "[" + str.join(", ") + "]";
+  }
+
+  console.log(list, str);
+  return JSON.parse(str);
 }
 
 class inputField {
@@ -10,7 +27,8 @@ class inputField {
     extraValues = [],
     id = null,
     dataListId = null,
-    visible = true
+    visible = true,
+    prevalue = null
   ) {
     this.label = typeof label === "string" ? label.trim() : null;
     this.type = type;
@@ -24,6 +42,7 @@ class inputField {
         : document.createElement("label");
 
     this.visible = visible;
+    this.prevalue = prevalue;
   }
 
   getType() {
@@ -41,11 +60,11 @@ class inputField {
 
   get value() {
     if (this.type === "conditional") {
-      return this.input.checked ? "Sim" : "Não";
+      return this.input.checked ? true : false;
     } else if (this.type === "data") {
       return "";
     } else if (this.type === "select") {
-      return this.input.options[this.input.selectedIndex].text || "Nenhum";
+      return this.extraValues[this.input.selectedIndex];
     } else {
       return this.input.value;
     }
@@ -53,12 +72,14 @@ class inputField {
 
   set value(value) {
     if (this.type === "conditional") {
+      this.changeSelection(value || false);
       this.input.checked = value || false;
     } else if (this.type === "data") {
       return;
     } else if (this.type === "select") {
-      if (value == "") this.input.selectedIndex = 0;
-      this.input.options[this.input.selectedIndex].text = value;
+      console.log(this.extraValues, value, this.extraValues.indexOf(value));
+      if (value == "" || value == "Nenhum") this.input.selectedIndex = 0;
+      else this.input.selectedIndex = this.extraValues.indexOf(value);
     } else {
       this.input.value = value;
     }
@@ -76,11 +97,26 @@ class inputField {
     return this.container.style.display === "flex";
   }
 
-  render() {
-    if (this.type === "separator") {
-      this.container.classList.add("separator");
-      return this.container;
+  changeSelection(checked) {
+    console.log(checked, this.extraValues);
+    try {
+      for (let element of this.extraValues) {
+        if (element.endsWith("!")) {
+          const htmlElement = document.getElementById(element);
+          htmlElement.parentElement.style.display = checked ? "none" : "flex";
+          if (checked) htmlElement.value = "";
+        } else {
+          const htmlElement = document.getElementById(element);
+          htmlElement.parentElement.style.display = checked ? "flex" : "none";
+          if (!checked) htmlElement.value = "";
+        }
+      }
+    } catch (e) {
+      console.log(e);
     }
+  }
+
+  render() {
     this.container.classList.add(
       this.type != "conditional" ? "input-field" : "conditional-field"
     );
@@ -89,6 +125,7 @@ class inputField {
     const input = this.getType();
     input.setAttribute("placeholder", this.placeholder);
     input.id = this.id;
+    this.container.appendChild(input);
 
     if (this.type === "select") {
       this.extraValues.unshift("Nenhum");
@@ -100,16 +137,10 @@ class inputField {
       });
     } else if (this.type === "conditional") {
       input.type = "checkbox";
-      input.onchange = (e) => {
-        console.log(e.target.checked);
-        for (let element of this.extraValues) {
-          const htmlElement = document.getElementById(element);
-          htmlElement.value = "";
-          htmlElement.parentElement.style.display = e.target.checked
-            ? "flex"
-            : "none";
-        }
-      };
+      input.onchange = (e) => this.changeSelection(e.target.checked);
+      const check = document.createElement("div");
+      check.classList.add("checkmark");
+      this.container.append(check);
     } else if (this.type === "data") {
       input.id = this.id;
       this.extraValues.forEach((value) => {
@@ -126,12 +157,13 @@ class inputField {
     }
 
     if (this.type != "data")
-      input.onFocus = () => {
+      input.onfocus = () => {
         input.scrollIntoView({ behavior: "smooth", block: "center" });
       };
 
     this.input = input;
-    this.container.appendChild(input);
+    if (this.prevalue != null) this.value = this.prevalue;
+    console.log(this.prevalue, this.value);
     console.log(this.type, input);
     return this.type != "data" ? this.container : input;
   }
@@ -141,7 +173,7 @@ export default class FormContructor {
   constructor(notify) {
     this.notify = notify;
     this.container = document.createElement("form");
-    this.container.classList.add("form", "card");
+    this.container.classList.add("card", "form");
     this.elements = [];
     this.recents = [];
     this.actual = 0;
@@ -153,7 +185,8 @@ export default class FormContructor {
     extraValues = [],
     id = null,
     dataListId = null,
-    visible = true
+    visible = true,
+    prevalue = null
   ) {
     const field = new inputField(
       label,
@@ -162,93 +195,163 @@ export default class FormContructor {
       extraValues,
       id,
       dataListId,
-      visible
+      visible,
+      prevalue
     );
     this.container.append(field.render());
     if (field.type != "separator") this.elements.push(field);
+    return field;
+  }
+
+  getInputs(values, check = false) {
+    // Get all the Ids of the created inputs
+    let ids = [];
+
+    // Index for the while pass through the lines
+    let i = 0;
+
+    // Using while because some lines can be properties
+    while (i < values.length) {
+      // If the line does not have content, will be passed
+      if (values[i].trim() == "") {
+        i++;
+        continue;
+      }
+
+      // holders for the properties of the inputs
+      let holder;
+      let options;
+      let type;
+      let setting = values[i].trim();
+      let showing;
+
+      showing = !setting.endsWith("!");
+      console.log(setting);
+      if (check && !showing) showing = false;
+
+      if (setting.endsWith("!")) setting = setting.replace("!", "");
+
+      function haveOptions() {
+        return values[i + 1].includes("[");
+      }
+
+      function convertOptions() {
+        i++;
+        if (values[i].includes("["))
+          if (values[i].includes("]")) {
+            console.log("Básica");
+            return stringToJson(values[i], true);
+          } else {
+            console.log("composta");
+            let hold = values[i + 1];
+            i++;
+            while (!values[i].includes("]")) {
+              hold += "," + values[i];
+              i++;
+            }
+            return (hold += "," + values[i]);
+          }
+      }
+
+      type = setting.startsWith("+")
+        ? "textArea"
+        : setting.endsWith(">")
+        ? "select"
+        : setting.endsWith("?") ||
+          setting.toLowerCase().endsWith("?v") ||
+          setting.toLowerCase().endsWith("?f")
+        ? "conditional"
+        : "text";
+
+      if (type == "text" && setting.endsWith(":")) {
+        holder = setting.replace(":", "");
+        if (haveOptions()) options = convertOptions();
+        if (options) {
+          const dataId = this.addField(holder, "data", options, idGen()).id;
+          ids.push(
+            this.addField(holder, type, [], idGen(showing), dataId, showing).id
+          );
+        } else {
+          ids.push(
+            this.addField(holder, type, [], idGen(showing), null, showing).id
+          );
+        }
+      } else if (type == "textArea") {
+        holder = setting.replace("+", "");
+        ids.push(
+          this.addField(holder, type, [], idGen(showing), null, showing).id
+        );
+      } else if (type == "select") {
+        holder = setting.replace(">", "");
+        if (haveOptions()) options = convertOptions();
+        ids.push(
+          this.addField(holder, type, options, idGen(showing)),
+          null,
+          showing.id
+        );
+      } else if (type == "conditional") {
+        let preValue = setting.endsWith("?v")
+          ? true
+          : setting.endsWith("?f")
+          ? false
+          : null;
+
+        holder =
+          preValue == null
+            ? setting.replace("?", "")
+            : preValue
+            ? setting.replace("?v", "")
+            : setting.replace("?f", "");
+        if (haveOptions()) options = convertOptions();
+        if (options) {
+          let check = this.addField(
+            holder,
+            type,
+            [],
+            idGen(),
+            null,
+            true,
+            preValue
+          );
+
+          ids.push(check.id);
+          check.extraValues = this.getInputs(options, true);
+          check.changeSelection(preValue || false);
+        } else
+          ids.push(
+            this.addField(
+              holder,
+              type,
+              options,
+              idGen(showing),
+              null,
+              showing,
+              preValue
+            ).id
+          );
+      } else {
+        holder = setting;
+        ids.push(
+          this.addField(holder, type, [], idGen(showing), null, showing).id
+        );
+      }
+      i++;
+    }
+    return ids;
   }
 
   set settings(value) {
     if (value.trim() == "") return;
+    value = value.split("\n");
+    console.log(value);
+    value = stringToJson(value);
 
     this.container.innerHTML = "";
     this.recents = [];
     this.elements = [];
+    console.log(this.recents);
     this.__settings = value;
-    value = value.split("\n").map((s) => s.trim());
-    let i = 0;
-    while (i < value.length) {
-      if (value[i].trim() == "") {
-        i++;
-        continue;
-      }
-      let holder;
-      let options;
-      let type;
-      let setting = value[i];
-      if (setting == "") {
-        continue;
-      } else if (setting.endsWith(":")) {
-        type = "text";
-        let dataId;
-        if (value[i + 1].includes("[") && value[i + 1].includes("]")) {
-          dataId = idGen();
-          console.log(value[i + 1]);
-          options = value[i + 1]
-            .replace("[", "")
-            .replace("]", "")
-            .split(",")
-            .map((s) => s.trim());
-          this.addField(holder, "data", options, dataId);
-          holder = value[i].replace(":", "");
-          i++;
-        }
-        this.addField(holder, type, [], idGen(), dataId);
-      } else if (setting.endsWith("?")) {
-        holder = setting.replace("?", "");
-        type = "conditional";
-        if (value[i + 1].includes("[") && value[i + 1].includes("]")) {
-          options = value[i + 1]
-            .replace("[", "")
-            .replace("]", "")
-            .split(",")
-            .map((s) => s.trim());
-          let ids = options.map(() => idGen());
-          this.addField(holder, type, ids, idGen());
-          options.forEach((option, index) => {
-            if (option.startsWith("+")) {
-              let hold = option.replace("+", "");
-              this.addField(hold, "textArea", [], ids[index], null, false);
-            } else {
-              this.addField(option, "text", [], ids[index], null, false);
-            }
-          });
-          i++;
-        } else {
-          this.addField(holder, type, [], idGen());
-        }
-      } else if (setting.endsWith(">")) {
-        type = "select";
-        holder = setting.replace(">", "");
-        options = value[i + 1]
-          .replace("[", "")
-          .replace("]", "")
-          .split(",")
-          .map((s) => s.trim());
-        this.addField(holder, type, options, idGen());
-        i++;
-      } else if (setting.startsWith("+")) {
-        holder = setting.replace("+", "");
-        type = "textArea";
-        this.addField(holder, type, [], idGen());
-      } else {
-        holder = setting;
-        type = "text";
-        this.addField(holder, type, [], idGen());
-      }
-      i++;
-      this.addField("", "separator");
-    }
+    this.getInputs(value);
   }
 
   get settings() {
@@ -256,16 +359,21 @@ export default class FormContructor {
   }
 
   copy(mode) {
+    let values = {};
+    console.log(this.elements);
+    this.elements.forEach((element) => {
+      let value;
+      if (element.type == "conditional") value = element.value;
+      else if (typeof element.value == "string") value = element.value.trim();
+      else value = element.value;
+      if (value != "" || typeof value == "boolean")
+        values[element.label] = value;
+    });
+
+    console.log(values);
+
     if (mode == "json") {
-      let data = {};
-      this.elements.forEach((element) => {
-        const value =
-          typeof element.value == "string"
-            ? element.value.trim()
-            : element.value;
-        if (value != "") data[element.label] = value;
-      });
-      navigator.clipboard.writeText(JSON.stringify(data)).then(() => {
+      navigator.clipboard.writeText(JSON.stringify(values)).then(() => {
         this.notify(
           "Copiado",
           "O formulário foi copiado para a área de transferência"
@@ -273,13 +381,14 @@ export default class FormContructor {
       });
     } else if (mode == "text") {
       let data = "";
-      this.elements.forEach((element) => {
-        const value =
-          typeof element.value == "string"
-            ? element.value.trim()
-            : element.value;
-        if (value != "") data += `${element.label}: ${value}\n`;
-      });
+      for (let key of Object.keys(values)) {
+        const value = values[key];
+        if (typeof value == "boolean") {
+          data += `${key}: ${value ? "Sim" : "Não"}\n`;
+          continue;
+        }
+        if (value != "") data += `${key}: ${value}\n`;
+      }
       navigator.clipboard.writeText(data).then(() => {
         this.notify(
           "Copiado",
@@ -298,7 +407,10 @@ export default class FormContructor {
   }
 
   clearForm() {
-    this.elements.forEach((e) => (e.value = ""));
+    this.elements.forEach((e) => {
+      if (e.prevalue != null) e.value = e.prevalue;
+      else e.value = "";
+    });
     this.toTop();
   }
 

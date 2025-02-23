@@ -5,6 +5,7 @@ const copySetting = document.getElementById("copy-setting");
 const pasteSetting = document.getElementById("paste-setting");
 const applySetting = document.getElementById("apply-setting");
 const settings = document.getElementById("settings");
+const dialog = document.getElementById("dialog");
 const settingsBtn = document.getElementById("settings-btn");
 const formConstructor = new FormConstructor(notify);
 const theme = document.getElementById("theme");
@@ -30,20 +31,28 @@ const cheat = [
   "Enter",
 ];
 
+function openScreen(element) {
+  element.style.display = "flex";
+  element.classList.remove("close-screen");
+  element.classList.add("open-screen");
+}
+
+function closeScreen(element) {
+  element.classList.remove("open-screen");
+  element.classList.add("close-screen");
+}
+
 function openDialog(title, content) {
-  const dialog = document.getElementById("dialog");
   const dialogContent = document.getElementById("dialog-content");
   const dialogTitle = document.getElementById("dialog-title");
   dialogTitle.innerText = title;
   dialogContent.innerHTML = "";
   if (typeof content == "string") dialogContent.innerText = content;
   else dialogContent.append(...content);
-  dialog.querySelector("#close").onclick = () => {
-    dialog.style.display = "none";
-    dialogContent.innerHTML = "";
+  dialog.onclick = (e) => {
+    if (e.target.id == "dialog") closeScreen(dialog);
   };
-
-  dialog.style.display = "flex";
+  openScreen(dialog);
 }
 
 function notify(title, content) {
@@ -56,16 +65,14 @@ function notify(title, content) {
     notification.querySelector("#notification-content").innerText = content;
   else notification.querySelector("#notification-content").append(...content);
   notificationArea.appendChild(notification);
-  setTimeout(() => {
-    notificationArea.removeChild(notification);
-  }, 5000);
+  notification.onanimationend = () => notification.remove();
 }
 
 function openSettings() {
-  settings.style.display = "flex";
+  openScreen(settings);
   settings.onclick = (e) => {
     if (e.target.id == "settings") {
-      settings.style.display = "none";
+      closeScreen(settings);
     }
   };
 }
@@ -94,11 +101,11 @@ pasteSetting.onclick = () => {
 
 applySetting.onclick = () => {
   formConstructor.settings = formSetting.value;
-  if (formConstructor.settings.length > 0) {
+  if (formSetting.value.length > 0) {
     const main = document.querySelector("main");
     main.innerHTML = "";
     main.appendChild(formConstructor.build());
-    settings.style.display = "none";
+    closeScreen(settings);
     newForm.classList.remove("disabled");
     copyForm.classList.remove("disabled");
     history.classList.remove("disabled");
@@ -134,6 +141,8 @@ history.onclick = () => {
     let elements = [];
     const recentView = document.createElement("div");
     recentView.classList.add("recent-grid");
+    console.log(formConstructor.elements);
+    console.log(formConstructor.recents);
 
     formConstructor.recents.forEach((recent) => {
       const recentElement = document.createElement("div");
@@ -149,6 +158,7 @@ history.onclick = () => {
         recent[firstElementData.id]
       }`.slice(0, 30);
       elements.push(recentElement);
+      console.log(recentElement);
     });
 
     recentView.append(...elements);
