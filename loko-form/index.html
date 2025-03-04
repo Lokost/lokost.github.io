@@ -6,70 +6,83 @@
     <title>Loko Form</title>
     <link rel="stylesheet" href="./styles/style.css" />
     <script type="module" src="./scripts/main.js" defer></script>
-    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon" />
   </head>
   <body class="dark">
     <header>
       <h1>Loko Form</h1>
-      <nav class="menu">
-        <button id="settings-btn">
-          <span class="material-symbols-outlined">settings</span>
-        </button>
-        <button id="theme">
-          <span class="material-symbols-outlined">light_mode</span>
-        </button>
-      </nav>
+      <label class="menu">
+        <input
+          type="checkbox"
+          class="menu"
+          onchange="console.log(this.checked)"
+        />
+        <span class="material-symbols-outlined">menu</span>
+        <div class="menu">
+          <button id="theme">
+            <span
+              ><span class="material-symbols-outlined">contrast</span>Tema</span
+            >
+          </button>
+          <button id="settings-btn">
+            <span
+              ><span class="material-symbols-outlined">settings</span
+              >Configurações</span
+            >
+          </button>
+          <input
+            type="file"
+            name=""
+            id="file"
+            accept=".lformset, .json"
+            style="display: none"
+          />
+          <button onclick="document.getElementById('file').click()">
+            <span
+              ><span class="material-symbols-outlined">publish</span
+              >Importar</span
+            >
+          </button>
+          <button id="export">
+            <span
+              ><span class="material-symbols-outlined">download</span
+              >Exportar</span
+            >
+          </button>
+        </div>
+      </label>
     </header>
     <main>
       <div class="from card">
-        <h1>Novas funções!</h1>
-        <p>O Loko Forms veio com novidades para melhorar a sua experiência!</p>
+        <h1>Novidades</h1>
+        <h2>Atualização do tema</h2>
+        Devido o tema do Loko Forms antigo poder fazer doer os olhos, ele foi
+        atualizado para um mais suave, seja no tema claro ou escuro.
         <br />
+        <img src="assets/ntemas.png" alt="" />
         <br />
-        <h2>Novos atalhos!</h2>
-        <p>Pressione Alt + / para ver os novos atalhos!</p>
-        <br /><br />
-        <h2>Nova interface.</h2>
-        <p>
-          Os botões e histórico do formulário foram movidos! Agora podem ser
-          facilmente acessados no canto da tela.
-        </p>
-        <video src="assets/floating-buttons.mp4" loop autoplay></video>
+        <h2>Novo menu</h2>
+        Com uma repaginada, foi feito o menu para comportar algumas novas opções
+        de importar e exportar configurações do formulário, assim facilitando
+        sua replicação.
+        <img src="assets/nmenu.png" alt="" />
+        Como novas funções temos:
+        <ul>
+          <li>
+            <b>Importar</b>: Importe configurações do Loko Forms contendo
+            configurações de formulário e templates.
+          </li>
+          <li>
+            <b>Exportar</b>: Exporte as configurações atuais do Loko Forms
+          </li>
+        </ul>
         <br />
-        <p>
-          Agora também as notificações de menor aviso aparecem no topo da tela
-          ao invés do meio! Ficando por 5 segundos.
-        </p>
-        <br>
-        <img src="assets/notification.png"></img>
-        <br><br><br>
-        <h2>Novos elementos.</h3>
-        <p>
-          Agora há dois novos elementos que podem ser utilizados no formulário,
-          sendo eles:
-        </p>
-        <br />
-        <br />
-        <h4><strong>Checkbox</strong> - Elemento de condição.</h4>
-        <p>
-          Com esse elemento, agora é possível adicionar respostas de sim ou não
-          ou fazer campos aparecerem pela condição!
-        </p>
-        <br />
-        <img src="assets/check.png" alt="" />
-        <br />
-        <video src="assets/checkexample.mp4" loop autoplay></video>
-        <br />
-        <br />
-        <h4><strong>Seleção</strong> - Elemento de seleções fixas.</h4>
-        <p>
-          Com esse elemento, agora é possível adicionar respostas fixas para
-          escolher!
-        </p>
-        <br />
-        <img src="assets/select.png" alt="" />
-        <br />
-        <video src="assets/selectexample.mp4" loop autoplay></video>
+        <h2>Templates!</h2>
+        Agora é possível criar templates no Loko Forms, inclusive salvando as
+        configurações do seu formulário junto em um arquivo. Para criar um
+        template, preencha o formulário e depois no botão flutuante de salvar e
+        para usar, pressione no de raio.
+        <img src="assets/templates.png" alt="" />
       </div>
     </main>
     <div class="floating-buttons">
@@ -88,6 +101,14 @@
       <button class="floating-button disabled" id="clear-form">
         <span class="material-symbols-outlined icon">delete</span>
         <span class="subtitle">Limpar formulário</span>
+      </button>
+      <button class="floating-button disabled" id="save-template">
+        <span class="material-symbols-outlined icon">save</span>
+        <span class="subtitle">Salvar template</span>
+      </button>
+      <button class="floating-button disabled" id="load-template">
+        <span class="material-symbols-outlined icon">bolt</span>
+        <span class="subtitle">Carregar Template</span>
       </button>
     </div>
     <div class="dialog close-screen" id="dialog">
@@ -121,9 +142,19 @@
             <option value="json">JSON</option>
           </select>
         </label>
+        <label class="conditional-field" style="display: flex"
+          >Espaçamento de linha no texto?
+          <input id="space" type="checkbox" />
+          <div class="checkmark"></div
+        ></label>
         <span>
           Coloque as áreas do seu formulário
-          <span class="clickable material-symbols-outlined">help</span>
+          <span
+            class="clickable material-symbols-outlined"
+            id="form-help"
+            title="Ajuda com o formulário"
+            >help</span
+          >
         </span>
         <textarea id="form-setting"></textarea>
         <div class="actions">

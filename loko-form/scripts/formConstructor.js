@@ -1,5 +1,5 @@
-function idGen(showing = true) {
-  const id = Math.random().toString(10).substring(2, 15);
+export function idGen(showing = true, size = 15) {
+  const id = Math.random().toString(10).substring(2, size);
   return showing ? id : id + "!";
 }
 
@@ -15,7 +15,6 @@ function stringToJson(str, list = false) {
     str = "[" + str.join(", ") + "]";
   }
 
-  console.log(list, str);
   return JSON.parse(str);
 }
 
@@ -77,7 +76,6 @@ class inputField {
     } else if (this.type === "data") {
       return;
     } else if (this.type === "select") {
-      console.log(this.extraValues, value, this.extraValues.indexOf(value));
       if (value == "" || value == "Nenhum") this.input.selectedIndex = 0;
       else this.input.selectedIndex = this.extraValues.indexOf(value);
     } else {
@@ -98,7 +96,6 @@ class inputField {
   }
 
   changeSelection(checked) {
-    console.log(checked, this.extraValues);
     try {
       for (let element of this.extraValues) {
         if (element.endsWith("!")) {
@@ -116,6 +113,19 @@ class inputField {
     }
   }
 
+  toJson() {
+    return {
+      label: this.label,
+      type: this.type,
+      placeholder: this.placeholder,
+      extraValues: this.extraValues,
+      dataListId: this.dataListId,
+      id: this.id,
+      visible: this.visible,
+      prevalue: this.prevalue,
+    };
+  }
+
   render() {
     this.container.classList.add(
       this.type != "conditional" ? "input-field" : "conditional-field"
@@ -128,7 +138,8 @@ class inputField {
     this.container.appendChild(input);
 
     if (this.type === "select") {
-      this.extraValues.unshift("Nenhum");
+      if (!this.extraValues.includes("Nenhum"))
+        this.extraValues.unshift("Nenhum");
       this.extraValues.forEach((value) => {
         const option = document.createElement("option");
         option.textContent = value;
@@ -163,20 +174,20 @@ class inputField {
 
     this.input = input;
     if (this.prevalue != null) this.value = this.prevalue;
-    console.log(this.prevalue, this.value);
-    console.log(this.type, input);
     return this.type != "data" ? this.container : input;
   }
 }
 
 export default class FormContructor {
-  constructor(notify) {
+  constructor(notify, dialog) {
     this.notify = notify;
+    this.dialog = dialog;
     this.container = document.createElement("form");
     this.container.classList.add("card", "form");
     this.elements = [];
     this.recents = [];
-    this.actual = 0;
+    this.templates = [];
+    this.actual = null;
   }
 
   addField(
@@ -203,6 +214,23 @@ export default class FormContructor {
     return field;
   }
 
+  recreateFields() {
+    this.container.innerHTML = "";
+    const elements = [...this.elements];
+    this.elements = [];
+    elements.forEach((element) => {
+      this.addField(
+        element.label,
+        element.type,
+        element.extraValues,
+        element.id,
+        element.dataListId,
+        element.visible,
+        element.prevalue
+      );
+    });
+  }
+
   getInputs(values, check = false) {
     // Get all the Ids of the created inputs
     let ids = [];
@@ -226,7 +254,6 @@ export default class FormContructor {
       let showing;
 
       showing = !setting.endsWith("!");
-      console.log(setting);
       if (check && !showing) showing = false;
 
       if (setting.endsWith("!")) setting = setting.replace("!", "");
@@ -341,16 +368,16 @@ export default class FormContructor {
   }
 
   set settings(value) {
+    this.__settings = value;
     if (value.trim() == "") return;
     value = value.split("\n");
-    console.log(value);
     value = stringToJson(value);
 
     this.container.innerHTML = "";
+    this.actual = null;
     this.recents = [];
     this.elements = [];
-    console.log(this.recents);
-    this.__settings = value;
+    this.templates = [];
     this.getInputs(value);
   }
 
@@ -358,9 +385,8 @@ export default class FormContructor {
     return this.__settings;
   }
 
-  copy(mode) {
+  copy(mode, extraSpace = false) {
     let values = {};
-    console.log(this.elements);
     this.elements.forEach((element) => {
       let value;
       if (element.type == "conditional") value = element.value;
@@ -369,8 +395,6 @@ export default class FormContructor {
       if (value != "" || typeof value == "boolean")
         values[element.label] = value;
     });
-
-    console.log(values);
 
     if (mode == "json") {
       navigator.clipboard.writeText(JSON.stringify(values)).then(() => {
@@ -385,9 +409,11 @@ export default class FormContructor {
         const value = values[key];
         if (typeof value == "boolean") {
           data += `${key}: ${value ? "Sim" : "Não"}\n`;
+          if (extraSpace) data += "\n";
           continue;
         }
         if (value != "") data += `${key}: ${value}\n`;
+        if (extraSpace) data += "\n";
       }
       navigator.clipboard.writeText(data).then(() => {
         this.notify(
@@ -399,11 +425,10 @@ export default class FormContructor {
   }
 
   createNew() {
-    if (!this.actual) this.actual = idGen();
-    this.saveRegister();
-    this.clearForm();
-
+    if (this.actual != null) this.saveRegister();
     this.actual = idGen();
+    this.saveRegister(true);
+    this.clearForm();
   }
 
   clearForm() {
@@ -416,9 +441,7 @@ export default class FormContructor {
 
   saveRegister(newForm = false) {
     if (!newForm) {
-      console.log("Saving register");
       let registerIndex = this.recents.findIndex((i) => i.id == this.actual);
-      console.log(registerIndex);
       if (registerIndex != -1) {
         const register = {
           id: this.actual,
@@ -446,6 +469,42 @@ export default class FormContructor {
     });
   }
 
+  saveTemplate() {
+    this.saveRegister();
+    const container = document.createElement("div");
+    container.classList.add("input-field");
+    const input = document.createElement("input");
+    const save = document.createElement("button");
+    save.innerText = "Salvar";
+    const template = {
+      id: idGen(),
+      name: input.value,
+      content: this.recents.find((recent) => recent.id == this.actual),
+    };
+    save.onclick = () => {
+      if (this.templates.find((template) => template.name == input.value)) {
+        this.notify("Erro", "Já existe um template com esse nome");
+        return;
+      }
+      template.name = input.value;
+      this.templates.push(template);
+      this.dialog("Salvar modelo", "Modelo salvo com sucesso");
+    };
+    container.append(input, save);
+    this.dialog("Salvar modelo", [container]);
+  }
+
+  loadTemplate(id) {
+    const template = this.templates.find((template) => template.id == id);
+    this.elements.forEach((element) => {
+      element.value = template.content[element.id];
+    });
+  }
+
+  removeTemplate(id) {
+    this.templates = this.templates.filter((template) => template.id != id);
+  }
+
   loadRecent(id) {
     this.actual = id;
     document.querySelector(".recent.selected")?.classList.remove("selected");
@@ -461,6 +520,22 @@ export default class FormContructor {
 
   toTop() {
     this.elements[0].input.focus();
+  }
+
+  loadSettings(content) {
+    this.settings = content.settings;
+    this.templates = content.templates;
+    this.elements = content.elements;
+    this.recreateFields();
+  }
+
+  getOptions() {
+    return {
+      type: "lokof",
+      settings: this.__settings,
+      templates: this.templates,
+      elements: this.elements.map((e) => e.toJson()),
+    };
   }
 
   build() {

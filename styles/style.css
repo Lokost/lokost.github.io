@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0");
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap");
+@import url("./beecrowd.css");
 
 * {
   margin: 0;
@@ -240,21 +241,34 @@ a {
   border-radius: 5px;
   transition: all 0.3s ease;
   cursor: pointer;
-}
-
-.exercise .languages .language a {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 32px;
-  width: 32px;
+  min-width: 32px;
   aspect-ratio: 1;
   object-fit: contain;
   mix-blend-mode: exclusion;
 }
 
+.exercise .languages .language img {
+  mix-blend-mode: exclusion;
+}
+
+.exercise .languages .language p {
+  width: 0;
+  overflow-x: hidden;
+  text-wrap: nowrap;
+  color: white;
+  mix-blend-mode: exclusion;
+}
+
 .exercise .languages .language:hover {
   background: var(--onprimary);
+}
+
+.exercise .languages .language:hover > p {
+  width: fit-content;
 }
 
 .code {

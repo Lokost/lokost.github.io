@@ -49,8 +49,9 @@ function createLanguageIcon(language, exercise) {
     },
   };
 
-  const container = document.createElement("div");
+  const container = document.createElement("a");
   container.classList.add("language");
+  container.href = languages[language]["path"];
   if (language in languages) {
     icon = languages[language]["icon"];
     path = languages[language]["path"];
@@ -61,11 +62,11 @@ function createLanguageIcon(language, exercise) {
   }
 
   container.innerHTML = `
-    <a href="${path}">
       <img src="../images/icons/${icon}" alt="${language}">
-    </a>
+      <p>${language.toUpperCase()}</p>
     `;
 
+  container.title = language;
   console.log(container);
 
   return container;

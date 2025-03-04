@@ -2,12 +2,14 @@ const searchParams = new URLSearchParams(window.location.search);
 const code = searchParams.get("code");
 const language = searchParams.get("lang");
 
-const title = document.getElementById("title");
-const description = document.getElementById("description");
-const input = document.getElementById("input");
-const output = document.getElementById("output");
-const codeShow = document.getElementById("codeShow");
-const exerciseCode = document.getElementById("code");
+const title = document.getElementById("title"),
+  description = document.getElementById("description"),
+  input = document.getElementById("input"),
+  output = document.getElementById("output"),
+  codeShow = document.getElementById("codeShow"),
+  exerciseCode = document.getElementById("code"),
+  uriBtt = document.getElementById("uri-button"),
+  gitBtt = document.getElementById("github-button");
 
 fetch("data.json", { method: "GET" })
   .then((response) => response.json())
@@ -23,11 +25,21 @@ fetch("data.json", { method: "GET" })
 
 function setInfo(exercise) {
   document.title = `Beecrowd - ${code} - ${language.toUpperCase()}`;
-  exerciseCode.innerHTML = `${code} - ${language.toUpperCase()}`;
-  title.innerHTML = exercise.title;
-  description.innerHTML = exercise.description;
-  input.innerHTML = exercise.input;
-  output.innerHTML = exercise.output;
+  exerciseCode.innerText = `${code} - ${language.toUpperCase()}`;
+  title.innerText = exercise.title.replaceAll("\n", "<br />");
+  description.innerText = exercise.description;
+  input.innerText = exercise.input;
+  output.innerText = exercise.output;
+  uriBtt.onclick = () => {
+    open(`https://judge.beecrowd.com/pt/problems/view/${code}`);
+  };
+  gitBtt.onclick = () => {
+    const githubPath = exercise["languages"][language].replace(
+      "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/",
+      "https://github.com/lokost/beecrowd-resolutions/tree/main/"
+    );
+    open(githubPath, "_blank");
+  };
 }
 
 function loadCode(code) {
@@ -41,5 +53,3 @@ function loadCode(code) {
       console.error("Error fetching data:", error);
     });
 }
-
-
