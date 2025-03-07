@@ -372,24 +372,21 @@ footer {
 }
 
 /* form */
-.recent-grid {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+.dialog .content > div.recent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 0.5rem;
   justify-content: center;
   padding: 0.5rem;
   overflow: auto;
-  max-height: 80vh;
-  max-width: 80vw;
+  max-height: 60vh;
+  max-width: calc(80vw - 30px);
 }
 
 .recent {
   position: relative;
   align-items: center;
   justify-content: center;
-  width: 200px;
-  height: 70px;
   background: var(--background);
 }
 
