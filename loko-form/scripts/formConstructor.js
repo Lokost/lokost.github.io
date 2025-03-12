@@ -1,5 +1,6 @@
 export function idGen(showing = true, size = 15) {
   const id = Math.random().toString(10).substring(2, size);
+  console.log(id);
   return showing ? id : id + "!";
 }
 
@@ -16,6 +17,19 @@ function stringToJson(str, list = false) {
   }
 
   return JSON.parse(str);
+}
+
+class container {
+  #container = document.createElement("div");
+
+  constructor(id = null, components = [], visible = false) {
+    this.id = id;
+    this.visible = visible;
+    this.components = components;
+
+    this.#container.classList("extra-elements");
+    this.#container.append(...components.map((e) => e.container));
+  }
 }
 
 class inputField {
@@ -95,9 +109,21 @@ class inputField {
     return this.container.style.display === "flex";
   }
 
+  set id(value) {
+    this._id = value;
+    if (this.input) {
+      this.input.id = value;
+    }
+  }
+
+  get id() {
+    return this._id;
+  }
+
   changeSelection(checked) {
     try {
       for (let element of this.extraValues) {
+        console.log(element);
         if (element.endsWith("!")) {
           const htmlElement = document.getElementById(element);
           htmlElement.parentElement.style.display = checked ? "none" : "flex";
@@ -132,10 +158,10 @@ class inputField {
     );
     this.container.innerHTML = this.label;
 
-    const input = this.getType();
-    input.setAttribute("placeholder", this.placeholder);
-    input.id = this.id;
-    this.container.appendChild(input);
+    this.input = this.getType();
+    this.input.setAttribute("placeholder", this.placeholder);
+    this.input.id = this.id;
+    this.container.appendChild(this.input);
 
     if (this.type === "select") {
       if (!this.extraValues.includes("Nenhum"))
@@ -144,37 +170,36 @@ class inputField {
         const option = document.createElement("option");
         option.textContent = value;
         option.setAttribute("value", value);
-        input.appendChild(option);
+        this.input.appendChild(option);
       });
     } else if (this.type === "conditional") {
-      input.type = "checkbox";
-      input.onchange = (e) => this.changeSelection(e.target.checked);
+      this.input.type = "checkbox";
+      this.input.onchange = (e) => this.changeSelection(e.target.checked);
       const check = document.createElement("div");
       check.classList.add("checkmark");
       this.container.append(check);
     } else if (this.type === "data") {
-      input.id = this.id;
+      this.input.id = this.id;
       this.extraValues.forEach((value) => {
         const option = document.createElement("option");
         option.setAttribute("value", value);
-        input.appendChild(option);
+        this.input.appendChild(option);
       });
     } else {
-      if (this.type == "text") input.type = "text";
-      if (this.dataListId) input.setAttribute("list", this.dataListId);
+      if (this.type == "text") this.input.type = "text";
+      if (this.dataListId) this.input.setAttribute("list", this.dataListId);
       if (this.extraValues.length > 0 && this.dataListId) {
-        input.setAttribute("list", this.dataListId);
+        this.input.setAttribute("list", this.dataListId);
       }
     }
 
     if (this.type != "data")
-      input.onfocus = () => {
-        input.scrollIntoView({ behavior: "smooth", block: "center" });
+      this.input.onfocus = () => {
+        this.input.scrollIntoView({ behavior: "smooth", block: "center" });
       };
 
-    this.input = input;
     if (this.prevalue != null) this.value = this.prevalue;
-    return this.type != "data" ? this.container : input;
+    return this.type != "data" ? this.container : this.input;
   }
 }
 
@@ -214,21 +239,19 @@ export default class FormContructor {
     return field;
   }
 
-  recreateFields() {
-    this.container.innerHTML = "";
-    const elements = [...this.elements];
-    this.elements = [];
-    elements.forEach((element) => {
-      this.addField(
-        element.label,
-        element.type,
-        element.extraValues,
-        element.id,
-        element.dataListId,
-        element.visible,
-        element.prevalue
-      );
-    });
+  recreateFields(ids, extraValues) {
+    for (let id in ids) {
+      console.log(extraValues);
+      if (typeof ids[id] == "number" || typeof ids[id] == "string") {
+        this.elements[id].id = ids[id];
+        if (Object.keys(extraValues).includes(ids[id]))
+          this.elements[id].extraValues = extraValues[ids[id]];
+      } else {
+        this.elements[id].id = ids[id].id;
+        if (Object.keys(extraValues).includes(ids[id].id))
+          this.elements[id].extraValues = extraValues[ids[id].id];
+      }
+    }
   }
 
   getInputs(values, check = false) {
@@ -379,6 +402,7 @@ export default class FormContructor {
     this.elements = [];
     this.templates = [];
     this.getInputs(value);
+    this.saveLocal();
   }
 
   get settings() {
@@ -446,7 +470,8 @@ export default class FormContructor {
         const register = {
           id: this.actual,
           ...this.elements.reduce((acc, element) => {
-            acc[element.id] = element.value;
+            if (element.value.length > 0 || typeof element.value == "boolean")
+              acc[element.id] = element.value;
             return acc;
           }, {}),
         };
@@ -489,6 +514,7 @@ export default class FormContructor {
       template.name = input.value;
       this.templates.push(template);
       this.dialog("Salvar modelo", "Modelo salvo com sucesso");
+      this.saveLocal();
     };
     container.append(input, save);
     this.dialog("Salvar modelo", [container]);
@@ -496,9 +522,12 @@ export default class FormContructor {
 
   loadTemplate(id) {
     const template = this.templates.find((template) => template.id == id);
-    this.elements.forEach((element) => {
-      element.value = template.content[element.id];
-    });
+    for (let i of Object.keys(template.content)) {
+      if (i == "id") continue;
+      console.log(i);
+      this.elements.find((element) => element.id == i).value =
+        template.content[i];
+    }
   }
 
   removeTemplate(id) {
@@ -510,11 +539,13 @@ export default class FormContructor {
     document.querySelector(".recent.selected")?.classList.remove("selected");
     document.getElementById(id).classList.add("selected");
 
-    this.elements.forEach((element) => {
-      element.value = this.recents.find((recent) => recent.id == id)[
-        element.id
-      ];
+    const recent = this.recents.find((recent) => recent.id == id);
+    Object.keys(recent).forEach((key) => {
+      if (key == "id") return;
+      const element = this.elements.find((element) => element.id == key);
+      if (element) element.value = recent[key];
     });
+
     this.toTop();
   }
 
@@ -522,20 +553,57 @@ export default class FormContructor {
     this.elements[0].input.focus();
   }
 
+  convertSettings(content) {
+    let data = Object.create(content);
+    data.elements = content.elements.map((element) => {
+      if (typeof element == "number" || typeof element == "string")
+        return element;
+      else return element.id;
+    });
+    data.extraValues = content.elements.reduce((acc, element) => {
+      if (element.extraValues.length > 0 && element.type == "conditional")
+        acc[element.id] = element.extraValues;
+      return acc;
+    });
+
+    return data;
+  }
+
   loadSettings(content) {
+    if (content.type == "lokof") content = this.convertSettings(content);
     this.settings = content.settings;
     this.templates = content.templates;
-    this.elements = content.elements;
-    this.recreateFields();
+    this.recreateFields(content.elements, content.extraValues);
+    this.saveLocal();
   }
 
   getOptions() {
     return {
-      type: "lokof",
+      type: "lokof2",
       settings: this.__settings,
+      extraValues: this.elements.reduce((acc, element) => {
+        if (element.extraValues.length > 0 && element.type == "conditional") {
+          acc[element.id] = element.extraValues;
+        }
+        return acc;
+      }, {}),
+      recent: this.recents,
       templates: this.templates,
-      elements: this.elements.map((e) => e.toJson()),
+      elements: this.elements.map((e) => e.id),
     };
+  }
+
+  saveLocal() {
+    localStorage.setItem("settings", JSON.stringify(this.getOptions()));
+  }
+
+  loadLocal(action = (e) => {}) {
+    const content = JSON.parse(localStorage.getItem("settings"));
+    if (content && content.settings.length > 0) {
+      this.loadSettings(content);
+      let e = content.settings;
+      action(e);
+    } else console.log("Não há configurações locais");
   }
 
   build() {

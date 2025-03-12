@@ -11,6 +11,7 @@ const formConstructor = new FormConstructor(notify, openDialog);
 const theme = document.getElementById("theme");
 const fontSize = document.getElementById("font-size");
 const space = document.getElementById("space");
+const deleteFormBtn = document.getElementById("delete-setting");
 const file = document.getElementById("file");
 const exportFile = document.getElementById("export");
 const copyMode = document.getElementById("copy-mode");
@@ -141,7 +142,11 @@ function handleFile(file) {
   let fileData;
   reader.onload = (e) => {
     fileData = JSON.parse(e.target.result);
-    if (fileData.settings && fileData.type && fileData.type == "lokof") {
+    if (
+      fileData.settings &&
+      fileData.type &&
+      ["lokof", "lokof2"].includes(fileData.type)
+    ) {
       formConstructor.loadSettings(fileData);
       notify("Importado", `Carregados os dados de <b>${file.name}</b>`);
       main.innerHTML = "";
@@ -187,6 +192,18 @@ function exportOptions() {
   openDialog("Exportar", [container]);
 }
 
+function unlockFloating() {
+  document.querySelectorAll(".floating-button").forEach((e) => {
+    e.classList.remove("disabled");
+  });
+}
+
+function deleteForm() {
+  localStorage.removeItem("settings");
+  formConstructor.settings = "";
+  location.reload();
+}
+
 copySetting.onclick = () => {
   navigator.clipboard.writeText(formSetting.value).then(() => {
     openDialog(
@@ -213,12 +230,23 @@ applySetting.onclick = () => {
     main.innerHTML = "";
     main.appendChild(formConstructor.build());
     closeScreen(settings);
-    document.querySelectorAll(".floating-button").forEach((e) => {
-      e.classList.remove("disabled");
-    });
+    unlockFloating();
   } else {
     openDialog("Erro", "O formulário não pode estar vazio");
   }
+};
+
+deleteFormBtn.onclick = () => {
+  const container = document.createElement("div");
+  const desc = document.createElement("p");
+  desc.innerText = "Certeza que deseja apagar a configuração atual?";
+  const deletBtn = document.createElement("button");
+  deletBtn.innerText = "Apagar";
+  container.append(desc, deletBtn);
+  openDialog("Deletar formulário", [container]);
+  deletBtn.onclick = () => {
+    deleteForm();
+  };
 };
 
 settingsBtn.onclick = () => {
@@ -412,3 +440,12 @@ document
 document.getElementById("form-help").onclick = () => {
   openDialog("Ajuda", formTip);
 };
+
+formConstructor.loadLocal((e) => {
+  main.innerHTML = "";
+  formSetting.value = e;
+  main.append(formConstructor.build());
+  unlockFloating();
+  notify("Carregado", "Encontradas configurações locais");
+  closeScreen(dialog);
+});
