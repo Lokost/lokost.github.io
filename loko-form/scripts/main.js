@@ -13,6 +13,7 @@ const fontSize = document.getElementById("font-size");
 const space = document.getElementById("space");
 const deleteFormBtn = document.getElementById("delete-setting");
 const file = document.getElementById("file");
+const fileDrop = document.getElementById("drop-file");
 const exportFile = document.getElementById("export");
 const copyMode = document.getElementById("copy-mode");
 const main = document.querySelector("main");
@@ -22,6 +23,7 @@ const history = document.getElementById("history");
 const clearForm = document.getElementById("clear-form");
 const save = document.getElementById("save-template");
 const load = document.getElementById("load-template");
+let dragover = 0;
 let cheatIndex = 0;
 const cheat = [
   "ArrowUp",
@@ -358,6 +360,29 @@ load.onclick = () => {
     openDialog("Templates", [templateView]);
   }
 };
+
+document.addEventListener("dragenter", (e) => {
+  e.preventDefault();
+  dragover++;
+  fileDrop.classList.add("visible");
+});
+
+document.addEventListener("dragleave", (e) => {
+  e.preventDefault();
+  dragover--;
+  console.log(dragover);
+  if (dragover <= 0) fileDrop.classList.remove("visible");
+});
+
+document.addEventListener("dragover", (e) => {
+  e.preventDefault();
+});
+
+document.addEventListener("drop", (e) => {
+  e.preventDefault();
+  fileDrop.classList.remove("visible");
+  handleFile(e.dataTransfer.files[0]);
+});
 
 openDialog("Bem vindo", "Muita coisa nova foi adicionada! Venha conferir!");
 

@@ -1,0 +1,28 @@
+.drop-file {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.drop-area {
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px var(--text) dashed;
+  width: 80vw;
+  height: 80vh;
+}
+
+.drop-file.visible {
+  pointer-events: all;
+  opacity: 0.8;
+}
