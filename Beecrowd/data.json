@@ -543,10 +543,10 @@
     }
   },
   "1070": {
-    "title": "",
-    "description": "",
-    "input": "",
-    "output": "",
+    "title": "Seis Números Ímpares",
+    "description": "Leia um valor inteiro X. Em seguida apresente os 6 valores ímpares consecutivos a partir de X, um valor por linha, inclusive o X ser for o caso.",
+    "input": "A entrada será um valor inteiro positivo.",
+    "output": "A saída será uma sequência de seis números ímpares.",
     "languages": {
       "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1070.go",
       "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1070.java",
@@ -554,10 +554,10 @@
     }
   },
   "1071": {
-    "title": "",
-    "description": "",
-    "input": "",
-    "output": "",
+    "title": "Soma de Impares Consecutivos I",
+    "description": "Leia 2 valores inteiros X e Y. A seguir, calcule e mostre a soma dos números impares entre eles.",
+    "input": "O arquivo de entrada contém dois valores inteiros.",
+    "output": "O programa deve imprimir um valor inteiro. Este valor é a soma dos valores ímpares que estão entre os valores fornecidos na entrada que deverá caber em um inteiro.",
     "languages": {
       "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1071.go",
       "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1071.java",
@@ -565,10 +565,10 @@
     }
   },
   "1072": {
-    "title": "",
-    "description": "",
-    "input": "",
-    "output": "",
+    "title": "Intervalo 2",
+    "description": "Leia um valor inteiro N. Este valor será a quantidade de valores inteiros X que serão lidos em seguida.\nMostre quantos destes valores X estão dentro do intervalo [10,20] e quantos estão fora do intervalo, mostrando essas informações.",
+    "input": "A primeira linha da entrada contém um valor inteiro N (N < 10000), que indica o número de casos de teste.\nCada caso de teste a seguir é um valor inteiro X (-107 < X <107).",
+    "output": "Para cada caso, imprima quantos números estão dentro (in) e quantos valores estão fora (out) do intervalo.",
     "languages": {
       "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1072.go",
       "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1072.java",
@@ -576,10 +576,10 @@
     }
   },
   "1073": {
-    "title": "",
-    "description": "",
-    "input": "",
-    "output": "",
+    "title": "Quadrado de Pares",
+    "description": "Leia um valor inteiro N. Apresente o quadrado de cada um dos valores pares, de 1 até N, inclusive N, se for o caso.",
+    "input": "A entrada contém um valor inteiro N (5 < N < 2000).",
+    "output": "Imprima o quadrado de cada um dos valores pares, de 1 até N, conforme o exemplo abaixo.\n\nTome cuidado! Algumas linguagens tem por padrão apresentarem como saída 1e+006 ao invés de 1000000 o que ocasionará resposta errada. Neste caso, configure a precisão adequadamente para que isso não ocorra.",
     "languages": {
       "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1073.go",
       "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1073.java",
@@ -587,10 +587,10 @@
     }
   },
   "1074": {
-    "title": "",
-    "description": "",
-    "input": "",
-    "output": "",
+    "title": "Par ou Ímpar",
+    "description": "Leia um valor inteiro N. Este valor será a quantidade de valores que serão lidos em seguida. Para cada valor lido, mostre uma mensagem em inglês dizendo se este valor lido é par (EVEN), ímpar (ODD), positivo (POSITIVE) ou negativo (NEGATIVE). No caso do valor ser igual a zero (0), embora a descrição correta seja (EVEN NULL), pois por definição zero é par, seu programa deverá imprimir apenas NULL.",
+    "input": "A primeira linha da entrada contém um valor inteiro N(N < 10000) que indica o número de casos de teste. Cada caso de teste a seguir é um valor inteiro X (-107 < X <107).",
+    "output": "Para cada caso, imprima uma mensagem correspondente, de acordo com o exemplo abaixo. Todas as letras deverão ser maiúsculas e sempre deverá haver um espaço entre duas palavras impressas na mesma linha.",
     "languages": {
       "go": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/go/1074.go",
       "java": "https://raw.githubusercontent.com/Lokost/beecrowd-resolutions/main/Java/1%20-%20Iniciante/e1074.java",
